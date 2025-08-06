@@ -1,37 +1,3 @@
-# grillen-lab-isi-buds
-Continuation of work from ISI-BUDS 2025. Instructing efficient early phase preclinical Alzheimer’s disease trials.
-
-This repository contains 5 folders: 
-1) analysis
-2) data
-3) documentation 
-4) figures
-5) helpers
-
-Folders `data` and `documentation` are unmodified from the `A4SecondaryAnalysis` folder. 
-They remain as they originally came from the A4 study. See `documentation` for 
-data dictionaries as well as references used for the vignette and spline plot. 
-
-`analysis` contains `data-processing-and-calculations.qmd`. This Quarto document 
-cleans the data that was used for the entire analysis. In addition to data processing,
-you will also find calculations for sample size, AUC, and the uni-test logistic
-regression models. 
-
-`figures` contains `plots.qmd` and `tables.qmd`. 
-**Before attempting to run either file, please run data-processing-and-calculations.qmd**. 
-`plots.qmd` contains all plots used in the presentation, as well as some additional EDA. 
-`tables.qmd` contains publication-style tables used in the presentation. In addition,
-it also contains the latex equations used in the presentation under Appendix. 
-Please note that it does **not** contain the Table 1. 
-
-`helpers` contains two .R scripts, `01-load-libraries.R` and `02-functions.R`. 
-They are called at the beginning of `data-processing-and-calculations.qmd`. 
-`01-load-libraries.R` loads all necessary libraries for running the analysis. 
-`02-functions.R` contain 5 function definitions and documentation for 
-processing the data and running calculations. 
-
-All work in this folder was written by Tselmen Anuurad, unless otherwise noted.
-
 # Instructing Efficient Early Phase Preclinical Alzheimer’s Disease Trials
 A Secondary Analysis of A4 Study Data
 
