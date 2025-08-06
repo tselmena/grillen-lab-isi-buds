@@ -1,0 +1,207 @@
+"FILE_NAME","FILE_LABEL","FIELD_NAME","FIELD_FORMAT","FIELD_DESC","FIELD_CODE"
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","SUBSTUDY","text",NA,NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","BID","text",NA,NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","VISITCD","text","Visit Code",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","VISIT","text","Visit",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","AVISIT","text","Analysis Visit",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","EPOCH","text","Epoch",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","QSSEQ","numeric","Sequence Number given to ensure uniqueness of subject records within a domain. May be any valid number.",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","QSTESTCD","text","Topic variable for QS. Short name for the value in QSTEST, which can be used as a column name when converting the dataset from a vertical format to a horizontal format. The value in QSTESTCD cannot be longer than 8 characters, nor can it start with a number (e.g.”1TEST”). QSTESTCD cannot contain characters other than letters, numbers, or underscores. See QS Terminology Spreadsheet for specific text for QSTESTCD. Examples: ADCCMD01, BPR0103",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","QSTEST","text","Verbatim name of the question or group of questions used to obtain the measurement or finding. The value in QSTEST cannot be longer than 40 characters. See QS Terminology Spreadsheet for specific text for QSTEST. Example: Fist, BPR01 - Emotional Withdrawal",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","QSCAT","text","Used to define a category of related records that will be meaningful to the Reviewer. See QS Terminology Spreadsheet for specific text for QSCAT. Examples: ADAS-COG, MDS-UPDRS.",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","QSVERSION","text","Test version administered.",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","QSLANG","text","Questionnaire language.",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","QSSTRESN","numeric","Used for continuous or numeric findings in standard format; copied in numeric format from QSSTRESC. QSSTRESN should store all numeric results or findings.",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","QSBLRES","numeric","QS Baseline Score",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","QSCHANGE","numeric","QS Change from Baseline",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","QSBLSD","numeric","QS Baseline Standard Deviation",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","QSBLFL","text","Indicator used to identify a baseline value. The value should be “Y” or null.",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","QSDTC_DAYS_CONSENT","date","Date of questionnaire. registry.EXAMDATE (Derived to days since study consent date)",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","QSDTC_DAYS_T0","date","Date of questionnaire. registry.EXAMDATE (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","QSADTC_DAYS_CONSENT","date","Analysis date of questionnaire. registry.EXAMDATE, if it exists, otherwise manually reviewed missing_pacc_dates_verify.EXAMDATE.verify (Derived to days since study consent date)",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","QSADTC_DAYS_T0","date","Analysis date of questionnaire. registry.EXAMDATE, if it exists, otherwise manually reviewed missing_pacc_dates_verify.EXAMDATE.verify (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","QSDY","numeric","Study Day of Finding",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","ADURW","numeric","Study Week of Finding",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","ASEQMMRM","numeric","Sequence for MMRM, mapped using AVISIT (012->1...066->10)",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","ASEQNCS","numeric","Sequence for NCS, mapped using AVISIT (006->1...066->11) for participant without missing AVISIT, and use Visit Number for those with missing AVISIT (max 11 visits, and visit code 066 is always visit 11)",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","ANL01FL","text","Y if data should be included in NCS.",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","ANL02FL","text","Y if data should be included in MMRM.",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","TX","text","Random treatment assigment.",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","AGEYR","numeric","Age in years at Consent",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","MARITAL","numeric","Marital Status","Divorced = 2; Never married = 4; Widowed = 5; Married = 11; Unknown/Other = 97"
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","SEX","numeric","Sex","Female = 1; Male = 2"
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","RACE","numeric","Race","White = 1;Black or African American = 2; Asian = 58; Native Hawaiian or Other Pacific Islander = 79; American Indian or Alaskan Native = 84; Unknown or Not Reported = 97; More than one race = 100"
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","EDCCNTU","numeric","Years of education",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","ETHNIC","numeric","Ethnicity","Hispanic or Latino = 50; Not Hispanic or Latino = 56; Unknown or Not reported = 97"
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","WRKRET","numeric","Participant Retirement Status","Yes = 1; No = 0; Not Applicable  = 96"
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","TESTLNG","text","Language to be used for testing",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","SAMELNG","text","Testing and Primary Lang are the same",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","RESIDENCE","text","Type of Residence",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","DISCDTC_DAYS_CONSENT","date","Subject Discontinuation Date Character (Derived to days since study consent date)",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","DISCDTC_DAYS_T0","date","Subject Discontinuation Date Character (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","ENRLDT_DAYS_CONSENT","date","Enrollment Date (Derived to days since study consent date)",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","ENRLDT_DAYS_T0","date","Enrollment Date (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","RNDMDT_DAYS_CONSENT","date","Randomization Date (Derived to days since study consent date)",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","RNDMDT_DAYS_T0","date","Randomization Date (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","GDSSEVBL","text","Geriatric Depression Scale Score > 5",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","SUBJCOMPTR","numeric","Subj Completer Set - TR Phase",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","TRTENDT_DAYS_CONSENT","date","Treatment End Date (Derived to days since study consent date)",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","TRTENDT_DAYS_T0","date","Treatment End Date (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","TRTSTDT_DAYS_CONSENT","date","Treatment Start Date (Derived to days since study consent date)",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","TRTSTDT_DAYS_T0","date","Treatment Start Date (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","HGTCMBL","numeric","Height in Cm at Baseline",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","WGTKGBL","numeric","Weight in Kg at Baseline",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","BMIBL","numeric","body mass index (weight (kg) / [height (m)]^2)",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","ALCHLBL","numeric","Current Alcohol Consumer at Baseline","RAW.A4_HABITS (variables: ALCOHOL)."
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","CFBL","numeric","Current Caffeine User at Baseline","HABITS ADS (variables: CAFFEINE). If CAFFEINE = 0 then CFBL = 0, Else if CAFFEINE > 0 then CFBL = 1, Else CFBL = ."
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","TBBL","numeric","Current Tobacco User at Baseline","HABITS ADS (variables: SMOKE). If SMOKE = 0 then TBBL = 0, Else if SMOKE > 0 then TBBL = 1, Else TBBL = ."
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","COGDSSTTSV1","numeric","DSST Total Score at Visit 1",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","COGDSSTTSV6","numeric","DSST Total Score at Visit 6",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","COGLMDRTSV1","numeric","LM Delayed Recall Total Score at Visit 1",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","COGLMDRTSV6","numeric","LM Delayed Recall Total Score at Visit 6",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","COGTOTRECSV1","numeric","Total Recall Score at Visit 1",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","COGTOTRECSV6","numeric","Total Recall Score at Visit 6",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","MMSETSV1","numeric","MMSE Total Score at Visit 1",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","MMSETSV6","numeric","MMSE Total Score at Visit 6",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","PACCV6","numeric","PACC Total Score at Visit 6",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","APOEGN","text","APOE4 genotype (ε2/ε4, ε3/ε4, ε4/ε4, no ε4)",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","APOEGNPRSNFLG","numeric","APOE4 carrier status (carrier [ε2/ε4, ε3/ε4, ε4/ε4], noncarrier [ε3/ε3, ε2/ε2,ε3/ε2])",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","AAPOEGNPRSNFLG","numeric","APOE4 carrier status used for analysis. If APOEGNPRSNFLG is missing, carrier status is assumed to be noncarrier as in the randomization plan.",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","SUVRCER","numeric","Amyloid PET composite SUVR",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","AMYLCENT","numeric","Amyloid PET centiloids. AMYLCENT = 183.07 x SUVRCER – 177.26.",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","SUBJITTTR","numeric","Subj Intent to Treat Set - TR Phase","randomized subjects = 1, others = 0"
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","MITTFL","numeric","Modified Intent-to-Treat Flag","randomized subjects who have a baseline observation and at least one post-baseline observation = 1, others = 0"
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","SUBJSAFTR","numeric","Safety Population Flag","subjects with at least 1 complete or partial infusion of study medication in OLE = 1, others = 0"
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","PCCPFL","numeric","Placebo-Controlled Completers Population Flag",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","PRTVIIE","numeric","Protocol Violation - Eligibility Criteria Flag","had no violations of inclusion/exclusion criteria = 1, others = 0"
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","PRTVIMAS","numeric","Protocol Violation - Missed ADCS-PACC Flag","had an assessment of the PACC at each scheduled visit they completed = 1, others = 0"
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","CON3FL","numeric","Protocol Violation - Missed Consecutive Infusions","did not miss 3 or more consecutive infusions for reasons other than medical = 1, others = 0"
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","PRTVITMS","numeric","Protocol Violation - Missed Infusions","did not miss any more than 10 infusions during the placebo-controlled period = 1, others = 0"
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","PPTRTDUR","numeric","Treatment Duration >240wk for Completers Flag","for placebo-controlled period completers, the treatment duration for the study (that is, Visit 6 through Visit 66) was not more than 240 weeks + 10 days = 1, others = 0"
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","SUBJPPSTR","numeric","Subj Per Protocol Set - TR Phase",NA
+"ADQS.csv","[Derived] Analysis Data Questionnaire Scores","TAUPETFL","numeric","Tau PET (Flortaucipir) and mITT Participant Flag",NA
+"COGSTATE_COMPUTERIZED.csv","[Derived] Cogstate (Computerized)","SUBSTUDY","text",NA,NA
+"COGSTATE_COMPUTERIZED.csv","[Derived] Cogstate (Computerized)","BID","text",NA,NA
+"COGSTATE_COMPUTERIZED.csv","[Derived] Cogstate (Computerized)","TESTDATE_DAYS_CONSENT","date","Test Date (Derived to days since study consent date)",NA
+"COGSTATE_COMPUTERIZED.csv","[Derived] Cogstate (Computerized)","TESTDATE_DAYS_T0","date","Test Date (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"COGSTATE_COMPUTERIZED.csv","[Derived] Cogstate (Computerized)","VISIT","numeric","Visit number in original cogstate_computerized",NA
+"COGSTATE_COMPUTERIZED.csv","[Derived] Cogstate (Computerized)","AVISIT","text","Analysis Visit",NA
+"COGSTATE_COMPUTERIZED.csv","[Derived] Cogstate (Computerized)","TESTCD","text","Computerized test name",NA
+"COGSTATE_COMPUTERIZED.csv","[Derived] Cogstate (Computerized)","VALUE","numeric","Score",NA
+"COGSTATE_COMPUTERIZED.csv","[Derived] Cogstate (Computerized)","TRIAL","numeric","Number of trial for binomial outcomes",NA
+"COGSTATE_COMPUTERIZED.csv","[Derived] Cogstate (Computerized)","BASELINE.VALUE","numeric","Baseline Score",NA
+"COGSTATE_COMPUTERIZED.csv","[Derived] Cogstate (Computerized)","BASELINE.TRIAL","numeric","Baseline TRIAL",NA
+"COGSTATE_COMPUTERIZED.csv","[Derived] Cogstate (Computerized)","VALUE.DIF","numeric","Change from score",NA
+"COGSTATE_COMPUTERIZED.csv","[Derived] Cogstate (Computerized)","EPOCH","text","Epoch",NA
+"COGSTATE_COMPUTERIZED.csv","[Derived] Cogstate (Computerized)","ADURW","numeric","Study Week of Finding",NA
+"DS.csv","[Derived] Disposition","SUBSTUDY","text",NA,NA
+"DS.csv","[Derived] Disposition","BID","text",NA,NA
+"DS.csv","[Derived] Disposition","DSSEQ","numeric","Sequence Number given to ensure uniqueness of subject records within a domain. May be any valid number.",NA
+"DS.csv","[Derived] Disposition","DSDECOD","text","Modified Intent-to-Treat Flag, randomized subjects who have a baseline observation and at least one post-baseline observation = 1, others = 0",NA
+"DS.csv","[Derived] Disposition","DSCAT","text","Used to define a category of related records. DSCAT is now an “Expected” variable. DSCAT was permissible in SDTMIG 3.1.1 and earlier versions. The change from “permissible” to “expected” is based on the requirement to distinguish protocol milestones and/or other events from disposition events. DSCAT may be null if there are only “disposition events”; however, it is recommended that DSCAT always be populated.",NA
+"DS.csv","[Derived] Disposition","EPOCH","text","Epoch",NA
+"DS.csv","[Derived] Disposition","DSSTDTC_DAYS_CONSENT","date","Disposition Start Date (Derived to days since study consent date)",NA
+"DS.csv","[Derived] Disposition","DSSTDTC_DAYS_T0","date","Disposition Start Date (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"DS.csv","[Derived] Disposition","DSSTDY","numeric","Study day of start of event relative to the sponsor-defined RFSTDTC",NA
+"PACC.csv","[Derived] PACC","SUBSTUDY","text",NA,NA
+"PACC.csv","[Derived] PACC","BID","text",NA,NA
+"PACC.csv","[Derived] PACC","VISCODE","numeric","Visit Code",NA
+"PACC.csv","[Derived] PACC","PACC.raw","numeric","PACC raw score",NA
+"PACC.csv","[Derived] PACC","PACC","numeric","PACC score change from baseline",NA
+"PACC.csv","[Derived] PACC","PACCIMPFLG","numeric","PACC Imputation Flag",NA
+"PACC.csv","[Derived] PACC","FCTOTAL96","numeric","Free and Cued Selective Reminding Total Score (96 max)",NA
+"PACC.csv","[Derived] PACC","LDELTOTAL","numeric","Cognitive Test - Logical Memory Total Score",NA
+"PACC.csv","[Derived] PACC","DIGITTOTAL","numeric","Cognitive Test - Digit Symbol Substitution Test Total Score",NA
+"PACC.csv","[Derived] PACC","MMSCORE","numeric","MMSE: Mini Mental State Examination Score",NA
+"PACC.csv","[Derived] PACC","FCTOTAL96.bl","numeric","FCTOTAL96 baseline score",NA
+"PACC.csv","[Derived] PACC","LDELTOTAL.bl","numeric","LDELTOTAL baseline score",NA
+"PACC.csv","[Derived] PACC","DIGITTOTAL.bl","numeric","DIGITTOTAL baseline score",NA
+"PACC.csv","[Derived] PACC","MMSCORE.bl","numeric","MMSE baseline score",NA
+"PACC.csv","[Derived] PACC","FCTOTAL96.blmean","numeric","FCTOTAL96 baseline score mean",NA
+"PACC.csv","[Derived] PACC","LDELTOTAL.blmean","numeric","LDELTOTAL baseline score mean",NA
+"PACC.csv","[Derived] PACC","DIGITTOTAL.blmean","numeric","DIGITTOTAL baseline score mean",NA
+"PACC.csv","[Derived] PACC","MMSCORE.blmean","numeric","MMSE baseline score mean",NA
+"PACC.csv","[Derived] PACC","FCTOTAL96.blsd","numeric","FCTOTAL96 baseline score standard deviation",NA
+"PACC.csv","[Derived] PACC","LDELTOTAL.blsd","numeric","LDELTOTAL baseline score standard deviation",NA
+"PACC.csv","[Derived] PACC","DIGITTOTAL.blsd","numeric","DIGITTOTAL baseline score standard deviation",NA
+"PACC.csv","[Derived] PACC","MMSCORE.blsd","numeric","MMSE baseline score standard deviation",NA
+"PACC.csv","[Derived] PACC","FCTOTAL96.ch","numeric","FCTOTAL96 score change from baseline",NA
+"PACC.csv","[Derived] PACC","LDELTOTAL.ch","numeric","LDELTOTAL score change from baseline",NA
+"PACC.csv","[Derived] PACC","DIGITTOTAL.ch","numeric","DIGITTOTAL score change from baseline",NA
+"PACC.csv","[Derived] PACC","MMSCORE.ch","numeric","MMSE score change from baseline",NA
+"PACC.csv","[Derived] PACC","FCTOTAL96.z","numeric","FCTOTAL96 Z-Score (Standrad Score)",NA
+"PACC.csv","[Derived] PACC","LDELTOTAL.z","numeric","LDELTOTAL Z-Score (Standrad Score)",NA
+"PACC.csv","[Derived] PACC","DIGITTOTAL.z","numeric","DIGITTOTAL Z-Score (Standrad Score)",NA
+"PACC.csv","[Derived] PACC","MMSCORE.z","numeric","MMSE Z-Score (Standrad Score)",NA
+"PACC.csv","[Derived] PACC","LMSTORY","text","Logical Memory Story Version",NA
+"SUBJINFO.csv","[Derived] Subject Information","SUBSTUDY","text",NA,NA
+"SUBJINFO.csv","[Derived] Subject Information","BID","text",NA,NA
+"SUBJINFO.csv","[Derived] Subject Information","TX","text","Random treatment assigment.",NA
+"SUBJINFO.csv","[Derived] Subject Information","AGEYR","numeric","Age in years at Consent",NA
+"SUBJINFO.csv","[Derived] Subject Information","MARITAL","numeric","Marital Status","Divorced = 2; Never married = 4; Widowed = 5; Married = 11; Unknown/Other = 97"
+"SUBJINFO.csv","[Derived] Subject Information","SEX","numeric","Sex","Female = 1; Male = 2"
+"SUBJINFO.csv","[Derived] Subject Information","RACE","numeric","Race","White = 1;Black or African American = 2; Asian = 58; Native Hawaiian or Other Pacific Islander = 79; American Indian or Alaskan Native = 84; Unknown or Not Reported = 97; More than one race = 100"
+"SUBJINFO.csv","[Derived] Subject Information","EDCCNTU","numeric","Years of education",NA
+"SUBJINFO.csv","[Derived] Subject Information","ETHNIC","numeric","Ethnicity","Hispanic or Latino = 50; Not Hispanic or Latino = 56; Unknown or Not reported = 97"
+"SUBJINFO.csv","[Derived] Subject Information","WRKRET","numeric","Participant Retirement Status","Yes = 1; No = 0; Not Applicable  = 96"
+"SUBJINFO.csv","[Derived] Subject Information","TESTLNG","text","Language to be used for testing",NA
+"SUBJINFO.csv","[Derived] Subject Information","SAMELNG","text","Testing and Primary Lang are the same",NA
+"SUBJINFO.csv","[Derived] Subject Information","RESIDENCE","text","Type of Residence",NA
+"SUBJINFO.csv","[Derived] Subject Information","DISCDTC_DAYS_CONSENT","date","Subject Discontinuation Date Character (Derived to days since study consent date)",NA
+"SUBJINFO.csv","[Derived] Subject Information","DISCDTC_DAYS_T0","date","Subject Discontinuation Date Character (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"SUBJINFO.csv","[Derived] Subject Information","ENRLDT_DAYS_CONSENT","date","Enrollment Date (Derived to days since study consent date)",NA
+"SUBJINFO.csv","[Derived] Subject Information","ENRLDT_DAYS_T0","date","Enrollment Date (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"SUBJINFO.csv","[Derived] Subject Information","RNDMDT_DAYS_CONSENT","date","Randomization Date (Derived to days since study consent date)",NA
+"SUBJINFO.csv","[Derived] Subject Information","RNDMDT_DAYS_T0","date","Randomization Date (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"SUBJINFO.csv","[Derived] Subject Information","GDSSEVBL","text","Geriatric Depression Scale Score > 5",NA
+"SUBJINFO.csv","[Derived] Subject Information","SUBJCOMPTR","numeric","Subj Completer Set - TR Phase",NA
+"SUBJINFO.csv","[Derived] Subject Information","TRTENDT_DAYS_CONSENT","date","Treatment End Date (Derived to days since study consent date)",NA
+"SUBJINFO.csv","[Derived] Subject Information","TRTENDT_DAYS_T0","date","Treatment End Date (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"SUBJINFO.csv","[Derived] Subject Information","TRTSTDT_DAYS_CONSENT","date","Treatment Start Date (Derived to days since study consent date)",NA
+"SUBJINFO.csv","[Derived] Subject Information","TRTSTDT_DAYS_T0","date","Treatment Start Date (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"SUBJINFO.csv","[Derived] Subject Information","TRTESDT_DAYS_CONSENT","date","Treatment Escalation Date: Date of the first visit participant started high dose (800 mg or 1600 mg) (Derived to days since study consent date)",NA
+"SUBJINFO.csv","[Derived] Subject Information","TRTESDT_DAYS_T0","date","Treatment Escalation Date: Date of the first visit participant started high dose (800 mg or 1600 mg) (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"SUBJINFO.csv","[Derived] Subject Information","TRTESVIS","numeric","Treatment Escalation Visit: First visit participant started high dose (800 mg or 1600 mg)",NA
+"SUBJINFO.csv","[Derived] Subject Information","HGTCMBL","numeric","Height in Cm at Baseline",NA
+"SUBJINFO.csv","[Derived] Subject Information","WGTKGBL","numeric","Weight in Kg at Baseline",NA
+"SUBJINFO.csv","[Derived] Subject Information","BMIBL","numeric","body mass index (weight (kg) / [height (m)]^2)",NA
+"SUBJINFO.csv","[Derived] Subject Information","ALCHLBL","numeric","Current Alcohol Consumer at Baseline","RAW.A4_HABITS (variables: ALCOHOL)."
+"SUBJINFO.csv","[Derived] Subject Information","CFBL","numeric","Current Caffeine User at Baseline","HABITS ADS (variables: CAFFEINE). If CAFFEINE = 0 then CFBL = 0, Else if CAFFEINE > 0 then CFBL = 1, Else CFBL = ."
+"SUBJINFO.csv","[Derived] Subject Information","TBBL","numeric","Current Tobacco User at Baseline","HABITS ADS (variables: SMOKE). If SMOKE = 0 then TBBL = 0, Else if SMOKE > 0 then TBBL = 1, Else TBBL = ."
+"SUBJINFO.csv","[Derived] Subject Information","COGDSSTTSV1","numeric","DSST Total Score at Visit 1",NA
+"SUBJINFO.csv","[Derived] Subject Information","COGDSSTTSV6","numeric","DSST Total Score at Visit 6",NA
+"SUBJINFO.csv","[Derived] Subject Information","COGLMDRTSV1","numeric","LM Delayed Recall Total Score at Visit 1",NA
+"SUBJINFO.csv","[Derived] Subject Information","COGLMDRTSV6","numeric","LM Delayed Recall Total Score at Visit 6",NA
+"SUBJINFO.csv","[Derived] Subject Information","COGTOTRECSV1","numeric","Total Recall Score at Visit 1",NA
+"SUBJINFO.csv","[Derived] Subject Information","COGTOTRECSV6","numeric","Total Recall Score at Visit 6",NA
+"SUBJINFO.csv","[Derived] Subject Information","MMSETSV1","numeric","MMSE Total Score at Visit 1",NA
+"SUBJINFO.csv","[Derived] Subject Information","MMSETSV6","numeric","MMSE Total Score at Visit 6",NA
+"SUBJINFO.csv","[Derived] Subject Information","PACCV6","numeric","PACC Total Score at Visit 6",NA
+"SUBJINFO.csv","[Derived] Subject Information","APOEGN","text","APOE4 genotype (ε2/ε4, ε3/ε4, ε4/ε4, no ε4)",NA
+"SUBJINFO.csv","[Derived] Subject Information","APOEGNPRSNFLG","numeric","APOE4 carrier status (carrier [ε2/ε4, ε3/ε4, ε4/ε4], noncarrier [ε3/ε3, ε2/ε2,ε3/ε2])",NA
+"SUBJINFO.csv","[Derived] Subject Information","AAPOEGNPRSNFLG","numeric","APOE4 carrier status used for analysis. If APOEGNPRSNFLG is missing, carrier status is assumed to be noncarrier as in the randomization plan.",NA
+"SUBJINFO.csv","[Derived] Subject Information","SUVRCER","numeric","Amyloid PET composite SUVR",NA
+"SUBJINFO.csv","[Derived] Subject Information","AMYLCENT","numeric","Amyloid PET centiloids. AMYLCENT = 183.07 x SUVRCER – 177.26.",NA
+"SUBJINFO.csv","[Derived] Subject Information","SUBJITTTR","numeric","Subj Intent to Treat Set - TR Phase","randomized subjects = 1, others = 0"
+"SUBJINFO.csv","[Derived] Subject Information","MITTFL","numeric","Modified Intent-to-Treat Flag","randomized subjects who have a baseline observation and at least one post-baseline observation = 1, others = 0"
+"SUBJINFO.csv","[Derived] Subject Information","SUBJSAFTR","numeric","Safety Population Flag","subjects with at least 1 complete or partial infusion of study medication in OLE = 1, others = 0"
+"SUBJINFO.csv","[Derived] Subject Information","PCCPFL","numeric","Placebo-Controlled Completers Population Flag",NA
+"SUBJINFO.csv","[Derived] Subject Information","PRTVIIE","numeric","Protocol Violation - Eligibility Criteria Flag","had no violations of inclusion/exclusion criteria = 1, others = 0"
+"SUBJINFO.csv","[Derived] Subject Information","PRTVIMAS","numeric","Protocol Violation - Missed ADCS-PACC Flag","had an assessment of the PACC at each scheduled visit they completed = 1, others = 0"
+"SUBJINFO.csv","[Derived] Subject Information","CON3FL","numeric","Protocol Violation - Missed Consecutive Infusions","did not miss 3 or more consecutive infusions for reasons other than medical = 1, others = 0"
+"SUBJINFO.csv","[Derived] Subject Information","PRTVITMS","numeric","Protocol Violation - Missed Infusions","did not miss any more than 10 infusions during the placebo-controlled period = 1, others = 0"
+"SUBJINFO.csv","[Derived] Subject Information","PPTRTDUR","numeric","Treatment Duration >240wk for Completers Flag","for placebo-controlled period completers, the treatment duration for the study (that is, Visit 6 through Visit 66) was not more than 240 weeks + 10 days = 1, others = 0"
+"SUBJINFO.csv","[Derived] Subject Information","SUBJPPSTR","numeric","Subj Per Protocol Set - TR Phase",NA
+"SUBJINFO.csv","[Derived] Subject Information","LEARNFL","numeric","LEARN Participant Flag",NA
+"SUBJINFO.csv","[Derived] Subject Information","TAUPETFL","numeric","Tau PET (Flortaucipir) Participant Flag",NA
+"SUBJINFO.csv","[Derived] Subject Information","RESCREENFL","numeric","Rescreened Participant Flag","subjects later rescreened = 1, others = 0"
+"SUBJINFO.csv","[Derived] Subject Information","PREVBID","text","Previous BID if previously screened",NA
+"SV.csv","[Derived] Subject Visits","SUBSTUDY","text",NA,NA
+"SV.csv","[Derived] Subject Visits","BID","text",NA,NA
+"SV.csv","[Derived] Subject Visits","VISITCD","text","Visit Code",NA
+"SV.csv","[Derived] Subject Visits","VISIT","text","Visit",NA
+"SV.csv","[Derived] Subject Visits","SVSTDTC_DAYS_CONSENT","date","Start date/time for a Visit (Derived to days since study consent date)",NA
+"SV.csv","[Derived] Subject Visits","SVSTDTC_DAYS_T0","date","Start date/time for a Visit (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"SV.csv","[Derived] Subject Visits","SVTYPE","text","Visit Type: What type of visit was conducted? Standard, Nonstandard, Not Done",NA
+"SV.csv","[Derived] Subject Visits","SVUSEDTC_DAYS_CONSENT","date","End date/time for a Visit (Derived to days since study consent date)",NA
+"SV.csv","[Derived] Subject Visits","SVUSEDTC_DAYS_T0","date","End date/time for a Visit (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA

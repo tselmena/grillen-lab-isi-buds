@@ -1,0 +1,121 @@
+---
+title: "tables"
+format: html
+author: "Tselmen Anuurad"
+---
+
+Run `data-processing.qmd` top-down prior to running any code chunks below.
+
+# Contents: 
+
+1) CFI Example GT Table (presentation)
+2) Global CDR Indicator GT Table (presentation)
+3) AUC GT Table
+Appendix) Latex 
+
+# 1) CFI Example Table 
+
+```{r}
+CFI_48_example <- all_tests_list$CFITOTAL |>
+  select(BID, baseline_score, CFITOTAL_W48, delta_CFITOTAL_W48, z_delta_CFITOTAL_W48) |>
+  rename("CFITOTAL_BASELINE" = baseline_score)
+
+CFI_48_example_table <- CFI_48_example |>
+  head(10) |>
+  gt() |>
+  fmt_number(
+    columns = where(is.numeric),
+    decimals = 2
+  ) |>
+  cols_label(
+    BID = "Patient ID",
+    CFITOTAL_BASELINE = "Baseline Score ",
+    CFITOTAL_W48 = "Week 48 Score",
+    delta_CFITOTAL_W48 = "Change",
+    z_delta_CFITOTAL_W48 = "Z-Score of Change"
+  )  |>
+  tab_header(
+    title = "CFI Total Change Scores at Week 48",
+    subtitle = "Baseline, follow-up, and calculated change scores"
+  )  |>
+  cols_align(align = "center", columns = where(is.numeric))
+CFI_48_example_table
+# gtsave(CFI_48_example_table, filename = "cfi_change_table.png")
+```
+
+# 2) Global CDR Indicator GT Table
+
+```{r}
+wide_cdr_indicator2 <- wide_cdr_indicator |> 
+  select(-CDRCONV_WEEK)
+
+cdr_table <- wide_cdr_indicator2 |> 
+  head(10) |>
+  gt() |>
+  cols_label(
+    BID = "Patient ID",
+    CDPOS_W48 = "Week 48",
+    CDPOS_W108 = "Week 108",
+    CDPOS_W168 = "Week 168",
+    CDPOS_W204 = "Week 204",
+    CDPOS_W240 = "Week 240",
+  ) |>
+  tab_header(
+    title = "Indicator Table for Global CDR Conversion"
+  ) 
+cdr_table
+# gtsave(my_gt_table, filename = "my_gt_table.png")
+```
+
+# 3) AUC GT Table
+
+```{r}
+auc_sample_table <- 
+  summary_df_48 |>
+  arrange(desc(auc)) |>
+  gt() |>
+  cols_width(
+    test_name ~ px(20) 
+  ) |>
+  tab_header(
+    title = "Sample Size and AUC",
+    subtitle = "Models run using data from Week 48"
+  ) |>
+  cols_label(
+    test_name = "Test",
+    n = "Sample Size (N)",
+    auc = "AUC"
+  ) |>
+  fmt_number(columns = n, decimals = 0) |>
+  fmt_number(columns = auc, decimals = 2) |>
+  tab_footnote(
+    footnote = "Area Under the Receiver Operating Characteristic Curve.",
+    locations = cells_column_labels(columns = auc)
+  ) 
+auc_sample_table
+# gtsave(auc_sample_table, filename = "auc_sample_table.png")
+```
+
+
+# Appendix) Latex
+
+$$
+CDR_{240} \sim \Delta\text{Test}_{week}
+$$
+
+$$
+\ln\left(\frac{p_i}{1-p_i}\right) = \beta_0 + \beta_1\Delta \text{Test}_{\text{week}_{i}} + \beta_2\text{ Baseline Score}_i
+$$
+
+$$
+p_i = P(CDR_{240_{i}} > 0)
+$$
+
+
+$$
+\text{Odds Ratio} = e^{\beta_1}
+$$
+
+$$
+\text{n} = \frac{(z_{1-\frac{\alpha}{2}}+z_{\beta})^2*2\sigma^2}{\Delta^2}
+$$

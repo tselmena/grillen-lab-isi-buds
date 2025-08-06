@@ -1,0 +1,620 @@
+"CRF_NAME","CRF_LABEL","FIELD_NAME","FIELD_TEXT","FIELD_FORMAT","FIELD_LENGTH","FIELD_DECIML","FIELD_UNITS","FIELD_CODE","FIELD_NOTES"
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","BID",NA,"text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","VISCODE",NA,"text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","DONE","Was assessment/procedure done?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","NDREASON","If No, reason not done:","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASMETHOD","Method of Collection:","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASCBOOK","1. In the past 3 months, how well did you balance a credit card statement, pay bills, or use an ATM to make a withdrawal or deposit?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASTRAVL","2. In the past 3 months, did you drive a car without getting lost, or did you travel to wherever you needed by using public or other transport?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASAPPLI","3. In the past 3 months, did you use an appliance (for example, a microwave, dishwasher, vacuum cleaner, or TV remote), or did you carry out household repairs?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASLAUN","4. In the past 3 months, did you do the laundry?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASPAY","5. In the past 3 months, did you select and pay for items when shopping?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASSNACK","6. In the past 3 months, did you prepare meals or snacks?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASTIMES","7. In the past 3 months, how well did you remember important dates and times, such as appointments or meetings?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASFIND","8. In the past 3 months, did you usually find your personal belongings at home - for example keys, glasses, wallet or books?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASWDOWN","9. In the past 3 months, how well were you able to write things down so that other people understood them (for example, letters or detailed notes or lists)?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASMOVIE","10. In the past 3 months, how well did you follow TV programs or movies and remember the details of the story?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASCEVNT","11. In the past 3 months, how well did you talk about and remember current events that you heard or read about?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASPHONE","12. In the past 3 months, how well did you make telephone calls, including look up numbers or call directory assistance if necessary?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASMEDS","13. In the past 3 months, did you take medications regularly - including prescription or over the counter medications?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASPLAN","14. In the past 3 months, did you plan and organize complex activities for you or for groups of people, for example travel, running errands, participating in group activities (such as religious services), or carrying out hobbies or pastimes?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASCOMPL","15. In the past 3 months, did you complete complex activities such as hobbies or pastimes, for example playing card games, reading books, gardening?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASCELL","16. Did you ever use a cellphone or smartphone?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASCELLUSE","16a. If yes, during the past 3 months, did you use a cellphone or smartphone?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASCALL","16b.i. Make a call:","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASTEXT","16b.ii. Send a text message:","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASINTER","16b.iii. Access the internet (e.g., websites, Facebook, etc):","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASAPP","16b.iv. Use an App (including playing a game):","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASCELLOFTN","16c. Did you use a cellphone or smartphone less often than usual?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASCELITDIF","16d. Did you use a cellphone or smartphone:","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASCOMP","17. Did you ever use a computer, tablet, or other device with internet access?","text",NA,NA,NA,NA,"Do not include use of any study-provided devices."
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASACCESS","17a. If yes, during the past 3 months, did you use a computer, tablet, or other device with internet access?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASWEB","17b.i. Access websites, Facebook, or email:","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASINFO","17b.ii. Enter information on the device, e.g, made bookmarks, wrote and sent emails, posted on Facebook, etc:","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASPURCH","17b.iii. Make purchases or reservations:","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASPASS","17b.iv. Use passwords and remember or find them on your own:","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASCOMPOFTN","17c. Did you use a computer, tablet, or other device with internet access less often than usual?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASCLITDIF","17d. Did you use a computer, tablet, or other device with internet access:","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASEREAD","18. Did you ever use an e-reader, e.g. Nook, Kindle or a tablet?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASEREAD4","18a. If yes, during the past 3 months, did you use an e-reader, e.g. Nook, Kindle or a tablet?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASEBOOK","18b.i. Read a book or article:","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASEDLOAD","18b.ii. Download reading material:","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASEADJUST","18b.iii. Make an adjustment to appearance e.g., inserted a bookmark or adjusted settings:","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASEOFTEN","18c. Did you use an e-reader less often than usual?","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASELITDIF","18d. Did you use an e-reader:","text",NA,NA,NA,NA,NA
+"ADLPQ","ADCS ADL-Prevention Questionnaire for Participant","ASSCORE","Total Score","numeric",NA,NA,NA,NA,"Placeholder for automatic scoring TBD."
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","BID",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","VISCODE",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","DONE","Was assessment/procedure done?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","NDREASON","If No, reason not done:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIMETHOD","Method of Collection:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","BPID","Study Partner ID:","numeric",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AICBOOK","1. In the past 3 months, how well did {P} balance a credit card statement, pay bills, or use an ATM to make a withdrawal or deposit?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB1A","If with some difficulty:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB1B",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB1C",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AITRAVL","2. In the past 3 months, did {P} drive a car without getting lost, or travel to wherever he/she needed to go by using public or other transport?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB2A","If with some difficulty:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB2B",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB2C",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIAPPLI","3. In the past 3 months, how well did {P} use an appliance (for example, a microwave, dishwasher, vacuum cleaner, or TV remote), or carry out household repairs?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB3A","If with some difficulty:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB3B",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB3C",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AILAUN","4. In the past 3 months, did {P} clean a load of laundry?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB4A","If with some difficulty:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB4B",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB4C",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIPAY","5. In the past 3 months, did {P} select and pay for items when shopping?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB5A","If with some difficulty:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB5B",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB5C",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISNACK","6. In the past 3 months, did {P} prepare a meal or snack?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB6A","If with some difficulty:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB6B",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB6C",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AITIMES","7. In the past 3 months, how well did {P} remember important dates and times, such as appointments or meetings?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB7A","If with some difficulty:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB7B",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB7C",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIFIND","8. In the past 3 months, did {P} usually manage to find personal belongings at home - for example keys, glasses, a wallet or books?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB8A","If with some difficulty:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB8B",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB8C",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIWDOWN","9. In the past 3 months, how well did {P} write things down, for example letters or detailed notes or lists, so that other people understood them?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB9A","If with some difficulty:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB9B",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB9C",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIMOVIE","10. In the past 3 months, how well did {P} follow TV programs or movies and remember the details of the story?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB10A","If with some difficulty:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB10B",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AICEVNT","11. In the past 3 months, how well did {P} talk about and remember current events that he/she heard or read about?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB11A","If with some difficulty:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB11B",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIPHONE","12. In the past 3 months, how well did {P} make telephone calls, including looking up numbers or calling directory assistance if necessary?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB12A","If with some difficulty:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB12B",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB12C",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIMEDS","13. In the past 3 months, did {P} take medications regularly - including prescription or over the counter medications?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB13A","If with some difficulty:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB13B",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIPLAN","14. In the past 3 months, did {P} plan and organize complex activities for him/herself or for groups of people, for example travel, running errands, participating in group activities (such as religious services), or carrying out hobbies or pastimes?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB14A","If with some difficulty:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB14B",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB14C",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AICOMPL","15. In the past 3 months, did {P} complete complex activities such as hobbies or pastimes, for example playing card games, reading books, gardening?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB15A","If with some difficulty:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB15B",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISUB15C",NA,"text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AICELL","16. Did {P} ever use a cellphone or smartphone?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AICELLUSE","16a. If yes, during the past 3 months, did {P} use a cellphone or smartphone?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AICALL","16b.i. Make a call:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AITEXT","16b.ii. Send a text message:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIINTER","16b.iii. Access the internet (e.g., websites, Facebook, etc):","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIAPP","16b.iv. Use an App (including playing a game):","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AICELLOFTN","16c. Did {P} use a cellphone or smartphone less often than usual?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AICELITDIF","16d. Did {P} use a cellphone or smartphone:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AICOMP","17. Did {P} ever use a computer, tablet, or other device with internet access?","text",NA,NA,NA,NA,"Do not include use of any study-provided devices."
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIACCESS","17a. If yes, during the past 3 months, did {P} use a computer, tablet, or other device with internet access?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIWEB","17b.i. Access websites, Facebook, or email:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIINFO","17b.ii. Enter information on the device, e.g, made bookmarks, wrote and sent emails, posted on Facebook, etc:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIPURCH","17b.iii. Make purchases or reservations:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIPASS","17b.iv. Use passwords and remember or find them on his/her own:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AICOMPOFTN","17c. Did {P} use a computer, tablet, or other device with internet access less often than usual?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AICLITDIF","17d. Did {P} use a computer, tablet, or other device with internet access:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIEREAD","18. Did {P} ever use an e-reader, e.g. Nook, Kindle or a tablet?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIEREAD4","18a. If yes, during the past 3 months, did {P} use an e-reader, e.g. Nook, Kindle or a tablet?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIEBOOK","18b.i. Read a book or article:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIEDLOAD","18b.ii. Download reading material:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIEADJUST","18b.iii. Make an adjustment to appearance e.g., inserted a bookmark or adjusted settings:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIEOFTEN","18c. Did {P} use an e-reader less often than usual?","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AIELITDIF","18d. Did {P} use an e-reader:","text",NA,NA,NA,NA,NA
+"ADLPQSP","ADCS ADL-Prevention Questionnaire for Study Partner","AISCORE","Total Score","numeric",NA,NA,NA,NA,"Placeholder for automatic scoring TBD."
+"CDR","Clinical Dementia Rating","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","BID",NA,"text",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","VISCODE",NA,"text",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","DONE","Was assessment/procedure done?","text",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","NDREASON","If No, reason not done:","text",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","CDSPVERS","Version","text",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","CDPTSRCE","Participant","text",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","CDSPSRCE","Study Partner","text",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","BPID","Study Partner ID:","numeric",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","MEMORY","Memory Score","numeric",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","ORIENT","Orientation Score","numeric",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","JUDGE","Judgment and Problem Solving Score","numeric",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","COMMUN","Community Affairs Score","numeric",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","HOME","Home and Hobbies Score","numeric",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","CARE","Personal Care Score","numeric",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","CDSOB","Sum of Boxes (system populated)","numeric",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","CDGLOBAL","Global CDR (system populated)","numeric",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","AVISIT","Analysis visit.","numeric",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","CDADTC_DAYS_CONSENT","Analysis date of CDR registry.EXAMDATE, if it exists, otherwise manually reviewed missing_pacc_dates_verify.EXAMDATE.verify (Derived to days since study consent date)","date",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","CDADTC_DAYS_T0","Analysis date of CDR registry.EXAMDATE, if it exists, otherwise manually reviewed missing_pacc_dates_verify.EXAMDATE.verify (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])","date",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","EPOCH","Epoch.","text",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","CDDY","Study day of CDR collection, measured as integer days.","numeric",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","CDEVENT","CDR-Global progression event defined as two consecutive CDR-Global scores in the placebo-controlled phase greater than zero, or a final observed CDR-Global score in the placebo-controlled phase greater than zero. The time of the event will be considered the time from baseline (in days) from randomization to the first of two consecutive CDR-Global scores greater than zero, or to final observed CDR-Global score greater than zero. If a participant has only CDR-Global scores of zero at every visit, the censoring time will be the time of the last observed CDR-Global score in the placebo-controlled phase.","numeric",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","CDOLEEVENT","OLE CDR-Global progression event defined as two consecutive CDR-Global scores in the placebo-controlled or OLE phase greater than zero, or a final observed CDR-Global score in the placebo-controlled or OLE phase greater than zero. The time of the event will be considered the time from baseline (in days) to the first of two consecutive CDR-Global scores greater than zero, or to final observed CDR-Global score greater than zero. If a participant has only CDR-Global scores of zero at every visit, the censoring time will be the time of the last observed CDR-Global score in either placebo-controlled or OLE phase.","numeric",NA,NA,NA,NA,NA
+"CDR","Clinical Dementia Rating","CDRSB","CDR Sum of Boxes score with proration for missing box scores if percent missing is <= 30% (one box).","numeric",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","BID",NA,"text",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","VISCODE",NA,"text",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","DONE","Was assessment/procedure done?","text",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","NDREASON","If No, reason not done:","text",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","PMETHOD","Method of Collection:","text",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","MEMORY","1. Compared to one year ago, do you feel that your memory has declined substantially?","text",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","REPEAT","2. Do others tell you that you tend to repeat questions over and over?","text",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","MISPLA","3. Have you been misplacing things more often?","text",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","WRITTN","4. Compared to one year ago, do you find that you are relying more on written reminders (e.g., shopping lists, calendars)?","text",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","HELP","5. Do you need more help from others to remember appointments, family occasions or holidays?","text",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","RECALL","6. Do you have more trouble recalling names, finding the right word, or completing sentences?","text",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","DRIVE","7. Do you have more trouble driving (e.g., do you drive more slowly, have more trouble at night, tend to get lost, have accidents)?","text",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","MONEY","8. Compared to one year ago, do you have more difficulty managing money (e.g., paying bills, calculating change, completing tax forms)?","text",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","SOCIAL","9. Are you less involved in social activities?","text",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","WORK","10. Has your work performance (paid or volunteer) declined significantly compared to one year ago?","text",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","FOLLOW","11. Do you have more trouble following the news or the plots of books, movies, or TV shows?","text",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","ACTIV","12. Are there any activities (e.g., hobbies, such as card games, crafts) that are substantially more difficult for you now compared to one year ago?","text",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","LOST","13. Are you more likely to become disoriented, or get lost, for example when traveling to another city?","text",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","APPLIA","14. Compared to one year ago, do you have more difficulty using household appliances (such as washing machine or microwave) or electronic devices (such as computer or cell phone)?","text",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","PTCONCERN","15. In the past year, have you seen a doctor about memory concerns?","text",NA,NA,NA,NA,NA
+"CFI","Cognitive Function Index - Participant","CFIPTTOTAL","Total Score","numeric",NA,NA,NA,NA,"Placeholder for automatic scoring TBD."
+"CFISP","Cognitive Function Index  - Study Partner","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","BID",NA,"text",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","VISCODE",NA,"text",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","DONE","Was assessment/procedure done?","text",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","NDREASON","If No, reason not done:","text",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","BPID","Study Partner ID:","numeric",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","SPMETHOD","Method of Collection:","text",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","SPMEMORY","1. Do you feel that the participant has had a significant decline in memory compared to one year ago?","text",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","SPREPEAT","2. Does the participant tend to ask the same question over and over?","text",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","SPMISPLA","3. Has the participant been misplacing things more often?","text",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","SPWRITTN","4. Compared to one year ago, does it seem to you that the participant is relying more on written reminders (e.g., shopping lists, calendars)?","text",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","SPHELP","5. Does the participant need more help from others to remember appointments, family occasions or holidays?","text",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","SPRECALL","6. Does the participant have more trouble recalling names, finding the right word, or completing sentences?","text",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","SPDRIVE","7. Is the participant having more trouble driving (e.g., driving too slowly or too fast, having more trouble driving at night, getting lost, having accidents)?","text",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","SPMONEY","8. Compared to one year ago, is the participant having more difficulty managing money (e.g., paying bills, calculating change, completing tax forms)?","text",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","SPSOCIAL","9. Is the participant less interested in social activities?","text",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","SPWORK","10. Do you believe, based on your own observations or comments from the participant's co-workers, that the participant's work performance (paid or volunteer) has declined significantly, compared to one year ago?","text",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","SPFOLLOW","11. Does the participant have more trouble following the news or the plots of books, movies, or TV shows?","text",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","SPACTIV","12. Are there any activities (e.g., hobbies such as card games, crafts) that are substantially more difficult for the participant now compared to one year ago?","text",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","SPLOST","13. Is the participant more likely to become disoriented, or get lost, for example when traveling to another city?","text",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","SPAPPLIA","14. Compared to one year ago, does the participant have more difficulty using household appliances (such as washing machine or microwave) or electronic devices (such as computer or cell phone)?","text",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","SPCONCERN","15. In the past year, has the participant seen a doctor about memory concerns?","text",NA,NA,NA,NA,NA
+"CFISP","Cognitive Function Index  - Study Partner","CFSPTTOTAL","Total Score","numeric",NA,NA,NA,NA,"Placeholder for automatic scoring TBD."
+"COGDIGIT","Cognitive Test - Digit Symbol Substitution Test","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"COGDIGIT","Cognitive Test - Digit Symbol Substitution Test","BID",NA,"text",NA,NA,NA,NA,NA
+"COGDIGIT","Cognitive Test - Digit Symbol Substitution Test","VISCODE",NA,"text",NA,NA,NA,NA,NA
+"COGDIGIT","Cognitive Test - Digit Symbol Substitution Test","DONE","Was assessment/procedure done?","text",NA,NA,NA,NA,NA
+"COGDIGIT","Cognitive Test - Digit Symbol Substitution Test","NDREASON","If No, reason not done:","text",NA,NA,NA,NA,NA
+"COGDIGIT","Cognitive Test - Digit Symbol Substitution Test","VERSION","Version","text",NA,NA,NA,NA,NA
+"COGDIGIT","Cognitive Test - Digit Symbol Substitution Test","DIGITTOTAL","Total Score","numeric",NA,NA,NA,"0..91",NA
+"COGFCSR16","Cognitive Test - Free and Cued Selective Reminding (16 Pictures)","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"COGFCSR16","Cognitive Test - Free and Cued Selective Reminding (16 Pictures)","BID","Roster ID","text",NA,NA,NA,NA,NA
+"COGFCSR16","Cognitive Test - Free and Cued Selective Reminding (16 Pictures)","VISCODE","Visit Code","text",NA,NA,NA,NA,NA
+"COGFCSR16","Cognitive Test - Free and Cued Selective Reminding (16 Pictures)","DONE","Was assessment/procedure done?","text",NA,NA,NA,NA,NA
+"COGFCSR16","Cognitive Test - Free and Cued Selective Reminding (16 Pictures)","NDREASON","If No, reason not done:","text",NA,NA,NA,NA,NA
+"COGFCSR16","Cognitive Test - Free and Cued Selective Reminding (16 Pictures)","FCVERSION","Version","text",NA,NA,NA,NA,NA
+"COGFCSR16","Cognitive Test - Free and Cued Selective Reminding (16 Pictures)","FCFREET1","Free Recall:  Trial 1","numeric",NA,NA,NA,"0..16",NA
+"COGFCSR16","Cognitive Test - Free and Cued Selective Reminding (16 Pictures)","FCFREET2","Free Recall:  Trial 2","numeric",NA,NA,NA,"0..16",NA
+"COGFCSR16","Cognitive Test - Free and Cued Selective Reminding (16 Pictures)","FCFREET3","Free Recall:  Trial 3","numeric",NA,NA,NA,"0..16",NA
+"COGFCSR16","Cognitive Test - Free and Cued Selective Reminding (16 Pictures)","FCCUEDT1","Cued Recall:  Trial 1","numeric",NA,NA,NA,"0..16",NA
+"COGFCSR16","Cognitive Test - Free and Cued Selective Reminding (16 Pictures)","FCCUEDT2","Cued Recall:  Trial 2","numeric",NA,NA,NA,"0..16",NA
+"COGFCSR16","Cognitive Test - Free and Cued Selective Reminding (16 Pictures)","FCCUEDT3","Cued Recall:  Trial 3","numeric",NA,NA,NA,"0..16",NA
+"COGFCSR16","Cognitive Test - Free and Cued Selective Reminding (16 Pictures)","FCCUEDT1_IMPFL","Imputation Flag for Cued Recall: Trial 1","numeric",NA,NA,NA,"1=Yes, 0=No",NA
+"COGFCSR16","Cognitive Test - Free and Cued Selective Reminding (16 Pictures)","FCCUEDT2_IMPFL","Imputation Flag for Cued Recall: Trial 2","numeric",NA,NA,NA,"1=Yes, 0=No",NA
+"COGFCSR16","Cognitive Test - Free and Cued Selective Reminding (16 Pictures)","FCCUEDT3_IMPFL","Imputation Flag for Cued Recall: Trial 3","numeric",NA,NA,NA,"1=Yes, 0=No",NA
+"COGFCSR16","Cognitive Test - Free and Cued Selective Reminding (16 Pictures)","FCTOTF","Total Free Recall: Trials 1-3","numeric",NA,NA,NA,"Max=48; 0..48",NA
+"COGFCSR16","Cognitive Test - Free and Cued Selective Reminding (16 Pictures)","FCTOTC","Total Cued Recall: Trials 1-3","numeric",NA,NA,NA,"Max=48; 0..48",NA
+"COGFCSR16","Cognitive Test - Free and Cued Selective Reminding (16 Pictures)","FCTOTAL96","Total Recall: Trials 1-3; FCTOTF*2 + FCTOTC","numeric",NA,NA,NA,"Max=96; 0..96",NA
+"COGFCSR16","Cognitive Test - Free and Cued Selective Reminding (16 Pictures)","FCSRT","FCSRT (PACC Audio Verification)","text",NA,NA,NA,NA,NA
+"COGLOGIC","Cognitive Test - Logical Memory","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"COGLOGIC","Cognitive Test - Logical Memory","BID",NA,"text",NA,NA,NA,NA,NA
+"COGLOGIC","Cognitive Test - Logical Memory","VISCODE",NA,"text",NA,NA,NA,NA,NA
+"COGLOGIC","Cognitive Test - Logical Memory","DONE","Was assessment/procedure done?","text",NA,NA,NA,NA,NA
+"COGLOGIC","Cognitive Test - Logical Memory","NDREASON","If No, reason not done:","text",NA,NA,NA,NA,NA
+"COGLOGIC","Cognitive Test - Logical Memory","LMSTORY","Version","text",NA,NA,NA,NA,NA
+"COGLOGIC","Cognitive Test - Logical Memory","LIMMTOTAL","Immediate Recall Total Score","numeric",NA,NA,NA,"0..25",NA
+"COGLOGIC","Cognitive Test - Logical Memory","LDELTOTAL","Delayed Recall Total Score","numeric",NA,NA,NA,"0..25",NA
+"CONCERNS","Concerns about Alzheimer's Disease Dementia","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"CONCERNS","Concerns about Alzheimer's Disease Dementia","BID",NA,"text","38 digits",0,NA,NA,NA
+"CONCERNS","Concerns about Alzheimer's Disease Dementia","VISCODE",NA,"text","20 characters",0,NA,NA,NA
+"CONCERNS","Concerns about Alzheimer's Disease Dementia","DONE","Was assessment/procedure done?","numeric","1",0,NA,"1=Yes;0=No",NA
+"CONCERNS","Concerns about Alzheimer's Disease Dementia","NDREASON","If No, reason not done:","numeric","1",0,NA,"1=Participant Unable for Cognitive Reasons;2=Participant Unable for Other Reasons (Physical, auditory, etc.);3=Participant/Study Partner Refused;7=Site Error;8=Other Reason;9=Unknown",NA
+"CONCERNS","Concerns about Alzheimer's Disease Dementia","CMETHOD","Method of Collection:","numeric","1",0,NA,"1=In-person/Self;2=By phone/Interview",NA
+"CONCERNS","Concerns about Alzheimer's Disease Dementia","CADDVLP","1. I am concerned that I will develop Alzheimer's disease dementia.","numeric","1",0,NA,"1=Strongly Disagree;2=Somewhat Disagree;3=Neutral;4=Somewhat Agree;5=Strongly Agree",NA
+"CONCERNS","Concerns about Alzheimer's Disease Dementia","CADDVLP5","2. I am concerned that I will develop Alzheimer's disease dementia in the next 5 years.","numeric","1",0,NA,"1=Strongly Disagree;2=Somewhat Disagree;3=Neutral;4=Somewhat Agree;5=Strongly Agree",NA
+"CONCERNS","Concerns about Alzheimer's Disease Dementia","CADKNOW","3. I would like to know if I am going to develop Alzheimer's disease dementia at some point later in my life.","numeric","1",0,NA,"1=Strongly Disagree;2=Somewhat Disagree;3=Neutral;4=Somewhat Agree;5=Strongly Agree",NA
+"CONCERNS","Concerns about Alzheimer's Disease Dementia","CADBLIEV","4. I believe that I will someday develop Alzheimer's disease dementia.","numeric","1",0,NA,"1=Strongly Disagree;2=Somewhat Disagree;3=Neutral;4=Somewhat Agree;5=Strongly Agree",NA
+"CONCERNS","Concerns about Alzheimer's Disease Dementia","CADWRST","5. Alzheimer's disease dementia is the worst disease I can think of.","numeric","1",0,NA,"1=Strongly Disagree;2=Somewhat Disagree;3=Neutral;4=Somewhat Agree;5=Strongly Agree",NA
+"CONCERNS","Concerns about Alzheimer's Disease Dementia","CADCNCRN","6. My concern about developing Alzheimer's disease dementia is greater than my concern about other medical problems.","numeric","1",0,NA,"1=Strongly Disagree;2=Somewhat Disagree;3=Neutral;4=Somewhat Agree;5=Strongly Agree",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"CSSRS","C-SSRS - Baseline/Screening Version","BID",NA,"text","38 digits",0,NA,NA,NA
+"CSSRS","C-SSRS - Baseline/Screening Version","VISCODE",NA,"text","20 characters",0,NA,NA,NA
+"CSSRS","C-SSRS - Baseline/Screening Version","WISHLIFE","Lifetime <!--1. Wish to be Dead-->","numeric","1",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","WISH3","In the past 3 months <!--1. Wish to be Dead-->","numeric","1",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","ACTLIFE","Lifetime <!--2. Non-Specific Active Suicidal Thoughts-->","numeric","1",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","ACT3","In the past 3 months <!--2. Non-Specific Active Suicidal Thoughts-->","numeric","1",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","METHOD","Lifetime <!--3. Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act-->","numeric","1",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","METHOD3","In the past 3 months <!--3. Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act-->","numeric","1",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","INTENT","Lifetime <!--4. Active Suicidal Ideation with Some Intent to Act, without Specific Plan-->","numeric","1",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","INTENT3","In the past 3 months <!--4. Active Suicidal Ideation with Some Intent to Act, without Specific Plan-->","numeric","1",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","PLAN","Lifetime <!--5. Active Suicidal Ideation with Specific Plan and Intent-->","numeric","1",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","PLAN3","In the past 3 months <!--5. Active Suicidal Ideation with Specific Plan and Intent-->","numeric","1",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","SEVLIFE","<big header>Intensity of Ideation</big header><br />Lifetime - Most Severe Ideation","numeric","2",0,NA,"1=1;2=2;3=3;4=4;5=5",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","SEV3","Past 3 months - Most Severe Ideation","numeric","2",0,NA,"1=1;2=2;3=3;4=4;5=5",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","FREQLIF","Frequency:  Most Severe - Lifetime","numeric","2",0,NA,"1..5",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","FREQCUR","Frequency:  Most Severe - Past 3 months","numeric","2",0,NA,"1..5",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","DURATLIF","Duration:  Most Severe - Lifetime","numeric","2",0,NA,"1..5",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","DURATCUR","Duration:  Most Severe - Past 3 months","numeric","2",0,NA,"1..5",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","CONTROLLIF","Controllability:  Most Severe - Lifetime","numeric","2",0,NA,"0..5",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","CONTROLCUR","Controllability:  Most Severe - Past 3 months","numeric","2",0,NA,"0..5",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","DETERLIF","Deterrents:  Most Severe - Lifetime","numeric","2",0,NA,"0..5",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","DETERCUR","Deterrents:  Most Severe - Past 3 months","numeric","2",0,NA,"0..5",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","REASONLIF","Reasons for Ideation:  Most Severe - Lifetime","numeric","2",0,NA,"0..5",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","REASONCUR","Reasons for Ideation:  Most Severe - Past 3 months","numeric","2",0,NA,"0..5",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","ATTMPT","Actual Attempt: Lifetime","numeric","2",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","ATTMPT5","Actual Attempt: Past 5 years","numeric","2",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","ATTMPTN","Total number of actual attempts - Lifetime","numeric","3",0,NA,"1..999",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","ATTMPT5N","Total number of actual attempts - Past 5 years","numeric","3",0,NA,"1..999",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","NONSUI","Lifetime<!--Has subject engaged in Non-Suicidal Self-Injurious Behavior?-->","numeric","2",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","NONSUI5","Past 5 years<!--Has subject engaged in Non-Suicidal Self-Injurious Behavior?-->","numeric","2",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","INTER","Interrupted Attempt - Lifetime","numeric","2",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","INTER5","Interrupted Attempt - Past 5 years","numeric","2",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","INTERN","Total number of interrupted - Lifetime","numeric","3",0,NA,"1..999",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","INTER5N","Total number of interrupted - Past 5 years","numeric","3",0,NA,"1..999",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","ABORT","Aborted Attempt - Lifetime","numeric","2",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","ABORT5","Aborted Attempt - Past 5 years","numeric","2",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","ABORTN","Total number of aborted - Lifetime","numeric","3",0,NA,"1..999",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","ABORT5N","Total number of aborted - Past 5 years","numeric","3",0,NA,"1..999",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","PREP","Preparatory Acts or Behavior - Lifetime","numeric","2",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","PREP5","Preparatory Acts or Behavior - Past 5 years","numeric","2",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","BEHAVLIF","Suicidal Behavior - Lifetime","numeric","2",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","BEHAVREC","Suicidal Behavior - Past 5 years","numeric","2",0,NA,"1=Yes;0=No",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","RECENT_DAYS_CONSENT","Most Recent Attempt Date (Derived to days since study consent date)","date","10",0,NA,NA,NA
+"CSSRS","C-SSRS - Baseline/Screening Version","RECENT_DAYS_T0","Most Recent Attempt Date (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])","date","10",0,NA,NA,NA
+"CSSRS","C-SSRS - Baseline/Screening Version","RECENTDAM","Actual Lethality/Medical Damage<!--Most Recent Attempt Date-->","numeric","2",0,NA,"0..5",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","RECENTPOT","Potential Lethality<!--Most Recent Attempt Date-->","numeric","2",0,NA,"0..2",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","LETHAL_DAYS_CONSENT","Most Lethal Attempt Date (Derived to days since study consent date)","date","10",0,NA,NA,NA
+"CSSRS","C-SSRS - Baseline/Screening Version","LETHAL_DAYS_T0","Most Lethal Attempt Date (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])","date","10",0,NA,NA,NA
+"CSSRS","C-SSRS - Baseline/Screening Version","LETHALDAM","Actual Lethality/Medical Damage<!--Most Lethal Attempt Date-->","numeric","2",0,NA,"0..5",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","LETHALPOT","Potential Lethality<!--Most Lethal Attempt Date-->","numeric","2",0,NA,"0..2",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","FIRST_DAYS_CONSENT","Initial/First Attempt date (Derived to days since study consent date)","date","10",0,NA,NA,NA
+"CSSRS","C-SSRS - Baseline/Screening Version","FIRST_DAYS_T0","Initial/First Attempt date (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])","date","10",0,NA,NA,NA
+"CSSRS","C-SSRS - Baseline/Screening Version","FIRSTDAM","Actual Lethality/Medical Damage<!--Initial/First Attempt Date-->","numeric","2",0,NA,"0..5",NA
+"CSSRS","C-SSRS - Baseline/Screening Version","FIRSTPOT","Potential Lethality<!--Initial/First Attempt Date-->","numeric","2",0,NA,"0..2",NA
+"CSSRSLV","C-SSRS - Since Last Visit","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"CSSRSLV","C-SSRS - Since Last Visit","BID",NA,"text","38 digits",0,NA,NA,NA
+"CSSRSLV","C-SSRS - Since Last Visit","VISCODE",NA,"text","20 characters",0,NA,NA,NA
+"CSSRSLV","C-SSRS - Since Last Visit","DONE","Was assessment/procedure done?","numeric","1",0,NA,"1=Yes;0=No",NA
+"CSSRSLV","C-SSRS - Since Last Visit","NDREASON","If No, reason not done:","numeric","1",0,NA,"1=Participant Unable for Cognitive Reasons;2=Participant Unable for Other Reasons (Physical, auditory, etc.);3=Participant/Study Partner Refused;7=Site Error;8=Other Reason;9=Unknown",NA
+"CSSRSLV","C-SSRS - Since Last Visit","WISHLV","<big header>Suicidal Ideation</big header><br><br/>1. Wish to be Dead - Since Last Visit","numeric","1",0,NA,"1=Yes;0=No",NA
+"CSSRSLV","C-SSRS - Since Last Visit","ACTLV","2. Non-Specific Active Suicidal Thoughts - Since Last Visit","numeric","1",0,NA,"1=Yes;0=No",NA
+"CSSRSLV","C-SSRS - Since Last Visit","METHODLV","3. Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act - Since Last Visit","numeric","1",0,NA,"1=Yes;0=No",NA
+"CSSRSLV","C-SSRS - Since Last Visit","INTENTLV","4. Active Suicidal Ideation with Some Intent to Act, without Specific Plan - Since Last Visit","numeric","1",0,NA,"1=Yes;0=No",NA
+"CSSRSLV","C-SSRS - Since Last Visit","PLANLV","5. Active Suicidal Ideation with Specific Plan and Intent - Since Last Visit","numeric","1",0,NA,"1=Yes;0=No",NA
+"CSSRSLV","C-SSRS - Since Last Visit","SEVLV","<big header>Intensity of Ideation</big header><br><br/>Most Severe Ideation - Since last visit","numeric","2",0,NA,"1=1;2=2;3=3;4=4;5=5",NA
+"CSSRSLV","C-SSRS - Since Last Visit","FREQLV","Frequency: Most Severe - Since Last Visit","numeric","2",0,NA,"1..5",NA
+"CSSRSLV","C-SSRS - Since Last Visit","DURATLV","Duration: Most Severe - Since Last Visit","numeric","2",0,NA,"1..5",NA
+"CSSRSLV","C-SSRS - Since Last Visit","CONTROLLV","Controllability: Most Severe - Since Last Visit","numeric","2",0,NA,"0..5",NA
+"CSSRSLV","C-SSRS - Since Last Visit","DETERLV","Deterrents: Most Severe - Since Last Visit","numeric","2",0,NA,"0..5",NA
+"CSSRSLV","C-SSRS - Since Last Visit","REASONLV","Reasons for Ideation: Most Severe - Since Last Visit","numeric","2",0,NA,"0..5",NA
+"CSSRSLV","C-SSRS - Since Last Visit","ATTMPTLV","Actual Attempt - Since Last Visit","numeric","2",0,NA,"1=Yes;0=No",NA
+"CSSRSLV","C-SSRS - Since Last Visit","ATTMLVN","Total number of actual attempts","numeric","3",0,NA,"1..99",NA
+"CSSRSLV","C-SSRS - Since Last Visit","NONSUILV","Has subject engaged in Non-Suicidal Self-Injurious Behavior - Since Last Visit?","numeric","2",0,NA,"1=Yes;0=No",NA
+"CSSRSLV","C-SSRS - Since Last Visit","INTERLV","Interrupted Attempt - Since Last Visit","numeric","2",0,NA,"1=Yes;0=No",NA
+"CSSRSLV","C-SSRS - Since Last Visit","INTERLVN","Total number of interrupted attempts","numeric","3",0,NA,"1..99",NA
+"CSSRSLV","C-SSRS - Since Last Visit","ABORTLV","Aborted Attempt - Since Last Visit","numeric","2",0,NA,"1=Yes;0=No",NA
+"CSSRSLV","C-SSRS - Since Last Visit","ABORTLVN","Total number of aborted attempts","numeric","3",0,NA,"1..99",NA
+"CSSRSLV","C-SSRS - Since Last Visit","PREPLV","Preparatory Acts or Behavior - Since Last Visit","numeric","2",0,NA,"1=Yes;0=No",NA
+"CSSRSLV","C-SSRS - Since Last Visit","PRESENTLV","Suicidal Behavior - Since Last Visit","numeric","2",0,NA,"1=Yes;0=No",NA
+"CSSRSLV","C-SSRS - Since Last Visit","SUICIDE","Suicide - Since Last Visit","numeric","2",0,NA,"1=Yes;0=No",NA
+"CSSRSLV","C-SSRS - Since Last Visit","LETHALLV_DAYS_CONSENT","Most Lethal Attempt Date - Since Last Visit (Derived to days since study consent date)","date","10",0,NA,NA,NA
+"CSSRSLV","C-SSRS - Since Last Visit","LETHALLV_DAYS_T0","Most Lethal Attempt Date - Since Last Visit (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])","date","10",0,NA,NA,NA
+"CSSRSLV","C-SSRS - Since Last Visit","RECLVDAM","Actual Lethality/Medical Damage","numeric","2",0,NA,"0..5",NA
+"CSSRSLV","C-SSRS - Since Last Visit","RECLVPOT","Potential Lethality","numeric","2",0,NA,"0..2",NA
+"DOSE","Study Drug Therapy","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"DOSE","Study Drug Therapy","BID",NA,"text",NA,NA,NA,NA,NA
+"DOSE","Study Drug Therapy","VISCODE",NA,"text",NA,NA,NA,NA,NA
+"DOSE","Study Drug Therapy","DONE","Was assessment/procedure done?","text",NA,NA,NA,NA,NA
+"DOSE","Study Drug Therapy","NDREASON","If No, reason not done:","text",NA,NA,NA,NA,NA
+"DOSE","Study Drug Therapy","LOCATION","Where was infusion administered?","text",NA,NA,NA,NA,NA
+"DOSE","Study Drug Therapy","VOLUME","Volume of treatment solution administered","numeric",NA,NA,NA,NA,NA
+"DOSE","Study Drug Therapy","STARTDATE_DAYS_CONSENT","Treatment Start Date (Derived to days since study consent date)","date",NA,NA,NA,NA,NA
+"DOSE","Study Drug Therapy","STARTDATE_DAYS_T0","Treatment Start Date (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])","date",NA,NA,NA,NA,NA
+"DOSE","Study Drug Therapy","ENDDATE_DAYS_CONSENT","Treatment End Date (Derived to days since study consent date)","date",NA,NA,NA,NA,NA
+"DOSE","Study Drug Therapy","ENDDATE_DAYS_T0","Treatment End Date (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])","date",NA,NA,NA,NA,NA
+"DOSE","Study Drug Therapy","COMPLETE","Describe infusion for this time point:","text",NA,NA,NA,NA,NA
+"DOSE","Study Drug Therapy","ATTEMPTNUM","Total number of attempts:","numeric",NA,NA,NA,NA,NA
+"DOSE","Study Drug Therapy","DOSELEVEL","Dose Prescribed","text",NA,NA,NA,NA,NA
+"DOSE","Study Drug Therapy","BLINDDOSE","Blinded dose of solanezumab or placebo in mg administered at the visit","numeric",NA,NA,NA,NA,NA
+"DOSE","Study Drug Therapy","BLINDCUMDOSE","Blinded cumulative dose of solanezumab or placebo in mg administered at the visit and prior visits.","numeric",NA,NA,NA,NA,NA
+"FAMHXPAR","Family History - Parents","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"FAMHXPAR","Family History - Parents","BID",NA,"text","38 digits",0,NA,NA,NA
+"FAMHXPAR","Family History - Parents","VISCODE",NA,"text","20 characters",0,NA,NA,NA
+"FAMHXPAR","Family History - Parents","MOTHER","Did/Does the biological mother have dementia or significant memory impairment?","numeric","2",0,NA,"1=Yes;0=No",NA
+"FAMHXPAR","Family History - Parents","MOTHAGE","At what approximate age did symptoms start?","numeric","3",0,NA,"30..99",NA
+"FAMHXPAR","Family History - Parents","MOTHDIAG","Did this relative receive a diagnosis of Alzheimer's disease?","numeric","2",0,NA,"1=Yes;0=No",NA
+"FAMHXPAR","Family History - Parents","MOTHAUT","Was diagnosis of Alzheimer's disease confirmed by autopsy?","numeric","2",0,NA,"1=Yes;0=No;2=NA - not deceased",NA
+"FAMHXPAR","Family History - Parents","FATHER","Did/Does the biological father have dementia or significant memory impairment?","numeric","2",0,NA,"1=Yes;0=No",NA
+"FAMHXPAR","Family History - Parents","FATHAGE","At what approximate age did symptoms start?","numeric","3",0,NA,"30..99",NA
+"FAMHXPAR","Family History - Parents","FATHDIAG","Did this relative receive a diagnosis of Alzheimer's disease?","numeric","2",0,NA,"1=Yes;0=No",NA
+"FAMHXPAR","Family History - Parents","FATHAUT","Was diagnosis of Alzheimer's disease confirmed by autopsy?","numeric","2",0,NA,"1=Yes;0=No;2=NA - not deceased",NA
+"FAMHXSIB","Family History - Sibling Log","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"FAMHXSIB","Family History - Sibling Log","BID",NA,"text","38 digits",0,NA,NA,NA
+"FAMHXSIB","Family History - Sibling Log","VISCODE",NA,"text","20 characters",0,NA,NA,NA
+"FAMHXSIB","Family History - Sibling Log","RECNO",NA,"numeric","38 digits",0,NA,NA,NA
+"FAMHXSIB","Family History - Sibling Log","SIBYOB","Biological sibling year of birth:","numeric","4",0,NA,"1850..2013",NA
+"FAMHXSIB","Family History - Sibling Log","SIBMOTHER","Specify relationship:","numeric","1",0,NA,"1=Same biological mother",NA
+"FAMHXSIB","Family History - Sibling Log","SIBFATHER",NA,"numeric","1",0,NA,"1=Same biological father",NA
+"FAMHXSIB","Family History - Sibling Log","SIBDEMENT","Did/Does this sibling have dementia or significant memory impairment?","numeric","1",0,NA,"1=Yes;0=No",NA
+"FAMHXSIB","Family History - Sibling Log","SIBAGE","At what approximate age did symptoms start?","numeric","3",0,NA,"30..99",NA
+"FAMHXSIB","Family History - Sibling Log","SIBDIAG","Did this relative receive a diagnosis of Alzheimer's disease?","numeric","1",0,NA,"1=Yes;0=No",NA
+"FAMHXSIB","Family History - Sibling Log","SIBAUT","Was diagnosis of Alzheimer's disease confirmed by autopsy?","numeric","1",0,NA,"1=Yes;0=No;2=NA - not deceased",NA
+"FTPSCALE","Future Time Perspective Scale","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"FTPSCALE","Future Time Perspective Scale","BID",NA,"text","38 digits",0,NA,NA,NA
+"FTPSCALE","Future Time Perspective Scale","VISCODE",NA,"text","20 characters",0,NA,NA,NA
+"FTPSCALE","Future Time Perspective Scale","DONE","Was assessment/procedure done?","numeric","1",0,NA,"1=Yes;0=No",NA
+"FTPSCALE","Future Time Perspective Scale","NDREASON","If No, reason not done:","numeric","1",0,NA,"1=Participant Unable for Cognitive Reasons;2=Participant Unable for Other Reasons (Physical, auditory, etc.);3=Participant/Study Partner Refused;7=Site Error;8=Other Reason;9=Unknown",NA
+"FTPSCALE","Future Time Perspective Scale","FTMETHOD","Method of Collection:","numeric","1",0,NA,"1=In-person/Self;2=By phone/Interview",NA
+"FTPSCALE","Future Time Perspective Scale","FTOPPS","1. Many opportunities await me in the future.","numeric","1",0,NA,"1=1;2=2;3=3;4=4;5=5;6=6;7=7",NA
+"FTPSCALE","Future Time Perspective Scale","FTGOAL","2. I expect that I will set many new goals in the future.","numeric","1",0,NA,"1=1;2=2;3=3;4=4;5=5;6=6;7=7",NA
+"FTPSCALE","Future Time Perspective Scale","FTPOSSBL","3. My future is filled with possibilities.","numeric","1",0,NA,"1=1;2=2;3=3;4=4;5=5;6=6;7=7",NA
+"FTPSCALE","Future Time Perspective Scale","FTLIFE","4. Most of my life lies ahead of me.","numeric","1",0,NA,"1=1;2=2;3=3;4=4;5=5;6=6;7=7",NA
+"FTPSCALE","Future Time Perspective Scale","FTINFINIT","5. My future seems infinite to me.","numeric","1",0,NA,"1=1;2=2;3=3;4=4;5=5;6=6;7=7",NA
+"FTPSCALE","Future Time Perspective Scale","FTANYTHNG","6. I could do anything I want in the future.","numeric","1",0,NA,"1=1;2=2;3=3;4=4;5=5;6=6;7=7",NA
+"FTPSCALE","Future Time Perspective Scale","FTNEW","7. There is plenty of time left in my life to make new plans.","numeric","1",0,NA,"1=1;2=2;3=3;4=4;5=5;6=6;7=7",NA
+"FTPSCALE","Future Time Perspective Scale","FTRUNOUT","8. I have the sense that time is running out.","numeric","1",0,NA,"1=1;2=2;3=3;4=4;5=5;6=6;7=7",NA
+"FTPSCALE","Future Time Perspective Scale","FTLIMIT","9. There are only limited possibilities in my future.","numeric","1",0,NA,"1=1;2=2;3=3;4=4;5=5;6=6;7=7",NA
+"FTPSCALE","Future Time Perspective Scale","FTGETOLD","10. As I get older, I begin to experience time as limited.","numeric","1",0,NA,"1=1;2=2;3=3;4=4;5=5;6=6;7=7",NA
+"HABITS","Habits","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"HABITS","Habits","BID",NA,"text","38 digits",0,NA,NA,NA
+"HABITS","Habits","VISCODE",NA,"text","20 characters",0,NA,NA,NA
+"HABITS","Habits","DONE","Was assessment/procedure done?","numeric","1",0,NA,"1=Yes;0=No",NA
+"HABITS","Habits","NDREASON","If No, reason not done:","numeric","1",0,NA,"1=Participant Unable for Cognitive Reasons;2=Participant Unable for Other Reasons (Physical, auditory, etc.);3=Participant/Study Partner Refused;7=Site Error;8=Other Reason;9=Unknown",NA
+"HABITS","Habits","SMOKE","Average number of packs smoked per day:","numeric","3,1",1,NA,"0..30","20 cigarettes/pack.  Refer to eCRF completion guidelines for pack equivalents."
+"HABITS","Habits","ALCOHOL","Average number of alcoholic drinks consumed per day:","numeric","2",0,NA,"0..30","drink = 4 ounces of wine, 1 x 12 ounces of beer, 1 ounce of liquor"
+"HABITS","Habits","CAFFEINE","Average number of cups of caffeine consumed per day:","numeric","2",0,NA,"0..30","cup = 8 ounces of coffee or tea, an energy drink, or caffeine tablets"
+"HABITS","Habits","SUBUSE","Has the participant used other substances (e.g. non-pharmacologic substances such as medical marijuana)?","numeric","1",0,NA,"1=Yes;0=No",NA
+"HABITS","Habits","AEROBIC","Average number of hours of aerobic exercise (i.e. jogging, swimming, bicycling) PER WEEK:","numeric","2",0,NA,"0..40","Hours per week"
+"HABITS","Habits","WALKING","Average number of minutes of walking per day:","numeric","3",0,NA,"0..400","Minutes per day"
+"HABITS","Habits","SLEEP","Average total number of hours slept at night:","numeric","2",0,NA,"0..15","Hours per day"
+"HABITS","Habits","SLEEPDAY","Average total number of minutes napped during the day:","numeric","3",0,NA,"0..400","Minutes per day"
+"IES","Impact of Events Scale","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"IES","Impact of Events Scale","BID",NA,"text","38 digits",0,NA,NA,NA
+"IES","Impact of Events Scale","VISCODE",NA,"text","20 characters",0,NA,NA,NA
+"IES","Impact of Events Scale","DONE","Was assessment/procedure done?","numeric","1",0,NA,"1=Yes;0=No",NA
+"IES","Impact of Events Scale","NDREASON","If No, reason not done:","numeric","1",0,NA,"1=Participant Unable for Cognitive Reasons;2=Participant Unable for Other Reasons (Physical, auditory, etc.);3=Participant/Study Partner Refused;7=Site Error;8=Other Reason;9=Unknown",NA
+"IES","Impact of Events Scale","IEDATE_DAYS_CONSENT","Date Collected: (Derived to days since study consent date)","date","10",0,NA,NA,NA
+"IES","Impact of Events Scale","IEDATE_DAYS_T0","Date Collected: (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])","date","10",0,NA,NA,NA
+"IES","Impact of Events Scale","IETHINK","1. I thought about it when I didn't mean to.","numeric","1",0,NA,"0=Not at all;1=Rarely;3=Sometimes;5=Often","For each question, the ""it"" refers to your amyloid scan result."
+"IES","Impact of Events Scale","IEAVOID","2. I avoided letting myself get upset when I thought about it or was reminded of it.","numeric","1",0,NA,"0=Not at all;1=Rarely;3=Sometimes;5=Often",NA
+"IES","Impact of Events Scale","IEREMOVE","3. I tried to remove it from my memory.","numeric","1",0,NA,"0=Not at all;1=Rarely;3=Sometimes;5=Often",NA
+"IES","Impact of Events Scale","IESLEEP","4. I had trouble falling asleep, because pictures or thoughts about it that came into my mind.","numeric","1",0,NA,"0=Not at all;1=Rarely;3=Sometimes;5=Often",NA
+"IES","Impact of Events Scale","IEWAVES","5. I had waves of strong feelings about it.","numeric","1",0,NA,"0=Not at all;1=Rarely;3=Sometimes;5=Often",NA
+"IES","Impact of Events Scale","IEDREAMS","6. I had dreams about it.","numeric","1",0,NA,"0=Not at all;1=Rarely;3=Sometimes;5=Often",NA
+"IES","Impact of Events Scale","IEAWAY","7. I stayed away from reminders of it.","numeric","1",0,NA,"0=Not at all;1=Rarely;3=Sometimes;5=Often",NA
+"IES","Impact of Events Scale","IEREAL","8. I felt as if it hadn't happened or it wasn't real.","numeric","1",0,NA,"0=Not at all;1=Rarely;3=Sometimes;5=Often",NA
+"IES","Impact of Events Scale","IETALK","9. I tried not to talk about it.","numeric","1",0,NA,"0=Not at all;1=Rarely;3=Sometimes;5=Often",NA
+"IES","Impact of Events Scale","IEMIND","10. Pictures about it popped into my mind.","numeric","1",0,NA,"0=Not at all;1=Rarely;3=Sometimes;5=Often",NA
+"IES","Impact of Events Scale","IETHINGS","11. Other things kept making me think about it.","numeric","1",0,NA,"0=Not at all;1=Rarely;3=Sometimes;5=Often",NA
+"IES","Impact of Events Scale","IEDEAL","12. I was aware that I still had a lot of feelings about it, but I didn't deal with them.","numeric","1",0,NA,"0=Not at all;1=Rarely;3=Sometimes;5=Often",NA
+"IES","Impact of Events Scale","IENOTTHNK","13. I tried not to think about it.","numeric","1",0,NA,"0=Not at all;1=Rarely;3=Sometimes;5=Often",NA
+"IES","Impact of Events Scale","IEREMIND","14. Any reminder brought back feelings about it.","numeric","1",0,NA,"0=Not at all;1=Rarely;3=Sometimes;5=Often",NA
+"IES","Impact of Events Scale","IENUMB","15. My feelings about it were kind of numb.","numeric","1",0,NA,"0=Not at all;1=Rarely;3=Sometimes;5=Often",NA
+"IES","Impact of Events Scale","IESCORE","Total Score","numeric","3",0,NA,NA,"Click the calculator icon to determine the score."
+"MMSE","Mini Mental State Exam","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","BID",NA,"text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","VISCODE",NA,"text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","DONE","Was assessment/procedure done?","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","NDREASON","If No, reason not done:","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMSELOC","Where was the assessment done?","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","WORDLIST","Which word list was used?","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMDATE","1. What is today's date?","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMYEAR","2. What is the year?","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMMONTH","3. What is the month?","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMDAY","4. What day of the week is today?","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMSEASON","5. What season is it?","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMHOSPIT","6. What is the name of this hospital (clinic, place)?","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMFLOOR","7. What floor are we on?","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMCITY","8. What town or city are we in?","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMAREA","9. What county (district, borough, area) are we in?","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMSTATE","10. What state are we in?","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMBALL","11. Word 1","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMFLAG","12. Word 2","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMTREE","13. Word 3","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMTRIALS","13a. Enter number of trials","numeric",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMDLTR","14. Indicate first letter","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMLLTR","15. Indicate second letter","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMRLTR","16. Indicate third letter","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMOLTR","17. Indicate fourth letter","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMWLTR","18. Indicate fifth letter","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMWORLD","Attention sub-score (WORLD Backwards - CERAD scoring method)","numeric",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMBALLDL","19. Word 1","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMFLAGDL","20. Word 2","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMTREEDL","21. Word 3","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMWATCH","22. Show the participant a wrist watch and ask ""What is this?""","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMPENCIL","23. Repeat for pencil.","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMREPEAT","24. Say, ""Repeat after me: no ifs, ands, or buts.""","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMHAND","25. Takes paper in right hand.","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMFOLD","26. Folds paper in half.","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMONFLR","27. Puts paper on floor.","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMREAD","28. Present the piece of paper which reads, ""CLOSE YOUR EYES,"" and say: ""Read this and do what it says.""","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMWRITE","29. Give the participant a blank piece of paper and say: ""Write a sentence.""","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMDRAW","<big header>Construction</big header><p>30. Present the participant with the Construction Stimulus page. Say, ""Copy this design.""</p>","text",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMSCORE","MMSE TOTAL SCORE","numeric",NA,NA,NA,NA,NA
+"MMSE","Mini Mental State Exam","MMSE","MMSE (PACC Audio Verification)","text",NA,NA,NA,NA,NA
+"PHYNEURO","Physical and Neurological Exam","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"PHYNEURO","Physical and Neurological Exam","BID",NA,"text","38 digits",0,NA,NA,NA
+"PHYNEURO","Physical and Neurological Exam","VISCODE",NA,"text","20 characters",0,NA,NA,NA
+"PHYNEURO","Physical and Neurological Exam","DONE","Was assessment/procedure done?","numeric","1",0,NA,"1=Yes;0=No",NA
+"PHYNEURO","Physical and Neurological Exam","NDREASON","If No, reason not done:","numeric","1",0,NA,"1=Participant Unable for Cognitive Reasons;2=Participant Unable for Other Reasons (Physical, auditory, etc.);3=Participant/Study Partner Refused;7=Site Error;8=Other Reason;9=Unknown",NA
+"PHYNEURO","Physical and Neurological Exam","PXHEADEY","Head, Eyes, Ears, Nose and Throat","numeric","1",0,NA,"1=Normal; 2=Abnormal",NA
+"PHYNEURO","Physical and Neurological Exam","PXCARD","Cardiac","numeric","1",0,NA,"1=Normal; 2=Abnormal",NA
+"PHYNEURO","Physical and Neurological Exam","PXPULM","Pulmonary","numeric","1",0,NA,"1=Normal; 2=Abnormal",NA
+"PHYNEURO","Physical and Neurological Exam","PXABDOM","Abdomen","numeric","1",0,NA,"1=Normal; 2=Abnormal",NA
+"PHYNEURO","Physical and Neurological Exam","PXMUSCUL","Musculoskeletal","numeric","1",0,NA,"1=Normal; 2=Abnormal",NA
+"PHYNEURO","Physical and Neurological Exam","PXEDEMA","Edema","numeric","1",0,NA,"1=Absent; 2=Present",NA
+"PHYNEURO","Physical and Neurological Exam","PXEDSEV","Severity <!--Edema-->","numeric","2",0,NA,"0=Trace;1=1+; 2=2+; 3=3+; 4=4+",NA
+"PHYNEURO","Physical and Neurological Exam","PXSKIN","Skin","numeric","1",0,NA,"1=Normal; 2=Abnormal",NA
+"PHYNEURO","Physical and Neurological Exam","PXOTHER","Other (Physical)","numeric","1",0,NA,"1=Normal; 2=Abnormal",NA
+"PHYNEURO","Physical and Neurological Exam","NXGAIT","Gait","numeric","1",0,NA,"1=Normal; 2=Abnormal",NA
+"PHYNEURO","Physical and Neurological Exam","NXMOTOR","Motor Strength","numeric","1",0,NA,"1=Normal; 2=Abnormal",NA
+"PHYNEURO","Physical and Neurological Exam","NXSENSOR","Sensory","numeric","1",0,NA,"1=Normal; 2=Abnormal",NA
+"PHYNEURO","Physical and Neurological Exam","NXTREMOR","Tremor","numeric","1",0,NA,"1=Absent; 2=Present",NA
+"PHYNEURO","Physical and Neurological Exam","NXFINGER","Cerebellar - Finger to Nose","numeric","1",0,NA,"1=Normal; 2=Abnormal",NA
+"PHYNEURO","Physical and Neurological Exam","NXHEEL","Cerebellar - Heel to Shin","numeric","1",0,NA,"1=Normal; 2=Abnormal",NA
+"PHYNEURO","Physical and Neurological Exam","NXNERVE","Cranial Nerves","numeric","1",0,NA,"1=Normal; 2=Abnormal",NA
+"PHYNEURO","Physical and Neurological Exam","NXOTHER","Other (Neurological)","numeric","1",0,NA,"1=Normal; 2=Abnormal",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"PSYCHWELL","Assessment of Psychological Well-Being","BID",NA,"text","38 digits",0,NA,NA,NA
+"PSYCHWELL","Assessment of Psychological Well-Being","VISCODE",NA,"text","20 characters",0,NA,NA,NA
+"PSYCHWELL","Assessment of Psychological Well-Being","DONE","Was assessment/procedure done?","numeric","1",0,NA,"1=Yes;0=No",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","NDREASON","If No, reason not done:","numeric","1",0,NA,"1=Participant Unable for Cognitive Reasons;2=Participant Unable for Other Reasons (Physical, auditory, etc.);3=Participant/Study Partner Refused;7=Site Error;8=Other Reason;9=Unknown",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","PWBMETHOD","Method of Collection:","numeric","1",0,NA,"1=In-person/Self;2=By phone/Interview",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","GDSATIS","1. Are you basically satisfied with your life?","numeric","1",0,NA,"1=Yes(0); 0=No(1)",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","GDDROP","2. Have you dropped many of your activities and interests?","numeric","1",0,NA,"1=Yes(1); 0=No(0)",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","GDEMPTY","3. Do you feel that your life is empty?","numeric","1",0,NA,"1=Yes(1); 0=No(0)",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","GDBORED","4. Do you often get bored?","numeric","1",0,NA,"1=Yes(1); 0=No(0)",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","GDSPIRIT","5. Are you in good spirits most of the time?","numeric","1",0,NA,"1=Yes(0); 0=No(1)",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","GDAFRAID","6. Are you afraid that something bad is going to happen to you?","numeric","1",0,NA,"1=Yes(1); 0=No(0)",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","GDHAPPY","7. Do you feel happy most of the time?","numeric","1",0,NA,"1=Yes(0); 0=No(1)",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","GDHELP","8. Do you often feel helpless?","numeric","1",0,NA,"1=Yes(1); 0=No(0)",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","GDHOME","9. Do you prefer to stay at home, rather than going out and doing new things?","numeric","1",0,NA,"1=Yes(1); 0=No(0)",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","GDMEMORY","10. Do you feel you have more problems with memory than most?","numeric","1",0,NA,"1=Yes(1); 0=No(0)",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","GDALIVE","11. Do you think its wonderful to be alive now?","numeric","1",0,NA,"1=Yes(0); 0=No(1)",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","GDWORTH","12. Do you feel pretty worthless the way you are now?","numeric","1",0,NA,"1=Yes(1); 0=No(0)",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","GDENERGY","13. Do you feel full of energy?","numeric","1",0,NA,"1=Yes(0); 0=No(1)",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","GDHOPE","14. Do you feel that your situation is hopeless?","numeric","1",0,NA,"1=Yes(1); 0=No(0)",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","GDBETTER","15. Do you think that most people are better off than you are?","numeric","1",0,NA,"1=Yes(1); 0=No(0)",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","GDTOTAL","Total Score","numeric","3",0,NA,NA,"Click the calculator icon to determine the score."
+"PSYCHWELL","Assessment of Psychological Well-Being","STCALM","1. I felt calm","numeric","2",0,NA,"1=Not at all;2=Somewhat;3=Moderately so;4=Very much so",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","STTENSE","2. I was tense","numeric","2",0,NA,"1=Not at all;2=Somewhat;3=Moderately so;4=Very much so",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","STUPSET","3. I felt upset","numeric","2",0,NA,"1=Not at all;2=Somewhat;3=Moderately so;4=Very much so",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","STRELAX","4. I was relaxed","numeric","2",0,NA,"1=Not at all;2=Somewhat;3=Moderately so;4=Very much so",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","STCONTENT","5. I felt content","numeric","2",0,NA,"1=Not at all;2=Somewhat;3=Moderately so;4=Very much so",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","STWORRY","6. I was worried","numeric","2",0,NA,"1=Not at all;2=Somewhat;3=Moderately so;4=Very much so",NA
+"PSYCHWELL","Assessment of Psychological Well-Being","STAITOTAL","Total Score","numeric","3",0,NA,NA,"Click the calculator icon to determine the score."
+"PTDEMOG","Participant Demographics","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"PTDEMOG","Participant Demographics","BID",NA,"text","38 digits",0,NA,NA,NA
+"PTDEMOG","Participant Demographics","VISCODE",NA,"text","20 characters",0,NA,NA,NA
+"PTDEMOG","Participant Demographics","EXAMDATE_DAYS_CONSENT","Examination Date (Derived to days since study consent date)","date","10",0,NA,NA,NA
+"PTDEMOG","Participant Demographics","EXAMDATE_DAYS_T0","Examination Date (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])","date","10",0,NA,NA,NA
+"PTDEMOG","Participant Demographics","PTGENDER","Gender","numeric","1",0,NA,"1=Male; 2=Female",NA
+"PTDEMOG","Participant Demographics","PTAGE","Age at Screening Visit","numeric","5,2",2,"Years",NA,"Calculated based on ptdemog.examdate - ptdemog.ptdob.  If ptdemog.ptdob contains partial date (year only or month and year only), use Reported Age, ptdemog.ptagerprt, to populate."
+"PTDEMOG","Participant Demographics","PTETHNIC","Ethnic Category","numeric","1",0,NA,"1=Hispanic or Latino;2=Not Hispanic or Latino;3=Unknown or Not reported",NA
+"PTDEMOG","Participant Demographics","PTRACE","Racial Categories","text","20",0,NA,"1=American Indian or Alaskan Native; 2=Asian; 3=Native Hawaiian or Other Pacific Islander; 4=Black or African American; 5=White; 6=Unknown or Not Reported","Select all that apply."
+"PTDEMOG","Participant Demographics","PTLANG","Language to be used for testing (only one may be checked and must remain the same throughout the study)","numeric","1",0,NA,"1=English; 2=Spanish; 3=Japanese",NA
+"PTDEMOG","Participant Demographics","PTPLANG","Is language to be used for testing the same as primary language?","numeric","1",0,NA,"1=Yes; 0=No",NA
+"PTDEMOG","Participant Demographics","PTEDUCAT","Education (years)","numeric","2",0,NA,"0..40","NOTE: If the exact number of years is unknown, but level of education is known, refer to the Procedures Manual/Guidebook for guidance."
+"PTDEMOG","Participant Demographics","PTMARRY","Marital Status","numeric","1",0,NA,"1=Married; 2=Widowed; 3=Divorced; 4=Never married; 5=Unknown/Other",NA
+"PTDEMOG","Participant Demographics","PTNOTRT","Participant Retired?","numeric","1",0,NA,"1=Yes;0=No;2=Not Applicable",NA
+"PTDEMOG","Participant Demographics","PTHOME","Type of Residence","numeric","1",0,NA,"1=Independent Living (House, Apartment, Retirement Community); 2=Lives with family; 3=Senior Residence; 4=Assisted Living; 5=Skilled Nursing Facility; 6=Other (specify)",NA
+"RSS","Research Satisfaction Survey","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"RSS","Research Satisfaction Survey","BID",NA,"text","38 digits",0,NA,NA,NA
+"RSS","Research Satisfaction Survey","VISCODE",NA,"text","20 characters",0,NA,NA,NA
+"RSS","Research Satisfaction Survey","DONE","Was assessment/procedure done?","numeric","1",0,NA,"1=Yes;0=No",NA
+"RSS","Research Satisfaction Survey","NDREASON","If No, reason not done:","numeric","1",0,NA,"1=Participant Unable for Cognitive Reasons;2=Participant Unable for Other Reasons (Physical, auditory, etc.);3=Participant/Study Partner Refused;7=Site Error;8=Other Reason;9=Unknown",NA
+"RSS","Research Satisfaction Survey","RSSCOMP","Survey completed by:","numeric","1",0,NA,"1=Participant only;2=Study Partner only;3=Participant and Study Partner",NA
+"RSS","Research Satisfaction Survey","RSSQUAL","1. How would you rate the quality of the tests and attention you have received during your participation in the study?","numeric","1",0,NA,"4=Excellent;3=Good;2=Fair;1=Poor",NA
+"RSS","Research Satisfaction Survey","RSSEXPECT","2. To what extent has our research program met your expectations?","numeric","1",0,NA,"4=Almost all of my expectations have been met;3=Most of my expectations have been met;2=Only a few of my expectations have been met;1=None of my expectations have been met",NA
+"RSS","Research Satisfaction Survey","RSSRECOM","3. If a friend were to inquire about this research program, would you recommend it to him or her?","numeric","1",0,NA,"1=No, definitely not;2=No, not really;3=Yes, generally;4=Yes, definitely",NA
+"RSS","Research Satisfaction Survey","RSSREDO","4. If you had a chance to redo your decision to participate in this research program, do you think you would choose to participate?","numeric","1",0,NA,"1=No, definitely not;2=No, I don't think so;3=Yes, I think so;4=Yes, definitely",NA
+"RSS","Research Satisfaction Survey","RSSBEST","5. What do you like best about the study?","numeric","1",0,NA,"1=Volunteering;2=Interacting with staff;3=Feedback on how I am doing;4=It was fun, engaging;5=Improves mental function;6=Raising awareness;7=Other",NA
+"RSS","Research Satisfaction Survey","RSSLEAST","6. What do you like least?","numeric","1",0,NA,"1=Time commitment;2=The testing/procedures;3=Repetitiveness;4=Feeling inadequate;5=Lack of feedback;6=The study medication;7=Other",NA
+"RSS","Research Satisfaction Survey","RSSMED","Study medication:","numeric","1",0,NA,"1=Yes;0=No;2= N/A - baseline visit",NA
+"RSS","Research Satisfaction Survey","RSSTST","Tests/Procedures:","numeric","1",0,NA,"1=Yes;0=No",NA
+"RSS","Research Satisfaction Survey","RSSVIS","Number of visits:","numeric","1",0,NA,"1=Yes;0=No",NA
+"RSS","Research Satisfaction Survey","RSSOTH","Other:","numeric","1",0,NA,"1=Yes;0=No",NA
+"RSS","Research Satisfaction Survey","RSSIPAD","8. How would you rate the quality of the iPad Testing?","numeric","1",0,NA,"4=Excellent;3=Good;2=Fair;1=Poor",NA
+"RUIB","Resource Use Inventory - Brief","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"RUIB","Resource Use Inventory - Brief","BID",NA,"text","38 digits",0,NA,NA,NA
+"RUIB","Resource Use Inventory - Brief","VISCODE",NA,"text","20 characters",0,NA,NA,NA
+"RUIB","Resource Use Inventory - Brief","DONE","Was assessment/procedure done?","numeric","1",0,NA,"1=Yes;0=No",NA
+"RUIB","Resource Use Inventory - Brief","NDREASON","If No, reason not done:","numeric","1",0,NA,"1=Participant Unable for Cognitive Reasons;2=Participant Unable for Other Reasons (Physical, auditory, etc.);3=Participant/Study Partner Refused;7=Site Error;8=Other Reason;9=Unknown",NA
+"RUIB","Resource Use Inventory - Brief","RUIBCOMP","Form completed by:","numeric","1",0,NA,"1=Participant only;2=Study Partner only;3=Participant and Study Partner",NA
+"RUIB","Resource Use Inventory - Brief","BRADMIT","1. In the past one year, how many times were you admitted to the hospital for an overnight stay?","numeric","3",0,NA,NA,"If none, enter ""00"" and skip to question 2."
+"RUIB","Resource Use Inventory - Brief","BREXAM","2. In the past 3 months, how many times have you been examined by a health care professional (not including study related examinations)?","numeric","3",0,NA,"0..100","This includes nurse, doctor, chiropractor, acupuncturist, emergency room visits, etc. This also includes someone who comes to your home, such as a visiting nurse or physical therapist."
+"RUIB","Resource Use Inventory - Brief","BRHELP","Paid help:","numeric","3",0,"hours","0..40",NA
+"RUIB","Resource Use Inventory - Brief","BRUPHELP","Un-paid help:","numeric","3",0,"hours","0..40",NA
+"RUIB","Resource Use Inventory - Brief","VOLUNTEER","4a. Do you do volunteer work?","numeric","1",0,NA,"1=Yes;0=No","Include unpaid time spent in such things as babysitting, other childcare, church, political, educational or other charitable activities"
+"RUIB","Resource Use Inventory - Brief","VOLHRS","If yes, how many hours per week","numeric","3",0,"hours","1..80",NA
+"RUIB","Resource Use Inventory - Brief","EMPLOY","4b. Are you engaged in paid employment?","numeric","1",0,NA,"1=Yes;0=No",NA
+"RUIB","Resource Use Inventory - Brief","EMPHRS","If yes, how many hours per week","numeric","3",0,"hours","1..80",NA
+"RUIB","Resource Use Inventory - Brief","LOST","4c. In the past 3 months, have you lost time in volunteer work or paid employment due to health reasons?","numeric","1",0,NA,"1=Yes;0=No",NA
+"RUIB","Resource Use Inventory - Brief","LOSTHRS","If yes, how many hours per week","numeric","3",0,"hours","1..80",NA
+"RUIB","Resource Use Inventory - Brief","RESIDENCE","5. Have you changed your residence in the past year?","numeric","1",0,NA,"1=Yes;0=No",NA
+"RUIB","Resource Use Inventory - Brief","RESTYPE","If Yes, please select the best description of your new residence:","numeric","1",0,NA,"1=Independent Living (House, Apartment, Retirement Community);2=Moved in with family;3=Senior Residence;4=Assisted Living;5=Skilled Nursing Facility;6=Other (specify)",NA
+"RUIB1","Resource Use Inventory - Brief: Hospital Admissions Log","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"RUIB1","Resource Use Inventory - Brief: Hospital Admissions Log","BID",NA,"text","38 digits",0,NA,NA,NA
+"RUIB1","Resource Use Inventory - Brief: Hospital Admissions Log","VISCODE",NA,"text","20 characters",0,NA,NA,NA
+"RUIB1","Resource Use Inventory - Brief: Hospital Admissions Log","RECNO",NA,"numeric","38 digits",0,NA,NA,NA
+"RUIB1","Resource Use Inventory - Brief: Hospital Admissions Log","BR1NIGHT","Number of Nights","numeric","3",0,NA,NA,NA
+"RUIB1","Resource Use Inventory - Brief: Hospital Admissions Log","BR1TYPE","Diagnosis Type","text","20",0,NA,"1=1: Infection; 2=2: Surgery; 3=3: Metabolic; 4=4: Behavioral/Psychiatric; 5=5: Other; 6=6: Elective","Select all that apply"
+"SPINFO","Study Partner Information","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"SPINFO","Study Partner Information","BID",NA,"text","38 digits",0,NA,NA,NA
+"SPINFO","Study Partner Information","VISCODE",NA,"text","20 characters",0,NA,NA,NA
+"SPINFO","Study Partner Information","RECNO",NA,"numeric","38 digits",0,NA,NA,NA
+"SPINFO","Study Partner Information","BPID","Study Partner ID Number:","numeric","20",0,NA,NA,NA
+"SPINFO","Study Partner Information","INFRELAT","Relationship of the study partner to the participant","numeric","2",0,NA,"1=Spouse; 2=Adult child; 3=Child-in-law; 4=Other relative; 5=Friend/Companion; 6=Paid caregiver (specify); 7=Other (specify)",NA
+"SPINFO","Study Partner Information","INFGENDER","Gender of study partner","numeric","1",0,NA,"1=Male; 2=Female",NA
+"SPINFO","Study Partner Information","INFAGE","Is study partner 90 or older?","numeric","1",0,NA,"1=Yes; 0=No",NA
+"SPINFO","Study Partner Information","INFAGESP","If No, age of study partner:","numeric","2",0,NA,"18..89",NA
+"SPINFO","Study Partner Information","INFLIVE","Do the study partner and participant live together?","numeric","1",0,NA,"1=Yes; 0=No",NA
+"SPINFO","Study Partner Information","INFHRS","How many hours per week does the study partner spend with the participant in-person?","numeric","3",0,NA,"0..168","Range 0-168"
+"SPINFO","Study Partner Information","INFHRSOT","Other than in-person, how many hours per week does the study partner spend with the participant?","numeric","3",0,NA,"0..168","Range 0-168"
+"VIEWS","Views & Perceptions of Amyloid Imaging","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"VIEWS","Views & Perceptions of Amyloid Imaging","BID",NA,"text","38 digits",0,NA,NA,NA
+"VIEWS","Views & Perceptions of Amyloid Imaging","VISCODE",NA,"text","20 characters",0,NA,NA,NA
+"VIEWS","Views & Perceptions of Amyloid Imaging","DONE","Was assessment/procedure done?","numeric","1",0,NA,"1=Yes;0=No",NA
+"VIEWS","Views & Perceptions of Amyloid Imaging","NDREASON","If No, reason not done:","numeric","1",0,NA,"1=Participant Unable for Cognitive Reasons;2=Participant Unable for Other Reasons (Physical, auditory, etc.);3=Participant/Study Partner Refused;7=Site Error;8=Other Reason;9=Unknown",NA
+"VIEWS","Views & Perceptions of Amyloid Imaging","VMETHOD","Method of Collection:","numeric","1",0,NA,"1=In-person/Self;2=By phone/Interview",NA
+"VIEWS","Views & Perceptions of Amyloid Imaging","VSEEK","1. To seek information on preventative measures (e.g., change diet, exercise, or other lifestyle changes)","numeric","1",0,NA,"1=Not at all;2=A little;3=Somewhat;4=Very;5=Extremely",NA
+"VIEWS","Views & Perceptions of Amyloid Imaging","VEASE","2. To put my mind at ease if I found out I do not have elevated amyloid on my PET scan.","numeric","1",0,NA,"1=Not at all;2=A little;3=Somewhat;4=Very;5=Extremely",NA
+"VIEWS","Views & Perceptions of Amyloid Imaging","VRISK","3. To know more about my risk of developing Alzheimer's disease dementia.","numeric","1",0,NA,"1=Not at all;2=A little;3=Somewhat;4=Very;5=Extremely",NA
+"VIEWS","Views & Perceptions of Amyloid Imaging","VPART","4. To be able to participate in anti-amyloid clinical trials (such as the A4 trial)","numeric","1",0,NA,"1=Not at all;2=A little;3=Somewhat;4=Very;5=Extremely",NA
+"VIEWS","Views & Perceptions of Amyloid Imaging","VCNTRB","5. The desire to contribute to research on Alzheimer's disease","numeric","1",0,NA,"1=Not at all;2=A little;3=Somewhat;4=Very;5=Extremely",NA
+"VIEWS","Views & Perceptions of Amyloid Imaging","VAFFAIR","6. To arrange my personal affairs","numeric","1",0,NA,"1=Not at all;2=A little;3=Somewhat;4=Very;5=Extremely",NA
+"VIEWS","Views & Perceptions of Amyloid Imaging","VCNFRM","7. To confirm the feeling that I might already be developing symptoms of Alzheimer's disease dementia","numeric","1",0,NA,"1=Not at all;2=A little;3=Somewhat;4=Very;5=Extremely",NA
+"VIEWS","Views & Perceptions of Amyloid Imaging","VPREP","8. To prepare my family for my possible illness in the future","numeric","1",0,NA,"1=Not at all;2=A little;3=Somewhat;4=Very;5=Extremely",NA
+"VIEWS","Views & Perceptions of Amyloid Imaging","VCURIOUS","9. Curiosity","numeric","1",0,NA,"1=Not at all;2=A little;3=Somewhat;4=Very;5=Extremely",NA
+"VIEWS","Views & Perceptions of Amyloid Imaging","VOTHER","10. Other (please list)","numeric","1",0,NA,"1=Not at all;2=A little;3=Somewhat;4=Very;5=Extremely",NA
+"VITALS","Vital Signs","SUBSTUDY",NA,"text",NA,NA,NA,NA,NA
+"VITALS","Vital Signs","BID",NA,"text","38 digits",0,NA,NA,NA
+"VITALS","Vital Signs","VISCODE",NA,"text","20 characters",0,NA,NA,NA
+"VITALS","Vital Signs","DONE","Was assessment/procedure done?","numeric","1",0,NA,"1=Yes;0=No",NA
+"VITALS","Vital Signs","NDREASON","If No, reason not done:","numeric","1",0,NA,"1=Participant Unable for Cognitive Reasons;2=Participant Unable for Other Reasons (Physical, auditory, etc.);3=Participant/Study Partner Refused;7=Site Error;8=Other Reason;9=Unknown",NA
+"VITALS","Vital Signs","VSWEIGHT","1a. Weight","numeric","4,1",1,NA,NA,"60-500lbs or 27-227kg"
+"VITALS","Vital Signs","VSWTUNIT","1b. Weight units","numeric","1",0,NA,"1=Pounds;2=Kilograms",NA
+"VITALS","Vital Signs","STDWT","Standard Weight","numeric","4,1",1,"kg",NA,"pounds / 2.2 = kilograms"
+"VITALS","Vital Signs","VSHEIGHT","2a. Height","numeric","4,1",1,NA,NA,"50-84in or 127-214cm"
+"VITALS","Vital Signs","VSHTUNIT","2b. Height Units","numeric","1",0,NA,"1=Inches;2=Centimeters",NA
+"VITALS","Vital Signs","STDHT","Standard Height","numeric","4,1",1,"cm",NA,"inches * 2.54 = centimeters"
+"VITALS","Vital Signs","VSBPSYS","3a. Systolic","numeric","3",0,"mmHg","70..250","70-250 mmHg"
+"VITALS","Vital Signs","VSBPDIA","3b. Diastolic","numeric","3",0,"mmHg","36..130","36-130 mmHg"
+"VITALS","Vital Signs","VSPULSE","4. Seated Pulse Rate","numeric","3",0,"bpm","30..180","30-180 bpm"
+"VITALS","Vital Signs","VSRESP","5. Respirations","numeric","2",0,"rpm","4..50","4-50 rpm"
+"VITALS","Vital Signs","VSTEMP","6a. Temperature","numeric","4,1",1,NA,NA,"33-40C or 93-105F"
+"VITALS","Vital Signs","VSTEMPUN","6b. Temperature Units","numeric","1",0,NA,"1=Fahrenheit;2=Celsius",NA
+"VITALS","Vital Signs","VSTMPSRC","6c. Temperature Source","numeric","1",0,NA,"1=Oral; 2=Tympanic; 3=Other",NA
+"VITALS","Vital Signs","STDTEMP","Standard Temperature","numeric","4,1",1,"Celsius",NA,"(F - 32) * 5/9 = C"

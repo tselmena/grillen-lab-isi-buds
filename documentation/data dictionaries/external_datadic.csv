@@ -1,0 +1,836 @@
+"FILE_NAME","FILE_LABEL","FIELD_NAME","FIELD_FORMAT","FIELD_DESC","FIELD_CODE"
+"biomarker_AB_Test.csv","Biomarker - Amyloid-β Tests","SUBSTUDY","text",NA,NA
+"biomarker_AB_Test.csv","Biomarker - Amyloid-β Tests","BID","text",NA,NA
+"biomarker_AB_Test.csv","Biomarker - Amyloid-β Tests","VISCODE","text",NA,NA
+"biomarker_AB_Test.csv","Biomarker - Amyloid-β Tests","SAMPLE_ID","text","Sample Identifier",NA
+"biomarker_AB_Test.csv","Biomarker - Amyloid-β Tests","LBNAM","text","Laboratory Name",NA
+"biomarker_AB_Test.csv","Biomarker - Amyloid-β Tests","LBSPEC","text","Specimen Material Type",NA
+"biomarker_AB_Test.csv","Biomarker - Amyloid-β Tests","LBCAT","text","Category for Lab Test",NA
+"biomarker_AB_Test.csv","Biomarker - Amyloid-β Tests","LBTESTCD","text","Short Name of Lab Test",NA
+"biomarker_AB_Test.csv","Biomarker - Amyloid-β Tests","LBORRES","text","Lab Result","ALQ = ABOVE LIMIT OF QUANTIFICATION ; BLQ = BELOW LIMIT OF QUANTIFICATION ; NOA = NOT ANALYZED; NOR = NO VALID RESULT"
+"biomarker_AB_Test.csv","Biomarker - Amyloid-β Tests","LBORRESU","text","Lab Results Units",NA
+"biomarker_AB_Test.csv","Biomarker - Amyloid-β Tests","LBMETHOD","text","Method Code for Test ",NA
+"biomarker_AB_Test.csv","Biomarker - Amyloid-β Tests","LBREASND","text","Reason Test Not Done",NA
+"biomarker_pTau217.csv","Biomarker - pTau-217 Digital Immunoassay ","SUBSTUDY","text",NA,NA
+"biomarker_pTau217.csv","Biomarker - pTau-217 Digital Immunoassay ","BID","text",NA,NA
+"biomarker_pTau217.csv","Biomarker - pTau-217 Digital Immunoassay ","VISCODE","text",NA,NA
+"biomarker_pTau217.csv","Biomarker - pTau-217 Digital Immunoassay ","SAMPLE_ID","text","Sample Identifier",NA
+"biomarker_pTau217.csv","Biomarker - pTau-217 Digital Immunoassay ","TESTCD","text","Short Name of Lab Test",NA
+"biomarker_pTau217.csv","Biomarker - pTau-217 Digital Immunoassay ","TEST","text","Name of Lab Test",NA
+"biomarker_pTau217.csv","Biomarker - pTau-217 Digital Immunoassay ","ORRES","text","Lab Result","<LLOQ = BELOW LIMIT OF QUANTIFICATION ; >ULOQ = ABOVE LIMIT OF QUANTIFICATION"
+"biomarker_pTau217.csv","Biomarker - pTau-217 Digital Immunoassay ","ORRESU","text","Lab Results Units",NA
+"biomarker_pTau217.csv","Biomarker - pTau-217 Digital Immunoassay ","STAT","text","Completion Status",NA
+"biomarker_pTau217.csv","Biomarker - pTau-217 Digital Immunoassay ","REASND","text","Reason Not Done",NA
+"biomarker_pTau217.csv","Biomarker - pTau-217 Digital Immunoassay ","NAM","text","Laboratory Name",NA
+"biomarker_pTau217.csv","Biomarker - pTau-217 Digital Immunoassay ","SPEC","text","Specimen Material Type",NA
+"biomarker_pTau217.csv","Biomarker - pTau-217 Digital Immunoassay ","METHOD","text","Method Code for Test",NA
+"biomarker_pTau217.csv","Biomarker - pTau-217 Digital Immunoassay ","COLLECTION_DATE_DAYS_CONSENT","date","Date Specimen Collection (Derived to days since study consent date)",NA
+"biomarker_pTau217.csv","Biomarker - pTau-217 Digital Immunoassay ","COLLECTION_DATE_DAYS_T0","date","Date Specimen Collection (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"biomarker_pTau217.csv","Biomarker - pTau-217 Digital Immunoassay ","COMMENT","text","Comments if relevant to result",NA
+"biomarker_pTau217.csv","Biomarker - pTau-217 Digital Immunoassay ","ORRESRAW","numeric","Lab Result (raw value)",NA
+"biomarker_pTau217.csv","Biomarker - pTau-217 Digital Immunoassay ","COMMENT2","text","Comments if relevant to result",NA
+"biomarker_Plasma_Roche_Results.csv","Biomarker - Roche Plasma Assay","SUBSTUDY","text",NA,NA
+"biomarker_Plasma_Roche_Results.csv","Biomarker - Roche Plasma Assay","BID","text",NA,NA
+"biomarker_Plasma_Roche_Results.csv","Biomarker - Roche Plasma Assay","VISCODE","text",NA,NA
+"biomarker_Plasma_Roche_Results.csv","Biomarker - Roche Plasma Assay","LABNAM","text","Laboratory Name",NA
+"biomarker_Plasma_Roche_Results.csv","Biomarker - Roche Plasma Assay","LABD_DAYS_CONSENT","date","Date Specimen Collection (Derived to days since study consent date)",NA
+"biomarker_Plasma_Roche_Results.csv","Biomarker - Roche Plasma Assay","LABD_DAYS_T0","date","Date Specimen Collection (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"biomarker_Plasma_Roche_Results.csv","Biomarker - Roche Plasma Assay","SAMPLE_ID","text","Sample Identifier",NA
+"biomarker_Plasma_Roche_Results.csv","Biomarker - Roche Plasma Assay","LBSPEC","text","Specimen Material Type",NA
+"biomarker_Plasma_Roche_Results.csv","Biomarker - Roche Plasma Assay","LBMETHOD","text","Method Code for Test",NA
+"biomarker_Plasma_Roche_Results.csv","Biomarker - Roche Plasma Assay","LBTESTCD","text","Short Name of Lab Test",NA
+"biomarker_Plasma_Roche_Results.csv","Biomarker - Roche Plasma Assay","LBMTDL","text","Name of Lab Test",NA
+"biomarker_Plasma_Roche_Results.csv","Biomarker - Roche Plasma Assay","LABRESN","text","Lab Result",NA
+"biomarker_Plasma_Roche_Results.csv","Biomarker - Roche Plasma Assay","LABORESU","text","Lab Results Units",NA
+"biomarker_Plasma_Roche_Results.csv","Biomarker - Roche Plasma Assay","LABRESC","text","Reason Not Done","BLQ = BELOW LIMIT OF QUANTIFICATION ; QNS = QUANTITY NOT SUFFICIENT"
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","SUBSTUDY","text",NA,NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","BID","text",NA,NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","VISCODE","text",NA,NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","VISIT","text","LAB VISIT NAME",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","VISITTYP","text","LAB VISIT TYPE","S - Scheduled; U - Unscheduled"
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","VISITMOD","text","LAB VISIT SUB TYPE","T - Early Termination; R - Retest; O - Physician Ordered"
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","LBNAM","text","CENTRAL LABORATORY NAME",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","SAMPLE_ID","text","Sample Identifier",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","LBDTM_DAYS_CONSENT","date","COLLECTION DATE TIME (Derived to days since study consent date)",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","LBDTM_DAYS_T0","date","COLLECTION DATE TIME (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","RCVDTM_DAYS_CONSENT","date","RECEIVED (at the central laboratory) DATE TIME (Derived to days since study consent date)",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","RCVDTM_DAYS_T0","date","RECEIVED (at the central laboratory) DATE TIME (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","SPECMNUM","text","SPECIMEN MATERIAL ID",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","LBSPEC","text","SPECIMEN MATERIAL DESCRIPTION",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","FASTSTAT","text","FASTING STATUS","Y - Yes; N - N; U - Unknown"
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","BATTRID","text","BASE BATTERY ID",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","BATTRNAM","text","BASE BATTERY NAME",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","LBTESTCD","text","LAB TEST CODE",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","LBTEST","text","TEST NAME",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","TSTSTAT","text","TEST STATUS","D - Done; N - Not Performed; X - Cancelled"
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","TSTDTM_DAYS_CONSENT","date","TEST DATE TIME (Derived to days since study consent date)",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","TSTDTM_DAYS_T0","date","TEST DATE TIME (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","TSTTYP","text","TEST TYPE","S - Study Test; N - Non-Study Test; U - Unscheduled Study Test"
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","RPTRESC","text","REPORTED TEXT RESULT",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","RPTRESN","numeric","REPORTED NUMERIC RESULT",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","RPTRESNP","text","REPORTED RESULT NUMERIC PRECISION",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","RPTNRLO","numeric","REPORTED Lower limit of reference range",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","RPTNRHI","numeric","REPORTED Upper limit of reference range",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","RPTU","text","REPORTED UNITS OF MEASUREMENT",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","CNVRESC","text","CONVENTIONAL TEXT RESULT",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","CNVRESN","numeric","CONVENTIONAL NUMERIC RESULT",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","CNVRESNP","text","CONVENTIONAL RESULT NUMERIC PRECISION",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","CNVNRLO","numeric","CONVENTIONAL REF RANGE LO",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","CNVNRHI","numeric","CONVENTIONAL REF RANGE HI",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","CNVU","text","CONVENTIONAL UOM",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","SIRESC","text","SI TEXT RESULT",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","SIRESN","numeric","SI NUMERIC RESULT",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","SIRESNP","text","SI RESULT NUMERIC PRECISION",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","SINRLO","numeric","SI REF RANGE LO",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","SINRHI","numeric","SI REF RANGE HI",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","SIU","text","SI UOM",NA
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","RPTRTYP","text","RESULT TYPE","C - Coded; N - Numeric; T - Text; G - Greater Than (quantifiable limit); L - Less Than (quantifiable limit); R - Range"
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","ALRTFL","text","ALERT FLAG","LP - Low Panic; LT - Low Telephone; LN - Low Normal; N - Normal; HN - High Normal; HT - High Telephone; HP - High Panic; AB - Abnormal;"
+"clrm_ecg.csv","Clinical Laboratory Results Modernization (CLRM) -  ECG","DELTFL","text","DELTA FLAG","D+ for an increase in value; D- for a decrease in value"
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","SUBSTUDY","text",NA,NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","BID","text",NA,NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","VISCODE","text",NA,NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","VISIT","text","LAB VISIT NAME",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","VISITTYP","text","LAB VISIT TYPE","S - Scheduled; U - Unscheduled"
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","VISITMOD","text","LAB VISIT SUB TYPE","T - Early Termination; R - Retest; O - Physician Ordered"
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","LBNAM","text","CENTRAL LABORATORY NAME",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","SAMPLE_ID","text","Sample Identifier",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","LBDTM_DAYS_CONSENT","date","COLLECTION DATE TIME (Derived to days since study consent date)",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","LBDTM_DAYS_T0","date","COLLECTION DATE TIME (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","RCVDTM_DAYS_CONSENT","date","RECEIVED (at the central laboratory) DATE TIME (Derived to days since study consent date)",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","RCVDTM_DAYS_T0","date","RECEIVED (at the central laboratory) DATE TIME (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","SPECMNUM","text","SPECIMEN MATERIAL ID",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","LBSPEC","text","SPECIMEN MATERIAL DESCRIPTION",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","FASTSTAT","text","FASTING STATUS","Y - Yes; N - N; U - Unknown"
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","BATTRID","text","BASE BATTERY ID",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","BATTRNAM","text","BASE BATTERY NAME",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","LBTESTCD","text","LAB TEST CODE",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","LBTEST","text","TEST NAME",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","TSTSTAT","text","TEST STATUS","D - Done; N - Not Performed; X - Cancelled"
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","TSTDTM_DAYS_CONSENT","date","TEST DATE TIME (Derived to days since study consent date)",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","TSTDTM_DAYS_T0","date","TEST DATE TIME (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","TSTTYP","text","TEST TYPE","S - Study Test; N - Non-Study Test; U - Unscheduled Study Test"
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","RPTRESC","text","REPORTED TEXT RESULT",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","RPTRESN","numeric","REPORTED NUMERIC RESULT",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","RPTRESNP","text","REPORTED RESULT NUMERIC PRECISION",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","RPTNRLO","numeric","REPORTED Lower limit of reference range",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","RPTNRHI","numeric","REPORTED Upper limit of reference range",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","RPTU","text","REPORTED UNITS OF MEASUREMENT",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","CNVRESC","text","CONVENTIONAL TEXT RESULT",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","CNVRESN","numeric","CONVENTIONAL NUMERIC RESULT",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","CNVRESNP","text","CONVENTIONAL RESULT NUMERIC PRECISION",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","CNVNRLO","numeric","CONVENTIONAL REF RANGE LO",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","CNVNRHI","numeric","CONVENTIONAL REF RANGE HI",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","CNVU","text","CONVENTIONAL UOM",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","SIRESC","text","SI TEXT RESULT",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","SIRESN","numeric","SI NUMERIC RESULT",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","SIRESNP","text","SI RESULT NUMERIC PRECISION",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","SINRLO","numeric","SI REF RANGE LO",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","SINRHI","numeric","SI REF RANGE HI",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","SIU","text","SI UOM",NA
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","RPTRTYP","text","RESULT TYPE","C - Coded; N - Numeric; T - Text; G - Greater Than (quantifiable limit); L - Less Than (quantifiable limit); R - Range"
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","ALRTFL","text","ALERT FLAG","LP - Low Panic; LT - Low Telephone; LN - Low Normal; N - Normal; HN - High Normal; HT - High Telephone; HP - High Panic; AB - Abnormal;"
+"clrm_lab.csv","Clinical Laboratory Results Modernization (CLRM) - Laboratory Tests","DELTFL","text","DELTA FLAG","D+ for an increase in value; D- for a decrease in value"
+"cogstate_battery.csv","Cogstate - Computerized Battery","SUBSTUDY","text",NA,NA
+"cogstate_battery.csv","Cogstate - Computerized Battery","BID","text",NA,NA
+"cogstate_battery.csv","Cogstate - Computerized Battery","Hand","text","Dominant hand","Right/Left"
+"cogstate_battery.csv","Cogstate - Computerized Battery","Sex","text","Sex","Male/Female"
+"cogstate_battery.csv","Cogstate - Computerized Battery","TDate_DAYS_CONSENT","date","Test date (Derived to days since study consent date)",NA
+"cogstate_battery.csv","Cogstate - Computerized Battery","TDate_DAYS_T0","date","Test date (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"cogstate_battery.csv","Cogstate - Computerized Battery","Session_ID","text","Session Identifier (sequentially grouped by BID)",NA
+"cogstate_battery.csv","Cogstate - Computerized Battery","VISCODE","text",NA,NA
+"cogstate_battery.csv","Cogstate - Computerized Battery","TCode","text","Test code",NA
+"cogstate_battery.csv","Cogstate - Computerized Battery","GMLidx","text","GML test index","0 to 20"
+"cogstate_battery.csv","Cogstate - Computerized Battery","mps","text","Moves per second","0.0001 to 5"
+"cogstate_battery.csv","Cogstate - Computerized Battery","dur","numeric","Duration of test (ms)","0 to 99999"
+"cogstate_battery.csv","Cogstate - Computerized Battery","ter","text","Total errors (count)","0 to 999"
+"cogstate_battery.csv","Cogstate - Computerized Battery","ler","text","Legal errors (count)","0 to 999"
+"cogstate_battery.csv","Cogstate - Computerized Battery","rer","text","Rule break errors (count)","0 to 999"
+"cogstate_battery.csv","Cogstate - Computerized Battery","per","text","Perseverative errors (count)","0 to 999"
+"cogstate_battery.csv","Cogstate - Computerized Battery","lmn","numeric","Speed of performance (log10 msec)","2.001 to 6"
+"cogstate_battery.csv","Cogstate - Computerized Battery","lsd","numeric","Standard deviation of speed of performance","0 to 3"
+"cogstate_battery.csv","Cogstate - Computerized Battery","acc","numeric","Accuracy (arcsin sqrt proportion)","0 to 1.5708"
+"cogstate_battery.csv","Cogstate - Computerized Battery","cor","numeric","Correct responses (count)","0 to 999"
+"cogstate_battery.csv","Cogstate - Computerized Battery","err","numeric","Errors (count)","0 to 999"
+"cogstate_battery.csv","Cogstate - Computerized Battery","presnt","numeric","Presentation count (Correct + Errors)","0 to 99"
+"cogstate_battery.csv","Cogstate - Computerized Battery","metric","numeric","BPSO metric; ability to discriminate ‘lures’ from ‘similar’ objects (proportion)","0 to 1"
+"cogstate_battery.csv","Cogstate - Computerized Battery","percor","numeric","Percent correct (proportion)","0 to 1"
+"cogstate_battery.csv","Cogstate - Computerized Battery","cmv","text","Correct moves","0 to 140"
+"cogstate_battery.csv","Cogstate - Computerized Battery","rth","text","Return to head moves","0 to 999"
+"cogstate_battery.csv","Cogstate - Computerized Battery","sti","numeric","Stimuli (count)","0 to 999"
+"cogstate_battery.csv","Cogstate - Computerized Battery","cfo","text","Correct foils recalled","0 to 100"
+"cogstate_battery.csv","Cogstate - Computerized Battery","res","text","Responses (count)","0 to 999"
+"cogstate_battery.csv","Cogstate - Computerized Battery","Completion","numeric","Test completion flag (0 = pass; 1 = fail)","0 or 1"
+"cogstate_battery.csv","Cogstate - Computerized Battery","Integrity","numeric","Test integrity flag (0 = pass; 1 = fail)","0 or 1"
+"cogstate_battery.csv","Cogstate - Computerized Battery","SessionNumber","numeric","Count of the attempts on a single visit","0 to 3"
+"cogstate_battery.csv","Cogstate - Computerized Battery","SessionCompletion","numeric","Session completion criteria","(i) 0 = Pass: all tests in session met completion criteria. (ii) 1 = Fail: at least one test in the session did not meet completion criteria. (iii) If one or more tests in the battery do not have any data for the test (and therefore, the test does not appear in the extract), SessionCompletionPass = 1 (fail)"
+"cogstate_battery.csv","Cogstate - Computerized Battery","ExcludeData","numeric","Indicator for which test to use","0 = retain data in analysis; 1 = exclude data"
+"cogstate_battery.csv","Cogstate - Computerized Battery","C3Comp","numeric","The score on the Cogstate C3 composite, incorporating the BPSO, Face Name, Detection, Identification One Card Learning and One Back tests, relative to age-matched normative data","-10 to 20"
+"cogstate_battery.csv","Cogstate - Computerized Battery","LearnWMComp","numeric","The score on the Learning/Working Memory composite, incorporating the primary outcome measures for the One Card Learning and One Back tests (Accuracy), relative to age-matched normative data","-10 to 20"
+"cogstate_battery.csv","Cogstate - Computerized Battery","OCLONBComp","numeric","The score on the Learning/Working Memory composite, incorporating the primary outcome measures for the One Card Learning and One Back tests (Accuracy), relative to age-matched normative data","-10 to 20"
+"cogstate_battery.csv","Cogstate - Computerized Battery","PsychAttnComp","numeric","The score on the Psychomotor Function/Attention composite, incorporating the Detection and Identification tests, relative to age-matched normative data","-10 to 20"
+"cogstate_battery.csv","Cogstate - Computerized Battery","AttnComp","numeric","The score on the Attention composite, incorporating the Detection, Identification and One Back tests, relative to age-matched normative data","-10 to 20"
+"cogstate_battery.csv","Cogstate - Computerized Battery","C3AbrComp","numeric","The score on the Papp 2019, C3 composite, incorporating the BPSO, Face Name (matching) and One Card Learning tests, relative to age-matched normative data","-10 to 20"
+"cogstate_cpath.csv","Cogstate - Critical Path Institute: Activities of Daily Living","SUBSTUDY","text",NA,NA
+"cogstate_cpath.csv","Cogstate - Critical Path Institute: Activities of Daily Living","BID","text",NA,NA
+"cogstate_cpath.csv","Cogstate - Critical Path Institute: Activities of Daily Living","VISCODE","text",NA,NA
+"cogstate_cpath.csv","Cogstate - Critical Path Institute: Activities of Daily Living","Date_DAYS_CONSENT","date","Test date (Derived to days since study consent date)",NA
+"cogstate_cpath.csv","Cogstate - Critical Path Institute: Activities of Daily Living","Date_DAYS_T0","date","Test date (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"cogstate_cpath.csv","Cogstate - Critical Path Institute: Activities of Daily Living","Session_ID","text","Session Identifier (sequentially grouped by BID)",NA
+"cogstate_cpath.csv","Cogstate - Critical Path Institute: Activities of Daily Living","Instructions","text","Instructions presented from the questionnaire. {Note: (i) for the Complex Activities of Daily Living outcome, “Complex Activities of Daily Living Domain Score (CADL)” is presented; (ii) for the Interpersonal Functioning Domain outcome, “Interpersonal Functioning Domain Score (IF)” is presented, (iii) for the CPATH total score, “Total C-Path Score (total)” is presented.}",NA
+"cogstate_cpath.csv","Cogstate - Critical Path Institute: Activities of Daily Living","Question Number","numeric","Number corresponding to the question presented from the questionnaire. (Note: for the Complex Activities of Daily Living outcome, Interpersonal Functioning Domain outcome, and the CPATH total score, this is blank.)",NA
+"cogstate_cpath.csv","Cogstate - Critical Path Institute: Activities of Daily Living","Question Text","text","Question presented from the questionnaire. {Note: (i) for the Complex Activities of Daily Living outcome, “Complex Activities of Daily Living Domain Score (CADL)” is presented; (ii) for the Interpersonal Functioning Domain outcome, “Interpersonal Functioning Domain Score (IF)” is presented; (iii) for the CPATH total score, “Total C-Path Score (total)” is presented.}",NA
+"cogstate_cpath.csv","Cogstate - Critical Path Institute: Activities of Daily Living","Answer Text","text","The actual answer given, in text format. (Note: for the Complex Activities of Daily Living outcome, Interpersonal Functioning Domain outcome, and the CPATH total score, this is blank.)",NA
+"cogstate_cpath.csv","Cogstate - Critical Path Institute: Activities of Daily Living","Score","numeric","The score corresponding to the answer given for the question presented from the questionnaire. {Note: (i) for the Complex Activities of Daily Living outcome, this reflects the sum of “Score” values for questions 1 through 16; (ii) for the Interpersonal Functioning Domain outcome, this reflects the sum of “Score” values for questions 17 through 26; (iii) for the CPATH total score, this reflects the sum of “Score” values for all individual questions.}",NA
+"cogstate_cpath.csv","Cogstate - Critical Path Institute: Activities of Daily Living","LMN","numeric","Average Log10 reaction time score over all questions presented. (Note: for the individual questions, Complex Activities of Daily Living outcome and Interpersonal Functioning Domain outcome, this is blank.)",NA
+"cogstate_macq.csv","Cogstate - Memory Complaint Questionnaire","SUBSTUDY","text",NA,NA
+"cogstate_macq.csv","Cogstate - Memory Complaint Questionnaire","BID","text",NA,NA
+"cogstate_macq.csv","Cogstate - Memory Complaint Questionnaire","VISCODE","text",NA,NA
+"cogstate_macq.csv","Cogstate - Memory Complaint Questionnaire","Date_DAYS_CONSENT","date","Test date (Derived to days since study consent date)",NA
+"cogstate_macq.csv","Cogstate - Memory Complaint Questionnaire","Date_DAYS_T0","date","Test date (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"cogstate_macq.csv","Cogstate - Memory Complaint Questionnaire","Session_ID","text","Session Identifier (sequentially grouped by BID)",NA
+"cogstate_macq.csv","Cogstate - Memory Complaint Questionnaire","Question","text","Question presented from the questionnaire. (Note: for the MCQ total score, “MCQT Total” is presented.)",NA
+"cogstate_macq.csv","Cogstate - Memory Complaint Questionnaire","Answer","numeric","Answer given for the presented question. (Note: for the MCQ total score, this reflects the sum of “Answer” values for the individual questions.)",NA
+"cogstate_macq.csv","Cogstate - Memory Complaint Questionnaire","Answer Text","text","The actual answer given, in text format. (Note: for the MCQ total score, this is blank.)",NA
+"cogstate_macq.csv","Cogstate - Memory Complaint Questionnaire","Score","numeric","The score corresponding to the answer given for the question presented from the questionnaire. (Note: for the MCQ total score, this reflects the sum of “Score” values for the individual questions.)",NA
+"cogstate_macq.csv","Cogstate - Memory Complaint Questionnaire","LMN","numeric","Average Log10 reaction time score over all questions presented. (Note: for the individual questions, this is blank.)",NA
+"imaging_FLAIR_WMH_QC.csv","Imaging - FLAIR MRI White Matter Hyperintensities (WMH) QC","SUBSTUDY","text",NA,NA
+"imaging_FLAIR_WMH_QC.csv","Imaging - FLAIR MRI White Matter Hyperintensities (WMH) QC","BID","text",NA,NA
+"imaging_FLAIR_WMH_QC.csv","Imaging - FLAIR MRI White Matter Hyperintensities (WMH) QC","VISCODE","text",NA,NA
+"imaging_FLAIR_WMH_QC.csv","Imaging - FLAIR MRI White Matter Hyperintensities (WMH) QC","foldername","text","Source proc folder name",NA
+"imaging_FLAIR_WMH_QC.csv","Imaging - FLAIR MRI White Matter Hyperintensities (WMH) QC","QC","text","Codes whether or not data passed QC",NA
+"imaging_FLAIR_WMH_QC.csv","Imaging - FLAIR MRI White Matter Hyperintensities (WMH) QC","QCNotes","text","Codes why QC failed and/or what was done to fix the data",NA
+"imaging_FLAIR_WMH_QC.csv","Imaging - FLAIR MRI White Matter Hyperintensities (WMH) QC","WMHvol_masked","numeric","Volume of White matter hyperintensities in cubic mm after masking with regional freesurfer mask","Identification of hyperintense voxels was done using hypermapper tool."
+"imaging_FLAIR_WMH_QC.csv","Imaging - FLAIR MRI White Matter Hyperintensities (WMH) QC","ICV","numeric","Estimate of total intracranial volume in cubic mm","ICV estimate was created using hypermapper and the T1 from the same session."
+"imaging_FLAIR_WMH_QC.csv","Imaging - FLAIR MRI White Matter Hyperintensities (WMH) QC","WMH_corrected","numeric","Variable to be used for analysis. Computed as (WMHvol_masked/ICV)*1300","Done to remove the effects of head size and to normalize the output measure to a stand ICV of 1300 cubic mm."
+"imaging_MRI_reads.csv","Imaging - MRI Read Results","SUBSTUDY","text",NA,NA
+"imaging_MRI_reads.csv","Imaging - MRI Read Results","BID","text",NA,NA
+"imaging_MRI_reads.csv","Imaging - MRI Read Results","VISCODE","text",NA,NA
+"imaging_MRI_reads.csv","Imaging - MRI Read Results","STUDYDATE_DAYS_CONSENT","date","Study MRI Date (Derived to days since study consent date)",NA
+"imaging_MRI_reads.csv","Imaging - MRI Read Results","STUDYDATE_DAYS_T0","date","Study MRI Date (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"imaging_MRI_reads.csv","Imaging - MRI Read Results","Definite.MCH","numeric","Total Definite Microhemorrhage",NA
+"imaging_MRI_reads.csv","Imaging - MRI Read Results","Lobar","numeric","Total Lobar Microhemorrhage",NA
+"imaging_MRI_reads.csv","Imaging - MRI Read Results","Deep","numeric","Total Deep (Subcortical) Microhemorrhage",NA
+"imaging_MRI_reads.csv","Imaging - MRI Read Results","Definite.SS","numeric","Definite Superficial Siderosis",NA
+"imaging_SUVR_amyloid.csv","Imaging - Amyloid PET SUVR Quantitative Analysis","SUBSTUDY","text",NA,NA
+"imaging_SUVR_amyloid.csv","Imaging - Amyloid PET SUVR Quantitative Analysis","BID","text",NA,NA
+"imaging_SUVR_amyloid.csv","Imaging - Amyloid PET SUVR Quantitative Analysis","scan_number","numeric","Scan number from PET Acquisition document",NA
+"imaging_SUVR_amyloid.csv","Imaging - Amyloid PET SUVR Quantitative Analysis","VISCODE","text",NA,NA
+"imaging_SUVR_amyloid.csv","Imaging - Amyloid PET SUVR Quantitative Analysis","scan_date_DAYS_CONSENT","date","NA (Derived to days since study consent date)",NA
+"imaging_SUVR_amyloid.csv","Imaging - Amyloid PET SUVR Quantitative Analysis","scan_date_DAYS_T0","date","NA (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"imaging_SUVR_amyloid.csv","Imaging - Amyloid PET SUVR Quantitative Analysis","ligand","text","Ligand",NA
+"imaging_SUVR_amyloid.csv","Imaging - Amyloid PET SUVR Quantitative Analysis","scan_analyzed","text","Was the scan able to be analyzed?",NA
+"imaging_SUVR_amyloid.csv","Imaging - Amyloid PET SUVR Quantitative Analysis","brain_region","text","Region of interest",NA
+"imaging_SUVR_amyloid.csv","Imaging - Amyloid PET SUVR Quantitative Analysis","suvr_cer","numeric","Standard Uptake Value Ratio (blcere_all) ",NA
+"imaging_SUVR_amyloid.csv","Imaging - Amyloid PET SUVR Quantitative Analysis","suvr_persi","numeric","Standard uptake value ratio (persi white matter)",NA
+"imaging_SUVR_amyloid.csv","Imaging - Amyloid PET SUVR Quantitative Analysis","suvr_crus","numeric","Standard uptake value ratio (cerebellar crus)",NA
+"imaging_SUVR_tau.csv","Imaging - Tau PET SUVR Quantitative Analysis","SUBSTUDY","text",NA,NA
+"imaging_SUVR_tau.csv","Imaging - Tau PET SUVR Quantitative Analysis","BID","text",NA,NA
+"imaging_SUVR_tau.csv","Imaging - Tau PET SUVR Quantitative Analysis","scan_number","numeric","Scan number from PET Acquisition document",NA
+"imaging_SUVR_tau.csv","Imaging - Tau PET SUVR Quantitative Analysis","VISCODE","text",NA,NA
+"imaging_SUVR_tau.csv","Imaging - Tau PET SUVR Quantitative Analysis","scan_date_DAYS_CONSENT","date","NA (Derived to days since study consent date)",NA
+"imaging_SUVR_tau.csv","Imaging - Tau PET SUVR Quantitative Analysis","scan_date_DAYS_T0","date","NA (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"imaging_SUVR_tau.csv","Imaging - Tau PET SUVR Quantitative Analysis","ligand","text","Ligand",NA
+"imaging_SUVR_tau.csv","Imaging - Tau PET SUVR Quantitative Analysis","scan_analyzed","text","Was the scan able to be analyzed?",NA
+"imaging_SUVR_tau.csv","Imaging - Tau PET SUVR Quantitative Analysis","brain_region","text","Region of interest",NA
+"imaging_SUVR_tau.csv","Imaging - Tau PET SUVR Quantitative Analysis","suvr_cer","numeric","Standard Uptake Value Ratio (blcere_all) ",NA
+"imaging_SUVR_tau.csv","Imaging - Tau PET SUVR Quantitative Analysis","suvr_persi","numeric","Standard uptake value ratio (persi white matter)",NA
+"imaging_SUVR_tau.csv","Imaging - Tau PET SUVR Quantitative Analysis","suvr_crus","numeric","Standard uptake value ratio (cerebellar crus)",NA
+"imaging_PET_VA.csv","Imaging - Amyloid PET Qualitative Visual Assessment","SUBSTUDY","text",NA,NA
+"imaging_PET_VA.csv","Imaging - Amyloid PET Qualitative Visual Assessment","BID","text",NA,NA
+"imaging_PET_VA.csv","Imaging - Amyloid PET Qualitative Visual Assessment","scan_number","numeric","Scan number from PET Acquisition document",NA
+"imaging_PET_VA.csv","Imaging - Amyloid PET Qualitative Visual Assessment","VISCODE","text",NA,NA
+"imaging_PET_VA.csv","Imaging - Amyloid PET Qualitative Visual Assessment","scan_date_DAYS_CONSENT","date","NA (Derived to days since study consent date)",NA
+"imaging_PET_VA.csv","Imaging - Amyloid PET Qualitative Visual Assessment","scan_date_DAYS_T0","date","NA (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"imaging_PET_VA.csv","Imaging - Amyloid PET Qualitative Visual Assessment","ligand","text","Ligand","Florbetapir"
+"imaging_PET_VA.csv","Imaging - Amyloid PET Qualitative Visual Assessment","pmod_suvr","numeric","Composite_Summary value",NA
+"imaging_PET_VA.csv","Imaging - Amyloid PET Qualitative Visual Assessment","elig_vi_1","text","Reader 1 eligibility assessment score",NA
+"imaging_PET_VA.csv","Imaging - Amyloid PET Qualitative Visual Assessment","elig_vi_2","text","Reader 2 eligibility assessment score",NA
+"imaging_PET_VA.csv","Imaging - Amyloid PET Qualitative Visual Assessment","consensus","text","Consensus result",NA
+"imaging_PET_VA.csv","Imaging - Amyloid PET Qualitative Visual Assessment","overall_score","text","Indication whether the eligibility scan is positive or negative for β‐amyloid. Score of negative indicates subject is not eligible",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","SUBSTUDY","text",NA,NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","BID","text",NA,NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.3rd.Ventricle","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.4th.Ventricle","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Brain.Stem","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.CC_Anterior","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.CC_Central","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.CC_Mid_Anterior","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.CC_Mid_Posterior","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.CC_Posterior","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.CSF","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Left.Accumbens.area","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Left.Amygdala","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Left.Caudate","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Left.Cerebellum.Cortex","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Left.Cerebellum.White.Matter","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Left.Cerebral.White.Matter","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Left.Hippocampus","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Left.Inf.Lat.Vent","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Left.Lateral.Ventricle","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Left.Pallidum","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Left.Putamen","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Left.Thalamus","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Left.VentralDC","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Left.choroid.plexus","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Left.vessel","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Optic.Chiasm","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Right.Accumbens.area","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Right.Amygdala","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Right.Caudate","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Right.Cerebellum.Cortex","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Right.Cerebellum.White.Matter","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Right.Cerebral.White.Matter","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Right.Hippocampus","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Right.Inf.Lat.Vent","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Right.Lateral.Ventricle","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Right.Pallidum","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Right.Putamen","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Right.Thalamus","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Right.VentralDC","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Right.choroid.plexus","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Right.vessel","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.Unknown","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.WM.hypointensities","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.bankssts","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.caudalanteriorcingulate","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.caudalmiddlefrontal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.cuneus","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.entorhinal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.frontalpole","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.fusiform","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.inferiorparietal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.inferiortemporal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.insula","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.isthmuscingulate","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.lateraloccipital","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.lateralorbitofrontal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.lingual","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.medialorbitofrontal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.middletemporal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.paracentral","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.parahippocampal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.parsopercularis","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.parsorbitalis","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.parstriangularis","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.pericalcarine","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.postcentral","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.posteriorcingulate","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.precentral","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.precuneus","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.rostralanteriorcingulate","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.rostralmiddlefrontal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.superiorfrontal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.superiorparietal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.superiortemporal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.supramarginal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.temporalpole","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.lh.transversetemporal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.bankssts","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.caudalanteriorcingulate","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.caudalmiddlefrontal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.cuneus","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.entorhinal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.frontalpole","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.fusiform","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.inferiorparietal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.inferiortemporal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.insula","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.isthmuscingulate","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.lateraloccipital","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.lateralorbitofrontal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.lingual","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.medialorbitofrontal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.middletemporal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.paracentral","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.parahippocampal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.parsopercularis","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.parsorbitalis","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.parstriangularis","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.pericalcarine","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.postcentral","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.posteriorcingulate","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.precentral","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.precuneus","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.rostralanteriorcingulate","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.rostralmiddlefrontal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.superiorfrontal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.superiorparietal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.superiortemporal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.supramarginal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.temporalpole","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.ctx.rh.transversetemporal","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Mean.non.WM.hypointensities","numeric","Mean intensity of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.3rd.Ventricle","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.4th.Ventricle","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Brain.Stem","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.CC_Anterior","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.CC_Central","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.CC_Mid_Anterior","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.CC_Mid_Posterior","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.CC_Posterior","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.CSF","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Left.Accumbens.area","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Left.Amygdala","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Left.Caudate","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Left.Cerebellum.Cortex","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Left.Cerebellum.White.Matter","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Left.Cerebral.White.Matter","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Left.Hippocampus","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Left.Inf.Lat.Vent","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Left.Lateral.Ventricle","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Left.Pallidum","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Left.Putamen","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Left.Thalamus","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Left.VentralDC","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Left.choroid.plexus","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Left.vessel","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Optic.Chiasm","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Right.Accumbens.area","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Right.Amygdala","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Right.Caudate","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Right.Cerebellum.Cortex","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Right.Cerebellum.White.Matter","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Right.Cerebral.White.Matter","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Right.Hippocampus","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Right.Inf.Lat.Vent","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Right.Lateral.Ventricle","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Right.Pallidum","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Right.Putamen","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Right.Thalamus","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Right.VentralDC","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Right.choroid.plexus","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Right.vessel","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.Unknown","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.WM.hypointensities","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.bankssts","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.caudalanteriorcingulate","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.caudalmiddlefrontal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.cuneus","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.entorhinal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.frontalpole","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.fusiform","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.inferiorparietal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.inferiortemporal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.insula","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.isthmuscingulate","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.lateraloccipital","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.lateralorbitofrontal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.lingual","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.medialorbitofrontal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.middletemporal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.paracentral","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.parahippocampal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.parsopercularis","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.parsorbitalis","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.parstriangularis","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.pericalcarine","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.postcentral","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.posteriorcingulate","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.precentral","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.precuneus","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.rostralanteriorcingulate","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.rostralmiddlefrontal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.superiorfrontal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.superiorparietal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.superiortemporal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.supramarginal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.temporalpole","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.lh.transversetemporal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.bankssts","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.caudalanteriorcingulate","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.caudalmiddlefrontal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.cuneus","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.entorhinal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.frontalpole","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.fusiform","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.inferiorparietal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.inferiortemporal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.insula","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.isthmuscingulate","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.lateraloccipital","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.lateralorbitofrontal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.lingual","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.medialorbitofrontal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.middletemporal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.paracentral","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.parahippocampal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.parsopercularis","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.parsorbitalis","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.parstriangularis","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.pericalcarine","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.postcentral","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.posteriorcingulate","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.precentral","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.precuneus","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.rostralanteriorcingulate","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.rostralmiddlefrontal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.superiorfrontal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.superiorparietal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.superiortemporal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.supramarginal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.temporalpole","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.ctx.rh.transversetemporal","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","Volume_mm3.non.WM.hypointensities","numeric","Volume of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_Accumbens.area","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_Amygdala","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_Caudate","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_Cerebellum.Cortex","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_Cerebellum.White.Matter","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_Cerebral.White.Matter","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_Hippocampus","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_Inf.Lat.Vent","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_Lateral.Ventricle","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_Pallidum","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_Putamen","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_Thalamus","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_VentralDC","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_choroid.plexus","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_vessel","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_bankssts","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_caudalanteriorcingulate","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_caudalmiddlefrontal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_cuneus","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_entorhinal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_frontalpole","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_fusiform","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_inferiorparietal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_inferiortemporal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_insula","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_isthmuscingulate","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_lateraloccipital","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_lateralorbitofrontal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_lingual","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_medialorbitofrontal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_middletemporal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_paracentral","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_parahippocampal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_parsopercularis","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_parsorbitalis","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_parstriangularis","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_pericalcarine","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_postcentral","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_posteriorcingulate","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_precentral","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_precuneus","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_rostralanteriorcingulate","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_rostralmiddlefrontal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_superiorfrontal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_superiorparietal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_superiortemporal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_supramarginal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_temporalpole","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_transversetemporal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_Stanford.csv","Imaging - Tau PET (Stanford Pipeline)","bi_totalWM","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","SUBSTUDY","text",NA,NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","BID","text",NA,NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_Accumbens.area","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_Amygdala","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_Caudate","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_Cerebellum.Cortex","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_Cerebellum.White.Matter","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_Cerebral.White.Matter","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_Hippocampus","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_bankssts","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_caudalanteriorcingulate","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_caudalmiddlefrontal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_cuneus","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_entorhinal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_frontalpole","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_fusiform","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_inferiorparietal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_inferiortemporal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_insula","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_isthmuscingulate","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_lateraloccipital","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_lateralorbitofrontal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_lingual","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_medialorbitofrontal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_middletemporal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_paracentral","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_parahippocampal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_parsopercularis","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_parsorbitalis","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_parstriangularis","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_pericalcarine","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_postcentral","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_posteriorcingulate","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_precentral","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_precuneus","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_rostralanteriorcingulate","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_rostralmiddlefrontal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_superiorfrontal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_superiorparietal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_superiortemporal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_supramarginal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_temporalpole","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_transversetemporal","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","bi_totalWM","numeric","Volume-weighted bilateral Standard Uptake Value Ratios of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_AirCavity","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Brain.Stem","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_CSF","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_CSF.ExtraCerebral","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Head.ExtraCerebral","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Left.Accumbens.area","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Left.Amygdala","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Left.Caudate","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Left.Cerebellum.Cortex","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Left.Cerebellum.White.Matter","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Left.Cerebral.White.Matter","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Left.Hippocampus","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Left.Pallidum","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Left.Putamen","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Left.Thalamus","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Left.VentralDC","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Left.choroid.plexus","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Pons","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Right.Accumbens.area","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Right.Amygdala","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Right.Caudate","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Right.Cerebellum.Cortex","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Right.Cerebellum.White.Matter","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Right.Cerebral.White.Matter","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Right.Hippocampus","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Right.Pallidum","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Right.Putamen","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Right.Thalamus","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Right.VentralDC","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Right.choroid.plexus","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Skull","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_Vermis","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.bankssts","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.caudalanteriorcingulate","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.caudalmiddlefrontal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.cuneus","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.entorhinal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.frontalpole","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.fusiform","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.inferiorparietal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.inferiortemporal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.insula","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.isthmuscingulate","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.lateraloccipital","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.lateralorbitofrontal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.lingual","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.medialorbitofrontal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.middletemporal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.paracentral","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.parahippocampal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.parsopercularis","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.parsorbitalis","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.parstriangularis","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.pericalcarine","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.postcentral","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.posteriorcingulate","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.precentral","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.precuneus","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.rostralanteriorcingulate","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.rostralmiddlefrontal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.superiorfrontal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.superiorparietal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.superiortemporal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.supramarginal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.temporalpole","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.lh.transversetemporal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.bankssts","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.caudalanteriorcingulate","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.caudalmiddlefrontal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.cuneus","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.entorhinal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.frontalpole","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.fusiform","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.inferiorparietal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.inferiortemporal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.insula","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.isthmuscingulate","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.lateraloccipital","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.lateralorbitofrontal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.lingual","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.medialorbitofrontal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.middletemporal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.paracentral","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.parahippocampal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.parsopercularis","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.parsorbitalis","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.parstriangularis","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.pericalcarine","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.postcentral","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.posteriorcingulate","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.precentral","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.precuneus","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.rostralanteriorcingulate","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.rostralmiddlefrontal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.superiorfrontal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.superiorparietal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.superiortemporal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.supramarginal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.temporalpole","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","NumVoxels_ctx.rh.transversetemporal","numeric","Number of voxels of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_AirCavity","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Brain.Stem","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_CSF","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_CSF.ExtraCerebral","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Head.ExtraCerebral","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Left.Accumbens.area","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Left.Amygdala","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Left.Caudate","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Left.Cerebellum.Cortex","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Left.Cerebellum.White.Matter","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Left.Cerebral.White.Matter","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Left.Hippocampus","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Left.Pallidum","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Left.Putamen","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Left.Thalamus","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Left.VentralDC","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Left.choroid.plexus","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Pons","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Right.Accumbens.area","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Right.Amygdala","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Right.Caudate","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Right.Cerebellum.Cortex","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Right.Cerebellum.White.Matter","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Right.Cerebral.White.Matter","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Right.Hippocampus","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Right.Pallidum","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Right.Putamen","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Right.Thalamus","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Right.VentralDC","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Right.choroid.plexus","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Skull","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_Vermis","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.bankssts","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.caudalanteriorcingulate","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.caudalmiddlefrontal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.cuneus","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.entorhinal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.frontalpole","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.fusiform","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.inferiorparietal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.inferiortemporal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.insula","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.isthmuscingulate","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.lateraloccipital","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.lateralorbitofrontal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.lingual","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.medialorbitofrontal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.middletemporal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.paracentral","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.parahippocampal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.parsopercularis","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.parsorbitalis","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.parstriangularis","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.pericalcarine","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.postcentral","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.posteriorcingulate","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.precentral","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.precuneus","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.rostralanteriorcingulate","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.rostralmiddlefrontal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.superiorfrontal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.superiorparietal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.superiortemporal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.supramarginal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.temporalpole","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.lh.transversetemporal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.bankssts","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.caudalanteriorcingulate","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.caudalmiddlefrontal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.cuneus","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.entorhinal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.frontalpole","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.fusiform","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.inferiorparietal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.inferiortemporal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.insula","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.isthmuscingulate","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.lateraloccipital","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.lateralorbitofrontal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.lingual","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.medialorbitofrontal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.middletemporal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.paracentral","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.parahippocampal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.parsopercularis","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.parsorbitalis","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.parstriangularis","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.pericalcarine","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.postcentral","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.posteriorcingulate","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.precentral","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.precuneus","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.rostralanteriorcingulate","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.rostralmiddlefrontal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.superiorfrontal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.superiorparietal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.superiortemporal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.supramarginal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.temporalpole","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_Tau_PET_PetSurfer.csv","Imaging - Tau PET (PetSurfer Pipeline)","PVC_ctx.rh.transversetemporal","numeric","Partial volume correction value of FreeSurfer brain region",NA
+"imaging_retinal.csv","Imaging - Retinal","SUBSTUDY","text",NA,NA
+"imaging_retinal.csv","Imaging - Retinal","BID","text",NA,NA
+"imaging_retinal.csv","Imaging - Retinal","ExamDate_DAYS_CONSENT","date","Date scan obtained (Derived to days since study consent date)",NA
+"imaging_retinal.csv","Imaging - Retinal","ExamDate_DAYS_T0","date","Date scan obtained (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"imaging_retinal.csv","Imaging - Retinal","Eye","text","Eye that is been imaged",NA
+"imaging_retinal.csv","Imaging - Retinal","Field","text","Exact location",NA
+"imaging_retinal.csv","Imaging - Retinal","NumberOfImages","numeric","Number of images",NA
+"imaging_retinal.csv","Imaging - Retinal","NumberPassingImages","numeric","Number of images that pass-through IQ","01..36"
+"imaging_retinal.csv","Imaging - Retinal","Exclude","numeric","Indicate if excluded from analysis","0=Not excluded; 1=Excluded"
+"imaging_retinal.csv","Imaging - Retinal","RAIModelScore","numeric","Index discriminate score based on PET Amyloid Status","0.01..4.00"
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","SUBSTUDY","text",NA,NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","BID","text",NA,NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","Date_DAYS_CONSENT","date","Date of Exam (Derived to days since study consent date)",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","Date_DAYS_T0","date","Date of Exam (Derived to days since study start date [A4: Ranomization date | LEARN: Baseline registry exam date])",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftCorticalGrayMatter","numeric","Cortical Gray Matter Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightCorticalGrayMatter","numeric","Cortical Gray Matter Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftLateralVentricle","numeric","Superior Lateral Ventricle Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightLateralVentricle","numeric","Superior Lateral Ventricle Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftInferiorLateralVentricle","numeric","Inferior Lateral Ventricle Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightInferiorLateralVentricle","numeric","Inferior Lateral Ventricle Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftThalamus","numeric","Thalamus Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightThalamus","numeric","Thalamus Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftCaudate","numeric","Caudate Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightCaudate","numeric","Caudate Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftPutamen","numeric","Putamen Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightPutamen","numeric","Putamen Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftPallidum","numeric","Pallidum Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightPallidum","numeric","Pallidum Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftHippocampus","numeric","Hippocampus Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightHippocampus","numeric","Hippocampus Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftAmygdala","numeric","Amygdala Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightAmygdala","numeric","Amygdala Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftVentralDiencephalon","numeric","Ventral Diencephalon Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightVentralDiencephalon","numeric","Ventral Diencephalon Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftCerebellarWhiteMatter","numeric","Cerebellar White Matter Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightCerebellarWhiteMatter","numeric","Cerebellar White Matter Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftCerebellarGrayMatter","numeric","Cerebellar Gray Matter Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightCerebellarGrayMatter","numeric","Cerebellar Gray Matter Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftWMHypo","numeric","Cerebral WM Hypointensities* Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightWMHypo","numeric","Cerebral WM Hypointensities* Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftEntorhinal","numeric","Entorhinal Cortex Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightEntorhinal","numeric","Entorhinal Cortex Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftFusiform","numeric","Fusiform Cortex Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightFusiform","numeric","Fusiform Cortex Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftInferiorparietal","numeric","Inferior Parietal Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightInferiorparietal","numeric","Inferior Parietal Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftInferiortemporal","numeric","Inferior Temporal Cortex Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightInferiortemporal","numeric","Inferior Temporal Cortex Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftMiddletemporal","numeric","Middle Temporal Cortex Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightMiddletemporal","numeric","Middle Temporal Cortex Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftParahippocampal","numeric","Parahippocampal Cortex Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightParahippocampal","numeric","Parahippocampal Cortex Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftSuperiorfrontal","numeric","Superior Frontal Cortex Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightSuperiorfrontal","numeric","Superior Frontal Cortex Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftSuperiorparietal","numeric","Superior Parietal Lobule Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightSuperiorparietal","numeric","Superior Parietal Lobule Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftSuperiortemporal","numeric","Superior Temporal Cortex Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightSuperiortemporal","numeric","Superior Temporal Cortex Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","LeftTemporalpole","numeric","Temporal Pole Left Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","RightTemporalpole","numeric","Temporal Pole Right Side Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","3rdVentricle","numeric","3rd Ventricle Total Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","4thVentricle","numeric","4th Ventricle Total Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","5thVentricle","numeric","5th Ventricle Total Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","Brainstem","numeric","Brainstem Total Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","ForebrainParenchyma","numeric","Forebrain Parenchyma Total Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","IntraCranialVolume","numeric","Intracranial Volume Total Volume",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","HOC","numeric","Hippocampal Occupancy Score: Ratio of hippocampal volume to sum of hippocampal volume and inferior lateral ventricle",NA
+"imaging_volumetric_mri.csv","Imaging - Volumetric MRI Results","VISCODE","text",NA,NA

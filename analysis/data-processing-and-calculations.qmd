@@ -1,0 +1,506 @@
+---
+title: "data-processing-and-calculations"
+format: html
+author: "Tselmen Anuurd"
+---
+
+# Load libraries and functions
+
+Located in `helpers` folder.
+
+```{r, message = FALSE, warning = FALSE}
+library(here)
+source(here("helpers", "01-load-libraries.R"))
+source(here("helpers", "02-functions.R"))
+```
+
+# Load data
+
+```{r, message = FALSE,}
+ADQS_raw <- read_csv(here("data/Derived Data/ADQS.csv"))
+CDR_raw <- read_csv(here("data/Raw Data/cdr.csv"))
+C3_raw <- read_csv(here("data/External Data/cogstate_battery.csv"))
+SUBJINFO_raw <- read_csv(here("data/Derived Data/SUBJINFO.csv"))
+LEARN_raw <- ADQS_raw |> filter(SUBSTUDY %in% "LEARN")
+```
+
+# A4 Study Placebo Group
+
+## A4 Vignette
+
+```{r}
+# start A4 vignette here
+V1OUTCOME <- ADQS_raw  |> 
+  filter(VISITCD == "001") |>
+  select(BID, QSTESTCD, QSSTRESN) |>
+  pivot_wider(values_from = QSSTRESN, names_from = QSTESTCD)
+
+V6OUTCOME <- ADQS_raw |>
+  filter(VISITCD == "006") |>
+  select(BID, QSTESTCD, QSSTRESN) |>
+  pivot_wider(values_from = QSSTRESN, names_from = QSTESTCD)
+
+SUBJINFO <- SUBJINFO_raw |>
+  left_join(V6OUTCOME, by = "BID") |>
+  left_join(V1OUTCOME |>
+      select(BID, CDRSB, CFITOTAL, CFISP, CFIPT, ADLPQPT, ADLPQSP), 
+    by = "BID") |>
+  mutate(
+    AGECAT = case_when(AGEYR < 65 ~ "Age < 65",
+      AGEYR >= 65 & AGEYR < 75 ~ "65 <= Age < 75",
+      AGEYR >= 75 & AGEYR < 85 ~ "75 <= Age < 85",
+      AGEYR >= 85 ~ "Age >= 85"),
+    SEX = factor(case_when(
+      SEX == 1 ~ "Female",
+      SEX == 2 ~ "Male"), levels = c("Male", "Female")),
+    RACE = case_when(RACE == 1 ~ "White",
+      RACE == 2 ~ "Black or African American",
+      RACE == 58 ~ "Asian",
+      RACE == 79 ~ "Native Hawaiian or Other Pacific Islander",
+      RACE == 84 ~ "American Indian or Alaskan Native",
+      RACE == 97 ~ "Unknown or Not Reported",
+      RACE == 100 ~ "More than one race"),
+    MARITAL = case_when(MARITAL == 2 ~ "Divorced",
+      MARITAL == 4 ~ "Never married",
+      MARITAL == 5 ~ "Widowed",
+      MARITAL == 11 ~ "Married",
+      MARITAL == 97 ~ "Unknown or Not Reported"),
+    ETHNIC = case_when(ETHNIC == 50 ~ "Hispanic or Latino",
+      ETHNIC == 56 ~ "Not Hispanic or Latino",
+      ETHNIC == 97 ~ "Unknown or Not reported"),
+    ALCHLBL = case_when(ALCHLBL == 0 ~ "No",
+      ALCHLBL == 1 ~ "Yes"),
+    CFBL = case_when(CFBL == 0 ~ "No",
+      CFBL == 1 ~ "Yes"),
+    TBBL = case_when(TBBL == 0 ~ "No",
+      TBBL == 1 ~ "Yes"),
+    WRKRET = case_when(WRKRET == 1 ~ "Yes",
+      WRKRET == 0 ~ "No",
+      WRKRET == 96 ~ "Not Applicable"),
+    APOEGNPRSNFLG = case_when(APOEGNPRSNFLG == 1 ~ "Yes",
+      APOEGNPRSNFLG == 0 ~ "No"),
+    AGEYR = as.numeric(AGEYR),
+    SUVRCER = as.numeric(SUVRCER),
+    AMYLCENT = as.numeric(AMYLCENT),
+    EDCCNTU = as.numeric(EDCCNTU),
+    COGDSSTTSV6 = as.numeric(COGDSSTTSV6),
+    COGLMDRTSV6 = as.numeric(COGLMDRTSV6),
+    TX = factor(TX, levels = c("Placebo", "Solanezumab")),
+    COMPLETER_label = case_when(
+      SUBJCOMPTR == 1 ~ "Completer",
+      TRUE ~ "Dropout"))
+# end A4 vignette
+```
+
+## Define Variables
+
+```{r}
+# 11 predictors 
+test_codes <- c("ADLPQPT", "ADLPQSP", "ADLTOTAL", 
+                "CFIPT", "CFISP", "CFITOTAL", 
+                "DIGIT", "FCSRT96", "LMIIA", "MMSE", "PACC")
+# y: CDR at 240 weeks
+outcome_var <- "CDPOS_W240"
+
+# only use placebo data
+placebo_bids <- SUBJINFO |> 
+  filter(TX %in% "Placebo") |> 
+  select(BID) |> 
+  unlist() |> 
+  unname()
+
+# define our target weeks
+target_weeks <- c(48, 108, 168, 204, 240)
+target_weeks_w_0 <- c(0, 48, 108, 168, 204, 240)
+# for logistic regression
+weeks_to_run <- c(48, 108, 168)
+
+# intervals for data binning
+baseline_window_weeks <- 14
+window_weeks <- 12
+```
+
+## CDR Indicator Table
+
+```{r}
+## CDR_ind: 
+# Contains CDR Global scores for Placebo group from Baseline to Week 252
+CDR_ind <- CDR_raw |> 
+  select(c("BID", "CDGLOBAL","CDADTC_DAYS_T0")) |> 
+  filter(BID %in% placebo_bids) |>
+  filter(CDADTC_DAYS_T0 >= 0) |> 
+  mutate(
+    WEEK = CDADTC_DAYS_T0 / 7
+  ) |> 
+  filter(WEEK <= 252)
+
+## CDR_closest_week_windowed: 
+# Uses CDR_ind to calculate distance from each variable to each target week
+# Selects the closet value to target week for each observation
+CDR_closest_week_windowed <- CDR_ind |>
+  # for each visit, calculate its distance to ALL target weeks
+  mutate(distance_to_target = map(WEEK, ~abs(.x - target_weeks))) |>
+  unnest(distance_to_target) |>
+  # identify which target week is the closest for that visit
+  group_by(BID, WEEK, CDGLOBAL) |>
+  mutate(target_week = target_weeks[which.min(distance_to_target)]) |>
+  ungroup() |> 
+  filter(abs(WEEK - target_week) <= window_weeks) |>
+  # for each subject and target week, if there happen to be
+  # multiple visits in the window, keep the single closest one
+  group_by(BID, target_week) |>
+  slice_min(n = 1, order_by = abs(WEEK - target_week), with_ties = FALSE) |>
+  ungroup() |> 
+  mutate(
+    range = target_week - WEEK
+  )
+
+## wide_cdr_indicator
+# Final CDR indicator table, contains only 0 or 1
+# Each column represents each target week
+wide_cdr_indicator <- CDR_closest_week_windowed |>
+  mutate(
+    CD_indicator = if_else(CDGLOBAL > 0, 1, 0)
+  ) |>
+  select(BID, target_week, CD_indicator) |> 
+  pivot_wider(
+    names_from = target_week,
+    values_from = CD_indicator, 
+    names_prefix = "CDPOS_W",   
+    values_fill = NA 
+  ) 
+
+## conversion_times
+# calculates first time an individual progresses
+conversion_times <- 
+  CDR_closest_week_windowed |>
+  filter(CDGLOBAL > 0) |>
+  group_by(BID) |>
+  summarise(
+    CDRCONV_WEEK = min(WEEK)
+  )
+
+# Final dataframe with wide_cdr_indicator + conversion_times
+wide_cdr_indicator <- left_join(wide_cdr_indicator, conversion_times, by = "BID") 
+```
+
+## Process C3 Data (A4)
+
+```{r}
+## c3_clean
+# Manually calculate weeks since baseline, utilizes C3Comp score which is a z-score 
+# Keeps only placebo data
+c3_clean <- C3_raw |>
+  select(BID, TDate_DAYS_T0, C3Comp) |>
+  na.omit() |>
+  distinct(BID, TDate_DAYS_T0, .keep_all = TRUE) |> 
+  filter(BID %in% placebo_bids) |>
+  mutate(WEEK = TDate_DAYS_T0 / 7) |>
+  select(BID, WEEK, C3_SCORE = C3Comp, TDate_DAYS_T0)
+
+## c3_baseline
+# C3 measured twice before Week 0, so this finds the closest score to
+# Week 0 for each individual to use as their baseline
+c3_baseline <- c3_clean |>
+  # Keep only observations at or before week 0
+  filter(WEEK <= 0) |>
+  # Group by individual
+  group_by(BID) |>
+  # Find the row with the largest week number (closest to 0)
+  slice_max(order_by = WEEK, n = 1, with_ties = FALSE) |>
+  ungroup() |>
+  # Select the BID and the baseline score
+  select(BID, baseline_score = C3_SCORE)
+
+## c3_with_change
+# Joins c3_clean with c3_baseline; calculates the change since baseline 
+c3_with_change <- c3_clean |>
+  inner_join(c3_baseline, by = "BID") |>
+  mutate(C3_CHANGE = C3_SCORE - baseline_score) |> 
+  filter(WEEK > 0) |> 
+  select(BID,TDate_DAYS_T0,WEEK,C3_SCORE,baseline_score,C3_CHANGE)
+
+### Interpolation of C3 Data
+
+## interpolated_c3
+# Interpolates data using approxfun() function; does not extrapolate data
+interpolated_c3 <- c3_with_change |>
+  # two measurements to draw a line between them
+  group_by(BID) |>
+  filter(n() >= 2) |>
+  # data is sorted by week 
+  arrange(WEEK, .by_group = TRUE) |>
+  # use nest() to create a list-column of dataframes (one per BID)
+  nest() |>
+  # create a new column containing the interpolated values for each BID
+  mutate(interp_data = map(data, ~ {
+    # approxfun creates a linear interpolation function for the given points.
+    # `rule = 2` tells it to return NA for any target week outside the range
+    # of the person's measurements (i.e., it will not extrapolate).
+    interp_func <- approxfun(x = .x$WEEK, y = .x$C3_CHANGE, rule = 2)
+    # return a clean tibble of target weeks and their new interpolated values
+    tibble(
+      target_week = target_weeks,
+      C3_CHANGE = interp_func(target_weeks)
+    )
+  })) |>
+  select(BID, interp_data) |>
+  # un-nest the list-column back into a regular long-format df
+  unnest(interp_data) |>
+  filter(!is.na(C3_CHANGE))
+
+## model_data_c3 
+# Pivot to the wide format for modeling
+model_data_c3 <- interpolated_c3 |>
+  pivot_wider(
+    names_from = target_week,
+    values_from = C3_CHANGE,
+    names_prefix = "z_delta_C3_W"
+  ) |>
+  inner_join(
+    wide_cdr_indicator |> select(BID, all_of(outcome_var)),
+    by = "BID"
+  ) |>
+  left_join(c3_baseline, by = "BID") |>
+  # Filter out subjects with no outcome or baseline
+  filter(!is.na(.data[[outcome_var]]), !is.na(baseline_score)) |>
+  # Standardize the delta columns to create z-scores, just like in your function
+  mutate(across(
+    .cols = starts_with("delta_C3_W"),
+    .fns = ~ as.numeric(scale(.x)),
+    .names = "z_{.col}"
+  )) |>  
+  mutate(
+    delta_C3_W48 = z_delta_C3_W48, 
+    delta_C3_W108 = z_delta_C3_W108,
+    delta_C3_W168 = z_delta_C3_W168,
+    delta_C3_W204 = z_delta_C3_W204,
+    delta_C3_W240 = z_delta_C3_W240,
+  )
+```
+
+## Combine A4 Data Into `all_tests_list`
+
+```{r}
+## all_tests_list
+# List of dfs; each df corresponds to one of the 11 predictors (excluding C3)
+# Contains baseline score, raw deltas, and z-score deltas
+all_tests_list <- map(test_codes, ~get_data_frames(
+  data = ADQS_raw,
+  test_code = .x,
+  target_weeks = target_weeks_w_0,
+  window_weeks = window_weeks,
+  baseline_window_weeks = baseline_window_weeks,
+  outcome_data = wide_cdr_indicator,
+  outcome_var = "CDPOS_W240"
+))
+names(all_tests_list) <- test_codes
+all_tests_list$C3 <- model_data_c3
+
+glimpse(all_tests_list)
+```
+
+# LEARN Study 
+
+## Process C3 Data (LEARN)
+
+```{r}
+c3_clean_learn <- C3_raw |>
+  filter(SUBSTUDY %in% "LEARN") |> 
+  select(BID, C3Comp, VISCODE) |>
+  na.omit() |>
+  distinct(BID, VISCODE, .keep_all = TRUE)
+
+c3_wide_learn <- c3_clean_learn |> 
+  pivot_wider(
+    id_cols = BID,
+    names_from = VISCODE,
+    values_from = C3Comp,
+    names_prefix = "VISCODE_"
+  )
+
+c3_learn_interp <- c3_wide_learn|>
+  mutate(
+    # week 0: VISCODE_003 (Baseline)
+    baseline_score = VISCODE_003,
+    # week 48: average of week 24 (VISCODE_012) and week 72 (VISCODE_024)
+    C3_W48 = (VISCODE_012 + VISCODE_024) / 2,
+    # week 108: average of week 96 (VISCODE_030) and week 120 (VISCODE_036)
+    C3_W108 = (VISCODE_030 + VISCODE_036) / 2,
+    # week 168: VISCODE_048
+    C3_W168 = VISCODE_048,
+    # week 204: average of week 192 (VISCODE_054) and week 216 (VISCODE_060)
+    C3_W204 = (VISCODE_054 + VISCODE_060) / 2,
+    # week 240: VISCODE_066
+    C3_W240 = VISCODE_066
+  ) |> 
+  select(BID, baseline_score, starts_with("C3_W")) |> 
+  mutate(
+    delta_C3_W48 = C3_W48 - baseline_score,
+    delta_C3_W108 = C3_W108 - baseline_score,
+    delta_C3_W168 = C3_W168 - baseline_score,
+    delta_C3_W204 = C3_W204 - baseline_score,
+    delta_C3_W240 = C3_W240 - baseline_score
+  )
+```
+
+## Combine LEARN Data Into `learn_list`
+
+```{r}
+## learn_list
+# analogous to all_tests_list but for LEARN study
+learn_list <- map(test_codes, ~get_data_frames_learn(
+  data = LEARN_raw,
+  test_code = .x,
+  target_weeks = target_weeks_w_0,
+  window_weeks = window_weeks,
+  baseline_window_weeks = baseline_window_weeks
+))
+
+names(learn_list) <- test_codes
+learn_list$C3 <- c3_learn_interp
+all_test_codes <- names(learn_list)
+
+glimpse(learn_list)
+```
+
+# Sample Size Calculations
+
+## Learn Effect: Calculate Average Change in Test Score at Week 48 (Delta)
+
+```{r}
+## delta_48 
+# list of 12 vectors; each vector is the column of week 48 delta scores 
+# extracted from the corresponding data frame in learn_list
+delta_48 <- map2(learn_list, all_test_codes, ~ .x[[paste0("delta_", .y, "_W48")]])
+
+## delta_avg_48
+# vector length 12; calculates the average delta 48 for each test score
+delta_avg_48 <- map2_dbl(learn_list, all_test_codes,
+  ~ mean(.x[[paste0("delta_", .y, "_W48")]], na.rm = TRUE)
+)
+```
+
+```{r}
+## learn_adjust
+# only adjust for learn effect (LE) if it is observed (7/12 tests)
+learn_adjust <- as_tibble_row(delta_avg_48) |> 
+  select(
+    # these tests showed no immediate LE since the score decreased on average
+    -ADLPQSP, -ADLTOTAL, -DIGIT, -FCSRT96, -PACC
+  ) |> 
+  mutate(
+    # Note: A higher score on the CFI test indicates worsening cognition, so 
+    # we take the opposite effect for CFI 
+    CFIPT = -CFIPT,
+    CFISP = -CFISP, 
+    CFITOTAL = -CFITOTAL
+  )
+
+## adj_test_list
+# iterates through each df in all_tests_list, checks if a LE adjustment is 
+# needed for that test, and if so, adds a new column with the adjusted values
+adj_test_list <- imap(all_tests_list, \(df, test_name) {
+  if (test_name %in% names(learn_adjust)) {
+    adjustment_value <- learn_adjust[[test_name]]
+    target_col <- paste0("delta_", test_name, "_W48")
+    new_col_name <- paste0("adj_delta_", test_name, "_W48")
+    df |>
+      mutate(
+        # LE adjustment
+        "{new_col_name}" := .data[[target_col]] - adjustment_value
+      )
+  } else {
+    df
+  }
+})
+```
+
+## Variance Calculations
+
+```{r}
+## var_delta_df
+# calculates the variance and mean of the change in test score at week 48 using 
+# the adjusted test score df; if an adjusted column does not exist, 
+# it uses the original delta column instead
+var_delta_df <- imap_dfr(adj_test_list, \(df, test_name) {
+  adj_col <- paste0("adj_delta_", test_name, "_W48")
+  if (adj_col %in% names(df)) {
+    col_to_use <- adj_col
+  } else {
+    col_to_use <- paste0("delta_", test_name, "_W48")
+  }
+  tibble(
+    test_name = test_name,
+    var = var(df[[col_to_use]], na.rm = TRUE), 
+    mean = mean(df[[col_to_use]], na.rm = TRUE)
+  )
+})
+```
+
+## Calculate Sample Size and AUC
+
+```{r}
+## sample_sizes
+# rounded sample size for each test
+sample_sizes <- get_sample_size(var_delta_df, alpha = 0.05, beta = 0.2)
+
+## auc_comparison_df
+# summary table of AUC for no baseline and baseline covariate models
+auc_comparison_df <- map_dfr(all_tests_list, get_w48_aucs, .id = "test_name")
+
+## summary_df_48
+# summary table of sample sizes and auc (baseline only) for each test
+summary_df_48 <- left_join(sample_sizes, auc_comparison_df, by = "test_name") |> 
+  select(-without_baseline_auc) |> 
+  rename(auc = with_baseline_auc)
+```
+
+# Data Processing For Spline Plots
+
+```{r}
+A4_PLACEBO_LMIIa <- ADQS_raw |> 
+  filter(TX %in% "Placebo")|>
+  filter(QSTESTCD == "LMIIa")|>
+  rename(LMIIa = QSSTRESN)|>
+  select(BID, ADURW, LMIIa, ASEQNCS)|>
+  mutate(STUDY_GROUP = "A4 Placebo") |> 
+  na.omit()
+
+LEARN_LMIIa <- ADQS_raw |>
+  filter(SUBSTUDY %in% "LEARN")|>
+  filter(QSTESTCD == "LMIIa")|>
+  rename(LMIIa = QSSTRESN)|>
+  select(BID, ADURW, LMIIa, ASEQNCS)|>
+  mutate(STUDY_GROUP = "LEARN") |> 
+  na.omit()
+
+COMBINED_LMIIa <- bind_rows(A4_PLACEBO_LMIIa, LEARN_LMIIa) |> 
+  mutate(STUDY_GROUP = factor(STUDY_GROUP))
+```
+
+# Uni-test Logistic Regression
+
+## Weeks 48, 108, 168
+
+```{r}
+baseline_models_list <- map(weeks_to_run, ~run_weekly_models(
+  data_list = all_tests_list,
+  week_num = .x, include_baseline = TRUE)) |>
+  set_names(paste0("W", weeks_to_run))
+
+no_baseline_models_list <- map(weeks_to_run, ~run_weekly_models(
+  data_list = all_tests_list,
+  week_num = .x, include_baseline = FALSE
+)) |>
+  set_names(paste0("W", weeks_to_run))
+
+# Combine the models into one dataframe
+with_baseline_df <- bind_rows(baseline_models_list, .id = "week_id") |>
+  filter(str_starts(term, "z_delta_")) |>  # remove intercept terms
+  mutate(model_type = "With Baseline")
+
+without_baseline_df <- bind_rows(no_baseline_models_list, .id = "week_id") |>
+  mutate(model_type = "Without Baseline")
+```
+

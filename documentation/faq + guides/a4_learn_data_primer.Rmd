@@ -1,0 +1,231 @@
+---
+title: \textcolor{myblue}{`r "A4 / LEARN Data Primer"`}
+output:
+  pdf_document:
+header-includes:
+  - \usepackage{fancyhdr}
+  - \usepackage{graphicx}
+  - \usepackage{geometry}
+  - \geometry{a4paper,includehead,top=0cm}
+  - \usepackage{helvet}  % Helvetica font package
+  - \renewcommand{\familydefault}{\sfdefault}  % Set default font to sans-serif
+  - \usepackage{sectsty}
+  - \usepackage{xcolor}
+  - \definecolor{myblue}{HTML}{2C7FA0}
+  - \allsectionsfont{\color{myblue}}
+urlcolor: blue
+---
+
+```{r settings, results = "hide", echo = FALSE, message = FALSE, warning = FALSE} 
+knitr::opts_chunk$set(echo = TRUE, message = FALSE,
+  warning = FALSE, fig.width = 8, fig.height = 8 / 1.6, out.width = "\\linewidth",
+  fig.align = "center", tidy = FALSE, comment = NA, cache = FALSE, crop = TRUE,
+  echo = TRUE)
+
+options(stringsAsFactors = FALSE, digits = 2, width = 150)
+```
+
+```{=tex}
+\pagestyle{fancy} 
+\setlength\headheight{62pt}
+\fancypagestyle{plain}{}
+\fancyhf{}
+```
+
+```{r, echo=FALSE, results='asis'}
+if (file.exists('../methods/A4_LRN_logo.png')) {
+  cat("\\chead{\\makebox[\\headwidth][c]{\\includegraphics[width=\\paperwidth]{../methods/A4_LRN_logo.png}}}")
+}
+```
+
+```{=tex}
+\renewcommand{\headrulewidth}{0pt}
+```
+# Introduction
+This document demonstrates an example on how to explore the various clinical datasets made available using R programming language.
+
+## Load required R packages
+\footnotesize
+```{r packages, results = "hide", message = FALSE, warning = FALSE} 
+library(tidyverse)
+library(arsenal)
+```
+\normalsize
+
+## Load CSV data files into R
+\footnotesize
+```{r load_data, results = "hide"}
+datadic <- read.csv("clinical_datadic.csv")     # Data dictionary
+# raw dataset
+ptdemog <- read.csv("ptdemog.csv")     # Participant demographics
+# derived datasets
+subjinfo <- read.csv("SUBJINFO.csv") # Subject info (re-screens and APOE status)
+pacc <- read.csv("PACC.csv") # PACC
+# imaging datasets
+petsuvr <- read.csv("imaging_SUVR_amyloid.csv") # Amyloid PET Quantitative results
+petvadata <- read.csv("imaging_PET_VA.csv") # Amyloid PET Eligibility
+vmri <- read.csv("imaging_volumetric_mri.csv") # Volumetric MRI
+```
+\normalsize
+
+## Define functions for extracting meta data from data dictionary
+\footnotesize
+```{r functions, results = "hide"}
+get_levels <- function(x){
+  as.numeric(unlist(lapply(strsplit(unlist(strsplit(subset(
+    datadic, FIELD_NAME==x)$FIELD_CODE, ';')), '='), function(y) y[1])))
+}
+get_labels <- function(x){
+  unlist(lapply(strsplit(unlist(strsplit(subset(
+    datadic, FIELD_NAME==x)$FIELD_CODE, ';')), '='), function(y) y[2]))
+}
+```
+\normalsize
+
+# Prepare data
+
+**Rescreens**
+
+Participants who re-screened may appear in the data twice with different BIDs 
+each time. The SUBJINFO derived dataset indicates which participants are re-screens,
+and how the re-screen BIDs are mapped to each other. The code below also accounts
+for this to set up the removal of duplicate appearances.
+\footnotesize
+```{r prep_rescreens, results = "hide"}
+rescreens <- subjinfo %>%
+  filter(!is.na(PREVBID)) %>%
+  rename(BID1 = PREVBID, BID2 = BID) %>%
+  select(BID1, BID2)
+```
+\normalsize
+
+**Gather Amyloid PET data**
+
+The Amyloid PET quantitative data (`petsuvr`) is in long format with one row per
+region. We use `tidyr::pivot_wider` to transform to wide format with one column
+per region.
+\footnotesize
+```{r prep_pet, results = "hide"}
+pet <- petsuvr %>% 
+  filter(brain_region != '' & VISCODE == 2) %>%
+  pivot_wider(id_cols='BID', names_from=brain_region, values_from=suvr_cer) %>%
+  left_join(petvadata, by='BID') %>%
+  left_join(rescreens, by=c('BID' = 'BID1')) %>% 
+  mutate( # update PET BIDs to second BID if necessary
+    BID = case_when(
+      !is.na(BID2) ~ BID2,
+      TRUE ~ BID)) %>%
+  arrange(BID, BID2) %>%
+  filter(!duplicated(BID, fromLast = TRUE)) %>%
+  select(-BID2)
+```
+\normalsize
+
+**Label Participant Demographics data**
+
+Raw datasets are presented using coded values. Their translated labels can be found 
+using the relevant data dictionary. The code below demonstrates how the labelled 
+values can be derived using the functions previously defined at the start of this document.
+\footnotesize
+```{r prep_ptdemog, results = "hide"}
+ptdemog <- ptdemog %>%
+  mutate(
+    PTGENDER = factor(PTGENDER, 
+      levels = get_levels('PTGENDER'),
+      labels = get_labels('PTGENDER')),
+    PTETHNIC = factor(PTETHNIC, 
+      levels = get_levels('PTETHNIC'),
+      labels = get_labels('PTETHNIC')),
+    PTMARRY = factor(PTMARRY, 
+      levels = get_levels('PTMARRY'),
+      labels = get_labels('PTMARRY')),
+    PTNOTRT = factor(PTNOTRT, 
+      levels = get_levels('PTNOTRT'),
+      labels = get_labels('PTNOTRT')))
+```
+\normalsize
+Some variables were collected as multi-checkbox selections. The data is 
+aggregated to a string of numeric values seperated by a colon (e.g. '2:3:5'). The
+code below is an example of how to convert the variable to distinct binomial fields.
+\footnotesize
+```{r prep_ptrace, results = "hide"}
+race.levs <- get_levels('PTRACE')
+race.labs <- get_labels('PTRACE')
+for (i in 1:length(race.levs)){
+  ptdemog[!is.na(ptdemog$PTRACE),  paste('PTRACE:',race.labs[i])] <- 0
+  ptdemog[grep(race.levs[i], ptdemog$PTRACE, fixed = TRUE), paste('PTRACE:',race.labs[i])] <- 1
+}
+```
+NOTE: Key participant demographics and baseline characteristics can also be 
+found in the SUBJINFO derived dataset. PTDEMOG was used here to demonstrate how 
+to label raw data using the data dictionary.
+\normalsize
+
+**Baseline PACC**
+\footnotesize
+```{r prep_pacc, results = "hide"}
+pacc_bl <- pacc %>% 
+  filter(VISCODE == 6) %>%
+  select(BID, PACC.raw, MMSCORE, LDELTOTAL, DIGITTOTAL, FCTOTAL96)
+```
+\normalsize
+
+**Prepare data table**
+\footnotesize
+```{r prep_data, results = "hide"}
+dd <- subjinfo[,c('BID','APOEGN')] %>%
+  left_join(ptdemog, by='BID') %>%
+  left_join(pet, by=c('SUBSTUDY','BID')) %>%
+  left_join(vmri[is.na(vmri$VISCODE) | vmri$VISCODE==4,]) %>%
+  left_join(pacc_bl, by=c('BID')) %>%
+  filter(!BID %in% rescreens$BID1) %>% # remove first appearance of rescreens
+  rename(`A4 amyloid eligibility` = overall_score) %>%
+  rename(
+    `Age at screening (yrs)` = PTAGE,
+    `APOE genotype` = APOEGN, 
+    `Education (yrs)` = PTEDUCAT, 
+    `PET SUVr` = Composite_Summary,
+    Sex = PTGENDER,
+    Ethnicity = PTETHNIC,
+    `Marital status` = PTMARRY,
+    `Participant retired` = PTNOTRT,
+    `Hippocampal Occupancy` = HOC,
+    PACC = PACC.raw, 
+    MMSE = MMSCORE, 
+    `Logical memory delay` = LDELTOTAL, 
+    `Digit symbol` = DIGITTOTAL, 
+    `FCSRT (2xFree + Cued)` = FCTOTAL96
+  ) %>% 
+  filter(!SUBSTUDY %in% 'SF') # excluding screen-fails
+```
+\normalsize
+
+\newpage
+# Summarize data
+
+\scriptsize
+```{r summarize, results='asis'}
+dd<- dd %>% # rename values and fields for footnote setup in summary table
+  mutate(SUBSTUDY = ifelse(SUBSTUDY == 'A4', 'A4^a^' , SUBSTUDY)) %>%
+  rename(
+    `A4 amyloid eligibility^b^` = `A4 amyloid eligibility`,
+    `Amyloid PET SUVr^b^` = `PET SUVr`
+  )
+tableby(SUBSTUDY ~ .,
+  data = select(dd, SUBSTUDY, `A4 amyloid eligibility^b^`, `Age at screening (yrs)`, `Education (yrs)`,
+    `APOE genotype`, `Amyloid PET SUVr^b^`, `Hippocampal Occupancy`, Sex, Ethnicity,
+    `Marital status`, `Participant retired`, 
+    PACC, MMSE, `Logical memory delay`, `Digit symbol`, `FCSRT (2xFree + Cued)`), digits = 2) %>%
+summary(title = "Baseline characteristics of A4-randomized^a^ and LEARN-enrolled cohorts")
+```
+\scriptsize
+^a^ A4-randomized cohort (n=`r sum(dd$SUBSTUDY=='A4^a^')`) includes other participants in addition to the modified intention-to-treat population (mITT n=1147) reported in the A4 trial (Sperling et al. 2023). The modified intention-to-treat population population that was reported for the A4 trial results include those who received at least one dose of solanezumab or placebo and underwent assessment for the primary end point. Please refer to the Intro-to-A4.pdf file for code to reproduce the baseline characteristics and primary findings of the A4 study. \
+^b^ Refer to A4 Amyloid PET Eligibility Methods PDF document (imaging_PET_VA_methods.pdf) regarding these amyloid-related measures, the eligibility determination process and the modifications made to the SUVR algorithm.
+\normalsize
+
+\newpage
+# References
+R Core Team. 2019. R: A Language and Environment for Statistical Computing. Vienna, Austria: R
+Foundation for Statistical Computing. https://www.R-project.org.
+
+Sperling, R. A., Donohue, M. C., Raman, R., Rafii, M. S., Johnson, K., Masters, C. L., van Dyck, C. H., Iwatsubo, T., Marshall, G. A., Yaari, R., Mancini, M., Holdridge, K. C., Case, M., Sims, J. R., Aisen, P. S., & A4 Study Team (2023). Trial of Solanezumab in Preclinical Alzheimer's Disease. *The New England journal of medicine, 389*(12), 1096–1107. https://doi.org/10.1056/NEJMoa2305032

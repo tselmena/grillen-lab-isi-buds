@@ -1,0 +1,304 @@
+---
+title: \textcolor{myblue}{`r "Introduction to A4 Data"`}
+author: "ATRI Biostatistics"
+output: pdf_document
+header-includes:
+  - \usepackage{longtable}
+  - \usepackage{array}
+  - \usepackage{booktabs}
+  - \usepackage{fancyhdr}
+  - \usepackage{graphicx}
+  - \usepackage{geometry}
+  - \geometry{a4paper,includehead,top=0cm}
+  - \usepackage{helvet}  % Helvetica font package
+  - \renewcommand{\familydefault}{\sfdefault}  % Set default font to sans-serif
+  - \usepackage{sectsty}
+  - \usepackage{xcolor}
+  - \definecolor{myblue}{HTML}{2C7FA0}
+  - \allsectionsfont{\color{myblue}}
+urlcolor: blue
+---
+```{=tex}
+\pagestyle{fancy} 
+\setlength\headheight{62pt}
+\fancypagestyle{plain}{}
+\fancyhf{}
+```
+
+```{r, echo=FALSE, results='asis'}
+if (file.exists('../methods/A4_LRN_logo.png')) {
+  cat("\\chead{\\makebox[\\headwidth][c]{\\includegraphics[width=\\paperwidth]{../methods/A4_LRN_logo.png}}}")
+}
+```
+
+```{=tex}
+\renewcommand{\headrulewidth}{0pt}
+```
+
+## Introduction
+
+This document demonstrates how to reproduce some primary findings of the 
+A4 trial (Sperling et al. 2023) using R.
+
+## Load required R packages
+
+```{r packages, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(arsenal)
+library(kableExtra)
+library(nlme)
+library(emmeans)
+library(splines)
+library(clubSandwich)
+
+formatp <- function(x) case_when(
+  x < 0.001 ~ "p<0.001",
+  x > 0.01 ~ Hmisc::format.pval(x, digits=2, eps=0.01, nsmall=2),
+  TRUE ~ Hmisc::format.pval(x, digits=3, eps=0.001, nsmall=3))
+```
+
+```{r settings, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, message = FALSE, 
+  warning = FALSE, cache = TRUE)
+
+a4Palette <- c("#0072b5", "#bc3c29")
+scale_colour_discrete <-
+  function(...) scale_colour_manual(..., values = a4Palette)
+scale_fill_discrete <-
+  function(...) scale_fill_manual(..., values = a4Palette)
+
+theme_set(theme_bw() +
+  theme(legend.background = element_rect(fill="transparent")))
+```
+
+## Read data
+
+```{r read-data}
+# Participant characteristics data:
+SUBJINFO_raw <- read_csv("SUBJINFO.csv")
+# Longitudinal PACC data from Analysis Data Questionnaire Scores (ADQS):
+ADQS_raw <- read_csv("ADQS.csv")
+```
+
+## Data manipulations
+
+```{r data-manipulation}
+# Outcomes collected at Visit 1
+V1OUTCOME <- ADQS_raw %>%
+  filter(VISITCD == "001") %>%
+  select(BID, QSTESTCD, QSSTRESN) %>%
+  pivot_wider(values_from = QSSTRESN, names_from = QSTESTCD)
+
+# Outcomes collected at Visit 6
+V6OUTCOME <- ADQS_raw %>%
+  filter(VISITCD == "006") %>%
+  select(BID, QSTESTCD, QSSTRESN) %>%
+  pivot_wider(values_from = QSSTRESN, names_from = QSTESTCD)
+
+SUBJINFO <- SUBJINFO_raw %>%
+  left_join(V6OUTCOME, by = "BID") %>%
+  left_join(V1OUTCOME %>%
+      select(BID, CDRSB, CFITOTAL, CFISP, CFIPT, ADLPQPT, ADLPQSP), 
+    by = "BID") %>%
+  mutate(
+    AGECAT = case_when(AGEYR < 65 ~ "Age < 65",
+      AGEYR >= 65 & AGEYR < 75 ~ "65 <= Age < 75",
+      AGEYR >= 75 & AGEYR < 85 ~ "75 <= Age < 85",
+      AGEYR >= 85 ~ "Age >= 85"),
+    SEX = factor(case_when(
+      SEX == 1 ~ "Female",
+      SEX == 2 ~ "Male"), levels = c("Male", "Female")),
+    RACE = case_when(RACE == 1 ~ "White",
+      RACE == 2 ~ "Black or African American",
+      RACE == 58 ~ "Asian",
+      RACE == 79 ~ "Native Hawaiian or Other Pacific Islander",
+      RACE == 84 ~ "American Indian or Alaskan Native",
+      RACE == 97 ~ "Unknown or Not Reported",
+      RACE == 100 ~ "More than one race"),
+    MARITAL = case_when(MARITAL == 2 ~ "Divorced",
+      MARITAL == 4 ~ "Never married",
+      MARITAL == 5 ~ "Widowed",
+      MARITAL == 11 ~ "Married",
+      MARITAL == 97 ~ "Unknown or Not Reported"),
+    ETHNIC = case_when(ETHNIC == 50 ~ "Hispanic or Latino",
+      ETHNIC == 56 ~ "Not Hispanic or Latino",
+      ETHNIC == 97 ~ "Unknown or Not reported"),
+    ALCHLBL = case_when(ALCHLBL == 0 ~ "No",
+      ALCHLBL == 1 ~ "Yes"),
+    CFBL = case_when(CFBL == 0 ~ "No",
+      CFBL == 1 ~ "Yes"),
+    TBBL = case_when(TBBL == 0 ~ "No",
+      TBBL == 1 ~ "Yes"),
+    WRKRET = case_when(WRKRET == 1 ~ "Yes",
+      WRKRET == 0 ~ "No",
+      WRKRET == 96 ~ "Not Applicable"),
+    APOEGNPRSNFLG = case_when(APOEGNPRSNFLG == 1 ~ "Yes",
+      APOEGNPRSNFLG == 0 ~ "No"),
+    AGEYR = as.numeric(AGEYR),
+    SUVRCER = as.numeric(SUVRCER),
+    AMYLCENT = as.numeric(AMYLCENT),
+    EDCCNTU = as.numeric(EDCCNTU),
+    COGDSSTTSV6 = as.numeric(COGDSSTTSV6),
+    COGLMDRTSV6 = as.numeric(COGLMDRTSV6),
+    TX = factor(TX, levels = c("Placebo", "Solanezumab")),
+    COMPLETER_label = case_when(
+      SUBJCOMPTR == 1 ~ "Completer",
+      TRUE ~ "Dropout"))
+
+# Filter ADQS_raw for PACC collected in the blinded phases among mITT population
+ADQS_PACC <- ADQS_raw %>%
+  filter(MITTFL== 1) %>%
+  filter(EPOCH == "BLINDED TREATMENT" | AVISIT == "006") %>%
+  filter(QSTESTCD == "PACC") %>%
+  rename(PACC = QSSTRESN) %>%
+  select(BID, ASEQNCS, TX, ADURW, TX, AGEYR, 
+    AAPOEGNPRSNFLG, EDCCNTU, SUVRCER, QSVERSION, PACC) %>%
+  mutate(TX = factor(TX, levels = c("Placebo", "Solanezumab"))) %>%
+  na.omit()
+```
+\newpage
+## Baseline demographics
+
+```{r table1, results = "asis"}
+A4labels <- list(TX = "Treatment group", AGEYR = "Age (y)", 
+  EDCCNTU = "Education (y)", SUVRCER = "FBP SUVr", AMYLCENT = "FBP Centiloid", 
+  LMIIa = "LM Delayed Recall",  MMSE = "MMSE", 
+  CFITOTAL = "CFI Combined", ADLPQSP = "ADL Partner", CDRSB = "CDR-SB",
+  SEX = "Sex", RACE = "Racial categories", ETHNIC = "Ethnicity", 
+  MARITAL = "Marital Status",  WRKRET = "Retirement Status", 
+  APOEGNPRSNFLG = "APOE e4", APOEGN = "APOE Genotype")
+
+table1 <- tableby(TX ~ AGEYR + EDCCNTU + SEX + RACE + ETHNIC + MARITAL + WRKRET + 
+    SUVRCER + AMYLCENT + chisq(APOEGN) + chisq(APOEGNPRSNFLG) + 
+    PACC + LMIIa + MMSE + CFITOTAL + ADLPQSP + CDRSB, 
+  data = SUBJINFO %>% filter(MITTFL== 1), 
+  control = tableby.control(test=TRUE,
+    stats.labels = list(Nmiss = "Missing")))
+
+if(knitr::opts_knit$get("rmarkdown.pandoc.to") == 'latex'){
+  # format table for pdf document
+  table1 %>%
+    summary(labelTranslations = A4labels, digits = 1, text = "latex") %>%
+    kable(format="latex", escape = FALSE, longtable = T, booktabs = TRUE, 
+      linesep = "", row.names = FALSE,
+      caption = "Baseline characteristics.") %>%
+    kable_styling(latex_options = c("HOLD_position", "repeat_header")) %>% 
+    column_spec(1, width = "17 em") %>%
+    column_spec(2:4, width = "6 em")
+}
+
+if(knitr::opts_knit$get("rmarkdown.pandoc.to") == 'html'){
+  # format table for html
+  summary(table1, labelTranslations = A4labels, digits = 1, 
+    title = "Baseline characteristics.")
+}
+```
+\newpage
+## PACC Data
+
+Preclinical Alzheimer Cognitive Composite (PACC, @donohue2014preclinical) data was modelled using natural cubic splines as described in @donohue2023natural. The fixed effects included the following terms: (i) spline basis expansion terms (two terms), (ii) spline basis expansion terms-by-treatment interaction (two terms), (iii) PACC test version administered, (iv) baseline age, (v) education, (vi) APOE4 Carrier Status (yes/no), and (vii) baseline florbetapir cortical SUVr. The model is constrained to not allow a difference
+between treatment group means at baseline. The following variance-covariance structures were assumed in sequence until a model converged: (i) heterogeneous unstructured, (ii) heterogeneous Toeplitz, (iii) heterogeneous autoregressive order 1, (iv) heterogeneous compound symmetry, and (v) compound symmetry. The first structure, heterogeneous unstructured, did not converge. Here we fit the second, heterogeneous Toeplitz, which did converge.
+
+```{r pacc-spaghetti-plot, fig.cap="Spaghetti plot of PACC data over time by treatment group."}
+ggplot(ADQS_PACC, aes(x=ADURW, y=PACC, color=TX)) +
+  geom_line(aes(group = BID), alpha=0.2) +
+  theme(legend.position = "inside", legend.position.inside = c(0.2, 0.2)) +
+  xlab("Weeks since Randomization") +
+  scale_x_continuous(breaks = seq(0, max(ADQS_PACC$ADURW), by = 24))
+```
+
+```{r pacc-spline-model-fit}
+# Spline basis expansion functions
+# CAUTION: these function depend on the ADQS_PACC data frame object in the 
+# global environment. If ADQS_PACC changes, so do these funtions
+ns21 <- function(t){
+  as.numeric(predict(splines::ns(ADQS_PACC$ADURW, df=2,
+    Boundary.knots = c(0, max(ADQS_PACC$ADURW))), t)[,1])
+}
+ns22 <- function(t){
+  as.numeric(predict(splines::ns(ADQS_PACC$ADURW, df=2,
+    Boundary.knots = c(0, max(ADQS_PACC$ADURW))), t)[,2])
+}
+
+# GLS model fit:
+pacc_fit <- gls(PACC ~ 
+    I(ns21(ADURW)) + I(ns22(ADURW)) +
+    (I(ns21(ADURW)) + I(ns22(ADURW))):TX + 
+    AGEYR + AAPOEGNPRSNFLG + EDCCNTU + SUVRCER + QSVERSION,
+  data = ADQS_PACC,
+  weights = varIdent(form = ~ 1 | ASEQNCS),
+  correlation = corARMA(form = ~ ASEQNCS | BID, p = 10))
+```
+
+```{r pacc-summarize-spline-model-1}
+ref_grid(pacc_fit,
+  at = list(ADURW = c(0,240), TX = levels(ADQS_PACC$TX)),
+  vcov. = clubSandwich::vcovCR(pacc_fit, type = "CR2") %>% as.matrix(), 
+  mode = "satterthwaite") %>%
+  emmeans(~ ADURW | TX) %>%
+  pairs(reverse = TRUE) %>%
+  as_tibble() %>%
+  mutate(p.value = formatp(p.value)) %>%
+  kable(caption = "Mean PACC change from baseline at week 240 by treatment 
+    group estimated from spline model.", digits = 2, booktabs = TRUE) %>%
+  kableExtra::kable_styling(latex_options = "HOLD_position")
+```
+
+```{r pacc-summarize-spline-model-2}
+contrast240 <- ref_grid(pacc_fit, 
+  at = list(ADURW = 240, TX = levels(ADQS_PACC$TX)),
+  vcov. = clubSandwich::vcovCR(pacc_fit, type = "CR2") %>% as.matrix(), 
+  data = ADQS_PACC, 
+  mode = "satterthwaite") %>%
+  emmeans(specs = "TX", by = "ADURW") %>%
+  pairs(reverse = TRUE, adjust = "none")
+
+contrast240 %>% 
+  as_tibble() %>%
+  left_join(contrast240 %>% 
+      confint() %>%
+      as_tibble() %>%
+      select(contrast, lower.CL, upper.CL), by="contrast") %>%
+  relocate(p.value, .after = last_col()) %>%
+  mutate(p.value = formatp(p.value)) %>%
+  kable(caption = "Mean PACC group change from baseline at week 240 by treatment 
+    group estimated from spline model.", digits = 2, booktabs = TRUE) %>%
+  kableExtra::kable_styling(latex_options = "HOLD_position")
+```
+\clearpage
+```{r pacc-mean-plot, fig.cap="Mean PACC per treatment group over time as estimated by spline model. Shaded region depicts 95% confidence intervals."}
+ref_grid(pacc_fit, 
+  at = list(ADURW = seq(0, 312, by=12), TX = levels(ADQS_PACC$TX)),
+  vcov. = clubSandwich::vcovCR(pacc_fit, type = "CR2") %>% as.matrix(), 
+  data = ADQS_PACC, 
+  mode = "satterthwaite") %>%
+  emmeans(specs = "TX", by = "ADURW") %>%
+  as_tibble() %>%
+  ggplot(aes(x=ADURW, y=emmean)) +
+  geom_line(aes(color=TX)) +
+  geom_ribbon(aes(ymin = lower.CL, ymax = upper.CL, fill = TX), alpha = 0.2) +
+  scale_x_continuous(breaks = seq(0, 312, by=24)) +
+  ylab("Mean PACC with 95% confidence intervals") +
+  xlab("Weeks since Randomization") +
+  theme(legend.position = 'inside', legend.position.inside = c(0.2, 0.2))
+```
+
+\clearpage
+
+## References
+Donohue, Michael C, Oliver Langford, Philip S Insel, Christopher H van Dyck, Ronald C Petersen, Suzanne
+Craft, Gopalan Sethuraman, Rema Raman, Paul S Aisen, and Alzheimer’s Disease Neuroimaging Initiative.
+2023. “Natural Cubic Splines for the Analysis of Alzheimer’s Clinical Trials.” *Pharmaceutical Statistics* 22
+(3): 508–19.
+
+Donohue, Michael C, Reisa A Sperling, David P Salmon, Dorene M Rentz, Rema Raman, Ronald G Thomas,
+Michael Weiner, Paul S Aisen, et al. 2014. “The Preclinical Alzheimer Cognitive Composite: Measuring
+Amyloid-Related Decline.” JAMA Neurology 71 (8): 961–70.
+
+R Core Team. 2019. R: A Language and Environment for Statistical Computing. Vienna, Austria: R
+Foundation for Statistical Computing. https://www.R-project.org.
+
+Sperling, Reisa A, Michael C Donohue, Rema Raman, Michael S Rafii, Keith Johnson, Colin L Masters,
+Christopher H van Dyck, et al. 2023. “Trial of Solanezumab in Preclinical Alzheimer’s Disease.” *New 
+England Journal of Medicine* 389 (12): 1096–1107.
+

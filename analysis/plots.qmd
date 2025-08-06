@@ -1,0 +1,1123 @@
+---
+title: "plots"
+format: html
+author: "Tselmen Anuurad"
+---
+
+Run `data-processing.qmd` top-down prior to running any code chunks below.
+
+# Contents: 
+
+1) 12 Tests Odds Ratios Plot
+2) Single Odds Ratio Plot
+3) Forest Plot of Week 48
+4) Test Schedules ('X' plot)
+  a. Hard-coded
+  b. Animated (Full)
+  c. Animated (Split into three .gifs)
+  d. Ideal
+5) Variability in Test Schedule (histogram)
+6) General CDR Progression EDA
+7) Learn Effect Plots
+8) Sample Size vs AUC Scatter Plot
+9) Spline Plot for LMIIA (Illustrate Learn Effect)
+
+# 1) 12 Tests Odds Ratios: 3 x 4 grid plot
+
+```{r}
+## Setting up data for plotting below
+# stack and clean up columns for plotting
+combined_plot_data <- bind_rows(with_baseline_df, without_baseline_df) |>
+  mutate(
+    # extract the numeric week from the 'week_id' column
+    week = as.numeric(str_extract(week_id, "\\d+"))
+  ) |>
+  select(test_code, week, model_type, odds_ratio, conf.low, conf.high, n_obs)
+
+# all tests except CFI were inverted to make them show that a
+# higher score is associated with an increased odds of CDR progression
+inv_plot_data_all <-
+  combined_plot_data |> 
+  mutate(
+    should_invert = ! (test_code %in% c("CFIPT", "CFISP", "CFITOTAL")),
+    original_conf_low = conf.low,
+    odds_ratio = if_else(should_invert, 1 / odds_ratio, odds_ratio),
+    conf.low   = if_else(should_invert, 1 / conf.high, conf.low),
+    conf.high  = if_else(should_invert, 1 / original_conf_low, conf.high)
+  )
+
+# define the tests for the bottom row with y-axis on log scale
+bottom_row_tests <- c("CFIPT", "CFISP", "CFITOTAL", "C3")
+
+# data for the top two rows
+plot_data_top <- inv_plot_data_all |>
+  filter(!test_code %in% bottom_row_tests)
+
+# data for the bottom row
+plot_data_bottom <- inv_plot_data_all |>
+  filter(test_code %in% bottom_row_tests)
+
+# also split the label data for annotations
+label_data <- inv_plot_data_all |>
+  filter(model_type %in% "Without Baseline") 
+
+label_data_top <- label_data |>
+  filter(!test_code %in% bottom_row_tests)
+
+label_data_bottom <- label_data |>
+  filter(test_code %in% bottom_row_tests)
+```
+
+`top_plot`: 2 x 4 grid (3 ADL tests, PACC, and 4 PACC Composite Tests)
+
+```{r}
+top_plot <- ggplot(plot_data_top, aes(x = week, y = odds_ratio, color = model_type, group = model_type)) +
+  facet_wrap(~ test_code, ncol = 4) +
+  geom_hline(yintercept = 1, linetype = "dashed", color = "grey50") +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width = 8, linewidth = 0.7) +
+  geom_text_repel(
+    data = label_data_top,
+    aes(y = conf.low, label = paste0("n = ", n_obs)),
+    nudge_y = -0.4,
+    min.segment.length = Inf,
+    direction = "y",
+    size = 3,
+    color = "grey30"
+  ) +
+  geom_line(linewidth = 0.8) +
+  geom_point(size = 2.5) +
+  scale_x_continuous(breaks = weeks_to_run) +
+  scale_color_manual(
+    name = "Model Type:",
+    values = c("With Baseline" = "#c773c3", "Without Baseline" = "#005f73")
+  ) +
+  labs(
+    x = NULL, 
+    y = expression("Odds Ratio")
+  ) +
+  theme_bw() +
+  theme(
+    legend.position = "none", 
+    strip.background = element_blank(),
+    strip.text = element_text(face = "bold", size = 12),
+    axis.title.y = element_text(face = "bold", size = 14),
+    axis.text = element_text(size = 14),
+    axis.text.x = element_blank(),
+  )
+```
+
+`bottom_plot`: 1 x 4 grid (3 CFI, C3)
+
+```{r}
+bottom_plot <- ggplot(plot_data_bottom, aes(x = week, y = odds_ratio, color = model_type, group = model_type)) +
+  # create a 3-column grid of plots, one for each test
+  facet_wrap(~ test_code, ncol = 4) +
+  geom_hline(yintercept = 1, linetype = "dashed", color = "grey50") +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width = 8, linewidth = 0.7) +
+  geom_text_repel(
+    data = label_data_bottom,
+    aes(y = conf.low, label = paste0("n = ", n_obs)),
+    nudge_y = -0.1,
+    min.segment.length = Inf,
+    direction = "y",
+    size = 3,
+    color = "grey30"
+  ) +
+  geom_line(linewidth = 0.8) +
+  geom_point(size = 2.5) +
+  # set scales and colors
+  scale_y_log10() + # use a log scale for odds ratios
+  scale_x_continuous(breaks = weeks_to_run) +
+  scale_color_manual(
+    name = "Model Type:",
+    values = c("Without Baseline" = "#005f73", "With Baseline" = "#c773c3")
+  ) +
+  labs(
+    x = "Week of Assessment",
+    y = "Odds Ratio (log scale)"
+  ) +
+  theme_bw() +
+  theme(
+    legend.position = "none",
+    strip.background = element_blank(),
+    strip.text = element_text(face = "bold", size = 12), 
+    axis.title.x = element_text(size = 14, margin = margin(t = 10, r = 0, b = 0, l = 0)),
+    axis.title.y = element_text(size = 14),
+    axis.text = element_text(size = 12)
+    )
+```
+
+```{r}
+final_plot <- top_plot / bottom_plot
+
+odds_ratio_plot_12 <- final_plot +
+  plot_layout(guides = "collect", heights = c(2, 0.9)) +
+  plot_annotation(
+    title = "Predicting CDR Progression at 240 Weeks",
+    subtitle = "Comparing Models With and Without Baseline Covariate",
+    theme = theme(
+      plot.title = element_text(size = 20, face = "bold"),
+      plot.subtitle = element_text(size = 14)
+  )) &
+  theme(legend.position = "top", 
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 12))
+
+odds_ratio_plot_12
+# ggsave("1_odds_ratio_plot.png", odds_ratio_plot_12, height = 8, width = 11, dpi = 300, units = "in")
+```
+
+# 2) Single Odds Ratio Plot
+
+```{r}
+# can switch test code to any of the test codes
+# example with ADL Participant
+plot_data_single <- inv_plot_data_all |>
+  filter(test_code == "ADLPQPT")
+
+label_data_single <- label_data |>
+  filter(test_code == "ADLPQPT")
+
+adlpqpt_plot <- ggplot(plot_data_single, aes(x = week, y = odds_ratio, color = model_type, group = model_type)) +
+  geom_hline(yintercept = 1, linetype = "dashed", color = "grey50") +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width = 8, linewidth = 0.7) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_text(
+    data = label_data_single,
+    aes(label = paste0("n = ", n_obs)),
+    nudge_y = -0.7, 
+    size = 4,
+    color = "grey40"
+  ) +
+  scale_x_continuous(
+    name = "Week of Assessment",
+    breaks = c(48, 108, 168)
+  ) +
+  scale_y_continuous(
+    name = "Odds Ratio",
+    breaks = seq(0, 5, by = 1) 
+  ) +
+  scale_color_manual(
+    name = "Model Type:",
+    values = c("With Baseline" = "#c773c3", "Without Baseline" = "#005f73")
+  ) +
+  coord_cartesian(ylim = c(0, 5)) +
+  labs(
+    # Change title as necessary
+    title = "Odds Ratios of ADL Participant (ADLPQPT)",
+    subtitle = "At Weeks 48, 108, and 168"
+  ) +
+  theme_bw(base_size = 14) +
+  theme(
+    legend.position = "top",
+    plot.title = element_text(face = "bold", size = 18, hjust = 0.5),
+    plot.subtitle = element_text(size = 14, hjust = 0.5),
+    axis.title = element_text(face = "bold")
+  )
+adlpqpt_plot
+# ggsave("adlpqpt_plot.png", adlpqpt_plot, height = 5, width = 7, units = "in")
+```
+
+# 3) Forest Plot of Week 48
+
+```{r}
+## Prep data for plotting only week 48 
+w48_baseline <- run_weekly_models(
+  data_list = all_tests_list, week_num = 48, include_baseline = TRUE) |> 
+  filter(!str_starts(term, "baseline_score_")) 
+w48_nobl <- run_weekly_models(
+  data_list = all_tests_list,, week_num = 48, include_baseline = FALSE)
+
+w48_nobl_inv <- w48_nobl |> 
+  mutate(
+    should_invert = ! (test %in% c("CFIPT", "CFISP", "CFITOTAL")),
+    original_conf_low = conf.low,
+    odds_ratio = if_else(should_invert, 1 / odds_ratio, odds_ratio),
+    conf.low   = if_else(should_invert, 1 / conf.high, conf.low),
+    conf.high  = if_else(should_invert, 1 / original_conf_low, conf.high)
+  )
+
+w48_baseline_inv <- w48_baseline |> 
+  mutate(
+    should_invert = ! (test %in% c("CFIPT", "CFISP", "CFITOTAL")),
+    original_conf_low = conf.low,
+    odds_ratio = if_else(should_invert, 1 / odds_ratio, odds_ratio),
+    conf.low   = if_else(should_invert, 1 / conf.high, conf.low),
+    conf.high  = if_else(should_invert, 1 / original_conf_low, conf.high)
+  )
+```
+
+```{r}
+# Transform data into matrices for forest plot package
+sorted_test_order <- w48_baseline_inv |>
+  arrange(odds_ratio) |>
+  pull(test)
+
+w48_baseline_sorted <- w48_baseline_inv |>
+  mutate(test = factor(test, levels = sorted_test_order)) |>
+  arrange(test)
+
+w48_nobl_sorted <- w48_nobl_inv |>
+  mutate(test = factor(test, levels = sorted_test_order)) |>
+  arrange(test)
+
+test_labels <- as.character(w48_baseline_sorted$test)
+
+table_text <- cbind(
+  c("Test", test_labels),
+  c("OR [95% CI] (No Baseline)", 
+    sprintf("%.2f [%.2f, %.2f]", w48_nobl_sorted$odds_ratio, w48_nobl_sorted$conf.low, w48_nobl_sorted$conf.high)),
+  c("OR [95% CI] (With Baseline)", 
+    sprintf("%.2f [%.2f, %.2f]", w48_baseline_sorted$odds_ratio, w48_baseline_sorted$conf.low, w48_baseline_sorted$conf.high))
+)
+
+mean_matrix <- rbind(
+  c(NA, NA), 
+  cbind(w48_nobl_sorted$odds_ratio, w48_baseline_sorted$odds_ratio)
+)
+
+lower_matrix <- rbind(
+  c(NA, NA), 
+  cbind(w48_nobl_sorted$conf.low, w48_baseline_sorted$conf.low)
+)
+
+upper_matrix <- rbind(
+  c(NA, NA), 
+  cbind(w48_nobl_sorted$conf.high, w48_baseline_sorted$conf.high)
+)
+```
+
+```{r}
+# view forest plot
+forestplot(
+  labeltext = table_text,
+  mean = mean_matrix,
+  lower = lower_matrix,
+  upper = upper_matrix,
+  graph.pos = 2,
+  title = "Odds Ratios for CDR Progression at Week 48",
+  boxsize = 0.25,
+  col = fpColors(
+    box = c("#005f73", "#c773c3"), 
+    line = c("#005f73", "#c773c3")
+  ),
+  legend = c("Without Baseline", "With Baseline"),
+  xlab = "Odds Ratio",
+  hrzl_lines = TRUE,
+  txt_gp = fpTxtGp(label = gpar(cex = 0.9), ticks = gpar(cex = 0.9)),
+  zero = 1
+)
+```
+
+```{r}
+## saves forest plot to your device
+# png("forest_plot_week_48.png", width = 8, height = 6, units = "in", res = 300)
+# 
+# forestplot(
+#   labeltext = table_text,
+#   mean = mean_matrix,
+#   lower = lower_matrix,
+#   upper = upper_matrix,
+#   graph.pos = 2,
+#   title = "Odds Ratios for CDR Progression (Week 48 Predictors)",
+#   boxsize = 0.25,
+#   col = fpColors(
+#     box = c("#005f73", "#c773c3"),
+#     line = c("#005f73", "#c773c3")
+#   ),
+#   legend = c("Without Baseline", "With Baseline"),
+#   xlab = "Odds Ratio",
+#   hrzl_lines = TRUE,
+#   txt_gp = fpTxtGp(label = gpar(cex = 0.9), ticks = gpar(cex = 0.9)),
+#   zero = 1
+# )
+# dev.off()
+```
+
+
+# 4a) Hard-coded Test Schedule
+
+Purpose: To visually identify the staggered nature of test administration schedule; 
+not drawn from data, but hard-coded using prior knowledge as to when tests were actually administered.
+
+```{r}
+TEST_CODES <- c(rep("CDR Global", 6), rep("PACC", 11), rep("C3", 12), rep("ADL", 6),rep("CFI", 6))
+
+WEEK <- c(0, 48, 108, 168, 204, 240, seq(0, 240, by = 24), seq(-12, 252, by = 24), -12, 48, 108, 168, 204, 240, -12, 48, 108, 168, 204, 240)
+
+test_schedule <-
+  data.frame(
+  TEST = TEST_CODES, 
+  WEEK = WEEK
+)
+
+y_axis_order <- c("CDR Global", "PACC","C3","ADL", "CFI")
+
+test_schedule_plot <-
+  ggplot(test_schedule, aes(x = WEEK, y = TEST)) +
+  geom_point(shape = 4, size = 2, stroke = 1.5, color = "#005f73") +
+  scale_x_continuous(breaks = target_weeks_w_0, limits = c(-20, 260)) +
+  scale_y_discrete(limits = rev(y_axis_order)) +
+  labs(
+    title = "Test Administration Schedule",
+    x = "Week", 
+    y = ""
+  ) +
+  theme_bw() 
+test_schedule_plot
+# ggsave("4a_hard_coded_test_schedule_plot.png", test_schedule_plot, width = 11, height = 9, units = "in")
+```
+
+
+# 4b) Animated (Full)
+
+Moves through all states.
+
+```{r}
+# State 1: Add the new 'point_type' column
+state1 <- data.frame(TEST = TEST_CODES, WEEK = WEEK) |> 
+  mutate(
+    state = "1. Initial Schedule",
+    point_id = row_number(),
+    point_type = "Original" # All points start as "Original"
+  )
+
+# State 2: Change point_type for points that are about to move, then move them
+state2 <- state1 |> 
+  mutate(
+    point_type = case_when(
+      (TEST %in% c("ADL", "CFI") & WEEK < 0) ~ "Transformed",
+      (TEST == "PACC" & WEEK %in% c(96, 120, 192, 216)) ~ "Transformed",
+      TRUE ~ point_type
+    ),
+    WEEK = case_when(
+      TEST %in% c("ADL", "CFI") & WEEK < 0 ~ 0,
+      TEST == "PACC" & WEEK %in% c(96, 120) ~ 108,
+      TEST == "PACC" & WEEK %in% c(192, 216) ~ 204,
+      TRUE ~ WEEK
+    ),
+    state = "2. Align PACC, ADL, & CFI"
+  )
+
+# State 3: Change point_type for C3 points, then move them
+state3 <- state2 |>
+  mutate(
+    point_type = case_when(
+      TEST == "C3" & point_id %in% c(18:21, 25, 26, 28, 29) ~ "Transformed",
+      TRUE ~ point_type
+    ),
+    WEEK = case_when(
+      TEST == "C3" & point_id %in% c(18, 19) ~ 0,
+      TEST == "C3" & point_id %in% c(20, 21) ~ 48,
+      TEST == "C3" & point_id %in% c(25, 26) ~ 168,
+      TEST == "C3" & point_id %in% c(28, 29) ~ 240,
+      TRUE ~ WEEK
+    ),
+    state = "3. Interpolate C3 to Target Weeks"
+  )
+
+# State 4: Final schedule
+state4 <- state3 |>
+  filter(WEEK %in% target_weeks_w_0) |>
+  mutate(state = "4. Final Aligned Schedule")
+
+animation_data <- bind_rows(state1, state2, state3, state4) |> 
+  mutate(state = factor(state, levels = c("1. Initial Schedule", 
+                                          "2. Align PACC, ADL, & CFI", 
+                                          "3. Interpolate C3 to Target Weeks",
+                                          "4. Final Aligned Schedule")))
+```
+
+```{r}
+# 1. Create the base plot without the final theme
+p <- ggplot(animation_data, aes(x = WEEK, y = TEST, group = point_id, color = point_type)) +
+  geom_point(shape = 4, size = 4, stroke = 1.5) +
+  scale_color_manual(
+    values = c("Original" = "#005f73", "Transformed" = "#c773c3"), 
+    guide = "none" 
+  ) +
+  scale_x_continuous(breaks = target_weeks_w_0, limits = c(-20, 260)) +
+  scale_y_discrete(limits = rev(y_axis_order)) +
+  labs(
+    title = '{closest_state}', 
+    x = "Target Week",
+    y = ""
+  )
+
+# 2. Add animation layers to the base plot
+anim <- p +
+  transition_states(
+    states = state,
+    transition_length = .75,
+    state_length = 0.1
+  ) +
+  ease_aes('cubic-in-out') +
+  shadow_wake(wake_length = 0.1, alpha = 0.3) + 
+  exit_fade()
+
+# 3. Apply the theme to the FINAL animation object
+final_anim <- anim +
+  theme_bw(base_size = 14) + 
+  theme(
+    plot.title = element_text(face = "bold", size = 18, hjust = 0.5),
+    axis.title.x = element_text(face = "bold", size = 16),
+    axis.title.y = element_text(face = "bold", size = 16),
+    axis.text = element_text(size = 16)
+  )
+
+## save animation:
+# animate(final_anim, nframes = 150, fps = 10, width = 900, height = 500, renderer = gifski_renderer("4b_animated_schedule.gif"))
+
+# to simply view the animation, simply run the name of the object:
+# final_anim
+```
+
+
+# 4c) Animated (Split into three .gifs)
+
+```{r}
+anim1 <- bind_rows(state1, state2) |> 
+  mutate(state = factor(state, levels = c("1. Initial Schedule", 
+                                          "2. Align PACC, ADL, & CFI")))
+
+p1 <- ggplot(anim1, aes(x = WEEK, y = TEST, group = point_id, color = point_type)) +
+  geom_point(shape = 4, size = 4, stroke = 1.5) +
+  scale_color_manual(
+    values = c("Original" = "#005f73", "Transformed" = "#c773c3"), 
+    guide = "none" 
+  ) +
+  scale_x_continuous(breaks = target_weeks_w_0, limits = c(-20, 260)) +
+  scale_y_discrete(limits = rev(y_axis_order)) +
+  labs(
+    title = '{closest_state}', 
+    x = "Target Week",
+    y = ""
+  ) + 
+  theme_bw(base_size = 14)
+
+anim1 <- p1 +
+  transition_states(
+    states = state,
+    transition_length = .75,
+    state_length = 0.1
+  ) +
+  ease_aes('cubic-in') +
+  shadow_wake(wake_length = 0.1, alpha = 0.3) + 
+  exit_fade()
+
+anim1_final <- anim1 +
+  theme_bw(base_size = 14) + 
+  theme(
+    plot.title = element_text(face = "bold", size = 18, hjust = 0.5),
+    axis.title.x = element_text(face = "bold", size = 16),
+    axis.title.y = element_text(face = "bold", size = 16),
+    axis.text = element_text(size = 16)
+  )
+
+## save animation: 
+# animate(anim1_final, nframes = 100, fps = 10, width = 900, height = 500, renderer = gifski_renderer("4c_anim1.gif"))
+```
+
+```{r}
+anim2 <- bind_rows(state2, state3) |> 
+  mutate(state = factor(state, levels = c("2. Align PACC, ADL, & CFI", 
+                                          "3. Interpolate C3 to Target Weeks")))
+
+p2 <- ggplot(anim2, aes(x = WEEK, y = TEST, group = point_id, color = point_type)) +
+  geom_point(shape = 4, size = 4, stroke = 1.5) +
+  scale_color_manual(
+    values = c("Original" = "#005f73", "Transformed" = "#c773c3"), 
+    guide = "none" 
+  ) +
+  scale_x_continuous(breaks = target_weeks_w_0, limits = c(-20, 260)) +
+  scale_y_discrete(limits = rev(y_axis_order)) +
+  labs(
+    title = '{closest_state}', 
+    x = "Target Week",
+    y = ""
+  )
+
+anim2 <- p2 +
+  transition_states(
+    states = state,
+    transition_length = .75,
+    state_length = 0.1
+  ) +
+  ease_aes('cubic-in') +
+  shadow_wake(wake_length = 0.1, alpha = 0.3) + 
+  exit_fade()
+
+anim2_final <- anim2 +
+  theme_bw(base_size = 14) + 
+  theme(
+    plot.title = element_text(face = "bold", size = 18, hjust = 0.5),
+    axis.title.x = element_text(face = "bold", size = 16),
+    axis.title.y = element_text(face = "bold", size = 16),
+    axis.text = element_text(size = 16)
+  )
+
+# animate(anim2_final, nframes = 100, fps = 10, width = 900, height = 500, renderer = gifski_renderer("4c_anim2.gif"))
+```
+
+```{r}
+anim3 <- bind_rows(state3, state4) |> 
+  mutate(state = factor(state, levels = c("3. Interpolate C3 to Target Weeks", "4. Final Aligned Schedule")))
+
+p3 <- ggplot(anim3, aes(x = WEEK, y = TEST, group = point_id, color = point_type)) +
+  geom_point(shape = 4, size = 4, stroke = 1.5) +
+  scale_color_manual(
+    values = c("Original" = "#005f73", "Transformed" = "#c773c3"), 
+    guide = "none" 
+  ) +
+  scale_x_continuous(breaks = target_weeks_w_0, limits = c(-20, 260)) +
+  scale_y_discrete(limits = rev(y_axis_order)) +
+  labs(
+    title = '{closest_state}', 
+    x = "Target Week",
+    y = ""
+  )
+
+anim3 <- p3 +
+  transition_states(
+    states = state,
+    transition_length = .75,
+    state_length = 0.1
+  ) +
+  ease_aes('cubic-in') +
+  shadow_wake(wake_length = 0.1, alpha = 0.3) + 
+  exit_fade()
+
+anim3_final <- anim3 +
+  theme_bw(base_size = 14) + 
+  theme(
+    plot.title = element_text(face = "bold", size = 18, hjust = 0.5),
+    axis.title.x = element_text(face = "bold", size = 16),
+    axis.title.y = element_text(face = "bold", size = 16),
+    axis.text = element_text(size = 16)
+  )
+
+# animate(anim3_final, nframes = 100, fps = 10, width = 900, height = 500, renderer = gifski_renderer("4c_anim3.gif"))
+```
+
+
+# 4d) Ideal 
+
+``` {r}
+ideal_schedule_plot <-
+  ggplot(state4, aes(x = WEEK, y = TEST)) +
+  geom_point(shape = 4, size = 2, stroke = 1.5, color = "#005f73") +
+  scale_x_continuous(breaks = target_weeks_w_0, limits = c(-20, 260)) +
+  scale_y_discrete(limits = rev(y_axis_order)) +
+  labs(
+    title = "Test Administration Schedule",
+    x = "Week", 
+    y = ""
+  ) +
+  theme_bw() + 
+  theme(
+    plot.title = element_text(size = 14, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 14),
+    axis.title.x = element_text(size = 14),
+    axis.text.x = element_text(size = 14),
+    axis.text = element_text(size = 12)
+  )
+
+ideal_schedule_plot
+# ggsave("4d_ideal_schedule_plot.png", ideal_schedule_plot, width = 7, height = 5, units = "in")
+```
+
+
+# 5) Variability in Test Schedule Plot
+
+```{r}
+rect_data <- data.frame(
+  center = target_weeks_w_0,
+  xmin = target_weeks_w_0 - 12,
+  xmax = target_weeks_w_0 + 12
+) |> 
+  mutate(
+    fill_group_pacc = if_else(center %in% c(108, 204), "special_color", "default_color"), 
+    fill_group_adl = if_else(center %in% c(0), "special_color", "default_color"), 
+    fill_group_c3 = if_else(center %in% c(0, 48, 168, 240), "special_color", "default_color")
+  )
+
+adl_plot <- ADQS_raw |>
+  filter(QSTESTCD == "CFISP", ADURW <= 252, TX == "Placebo") |>
+  ggplot(aes(x = ADURW)) +
+  geom_rect(
+    data = rect_data,
+    aes(xmin = xmin, xmax = xmax, ymin = -Inf, ymax = Inf, fill = fill_group_adl),
+    alpha = 0.2,
+    inherit.aes = FALSE
+  ) +
+  geom_histogram(binwidth = 4, fill = "#005f73") +
+  geom_vline(
+    xintercept = c(0, target_weeks),
+    color = "#D41159",
+    linetype = "dashed", 
+    linewidth = 1.1
+  ) +
+  scale_fill_manual(
+    values = c(
+      "default_color" = "grey",
+      "special_color" = "#e3827b" 
+    )
+  ) +
+  guides(fill = "none") +
+  labs(
+    title = "ADL & CFI",
+    y = "",
+    x = NULL
+  ) +
+  scale_x_continuous(breaks = c(0, target_weeks)) +
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(size = 14, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 14),
+    axis.text.x = element_blank(),
+    axis.text = element_text(size = 12)
+  )
+
+c3_weeks_plot <- c3_clean |> 
+  filter(WEEK < 252) |> 
+  ggplot(aes(x = WEEK)) +
+  geom_rect(
+    data = rect_data,
+    aes(xmin = xmin, xmax = xmax, ymin = -Inf, ymax = Inf, fill = fill_group_c3),
+    alpha = 0.2,
+    inherit.aes = FALSE
+  ) +
+  geom_histogram(binwidth = 4, fill = "#005f73") +
+  geom_vline(
+    xintercept = c(0, target_weeks),
+    color = "#D41159",
+    linetype = "dashed", 
+    linewidth = 1.1
+  ) +
+  scale_fill_manual(
+    values = c(
+      "default_color" = "grey",
+      "special_color" = "#e3827b"
+    )
+  ) +
+  guides(fill = "none") + 
+  labs(
+    title = "C3",
+    y = "",
+    x = "Week of Assessment"
+  ) +
+  scale_x_continuous(breaks = c(0, target_weeks)) +
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(size = 14, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 14),
+    axis.title.x = element_text(size = 14),
+    axis.text = element_text(size = 12)
+  )
+
+pacc_plot <- ADQS_raw |>
+  filter(QSTESTCD == "PACC", ADURW <= 252, TX == "Placebo") |>
+  ggplot(aes(x = ADURW)) +
+  geom_rect(
+    data = rect_data,
+    aes(xmin = xmin, xmax = xmax, ymin = -Inf, ymax = Inf, fill = fill_group_pacc),
+    alpha = 0.2,
+    inherit.aes = FALSE
+  ) +
+  geom_histogram(binwidth = 4, fill = "#005f73") +
+  geom_vline(
+    xintercept = c(0, target_weeks),
+    color = "#D41159",
+    linetype = "dashed", 
+    linewidth = 1.1
+  ) +
+  scale_fill_manual(
+    values = c(
+      "default_color" = "grey",
+      "special_color" = "#e3827b" 
+    )
+  ) +
+  guides(fill = "none") + 
+  labs(
+    title = "PACC Tests",
+    y = "",
+    x = NULL
+  ) +
+  scale_x_continuous(breaks = c(0, target_weeks)) +
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(size = 14, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 14),
+    axis.text = element_text(size = 12),
+    axis.text.x = element_blank()
+  )
+```
+
+```{r}
+plot_schedule_three <- adl_plot / pacc_plot / c3_weeks_plot
+variation_in_test_schedule <- plot_schedule_three +
+  plot_annotation(
+    title = "Variability in Clinical Assessment Timing",
+    subtitle = "Test administration counts with +/- 12 week target assessment windows",
+    theme = theme(
+      plot.title = element_text(size = 20, face = "bold"),
+      plot.subtitle = element_text(size = 14)
+  )) &
+  theme(legend.position = "top", 
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 12))
+variation_in_test_schedule
+# ggsave("5_variation_in_test_schedule.png", variation_in_test_schedule, height = 8, width = 8, dpi = 300, units = "in")
+```
+
+# 6) CDR Progression EDA
+
+```{r}
+# histogram of the distribution of the week of first clinical progression 
+# (CDR Global > 0) for each patient
+first_progression_weeks <- CDR_ind |>
+  filter(CDGLOBAL > 0) |>
+  group_by(BID) |>
+  slice_min(order_by = WEEK, n = 1, with_ties = FALSE) |>
+  ungroup()
+
+cdr_hist <- ggplot(data = first_progression_weeks, aes(x = WEEK)) +
+  geom_histogram(
+    binwidth = 10,   
+    fill = "#005f73",
+    color = "white"
+  ) +
+  scale_x_continuous(breaks = c(0, 48, 108, 168, 204, 240)) +
+  labs(
+    title = "Distribution of First CDR Global Progression Time",
+    x = "Week of First Progression (CDR Global > 0)",
+    y = ""
+  ) +
+  theme_light()
+  
+cdr_hist
+# ggsave("6a_cdr_hist.png", cdr_hist, height = 5, width = 7, dpi = 300, units = "in")
+```
+
+```{r}
+# time-to-event:cumulative incidence curve, showing the total proportion of the 
+# initial study cohort that has progressed (first instance of CDR Global > 0) by each week
+total_subjects <- n_distinct(CDR_ind$BID)
+
+first_progression_weeks <- CDR_ind |>
+  filter(CDGLOBAL > 0) |>
+  group_by(BID) |>
+  slice_min(order_by = WEEK, n = 1, with_ties = FALSE) |>
+  ungroup() |>
+  select(WEEK) |>
+  arrange(WEEK)
+
+cumulative_progression_data <- first_progression_weeks |>
+  mutate(cumulative_count = row_number()) |>
+  mutate(proportion_progressed = cumulative_count / total_subjects) |>
+  add_row(WEEK = 0, cumulative_count = 0, proportion_progressed = 0, .before = 1)
+
+cdr_cumulative_plot <- ggplot(data = cumulative_progression_data, aes(x = WEEK, y = proportion_progressed)) +
+  geom_step(size = 1.2, color = "#005f73") + 
+  scale_y_continuous(
+    labels = scales::percent_format(),  
+    limits = c(0, NA)           
+  ) +
+  scale_x_continuous(breaks = c(0, 48, 108, 168, 204, 240)) + 
+  labs(
+    title = "Cumulative Proportion of Patients with Global CDR > 0.5",
+    x = "Week of Study",
+    y = "Total Proportion of Cohort Progressed"
+  ) +
+  theme_bw()
+
+cdr_cumulative_plot
+# ggsave("6b_cdr_cumulative_plot.png", cdr_cumulative_plot, height = 5, width = 7, dpi = 300, units = "in")
+```
+
+```{r}
+# cross-sectional proportion of patients with a positive CDR status 
+# at each specific target week, calculated from those present for observation at that time
+proportion_by_week <- wide_cdr_indicator |>
+  pivot_longer(
+    cols = starts_with("CDPOS_"),
+    names_to = "target_week_col",
+    values_to = "status"
+  ) |>
+  mutate(week = readr::parse_number(target_week_col)) |>
+  group_by(week) |>
+  summarise(proportion_progressed = mean(status, na.rm = TRUE)) |>
+  add_row(week = 0, proportion_progressed = 0, .before = 1)
+
+cdr_proportion_plot <- ggplot(data = proportion_by_week, aes(x = week, y = proportion_progressed)) +
+  geom_line(size = 1, color = "#005f73") +
+  geom_point(size = 3, color = "#005f73") +
+  scale_y_continuous(
+    labels = scales::percent_format(),  
+    limits = c(0, NA)           
+  ) +
+  scale_x_continuous(breaks = proportion_by_week$week) + 
+  labs(
+    title = "Cumulative Proportion of Observed Patients with Global CDR > 0.5",
+    x = "Target Week",
+    y = "Proportion of Observed Cohort Progressed"
+  ) +
+  theme_bw()
+
+# ggsave("6c_cdr_proportion_plot.png", cdr_proportion_plot, height = 5, width = 7, dpi = 300, units = "in")
+```
+
+# 7) Learning Effect Plots
+
+```{r}
+# Expected vs Learn effect plots
+x_vals <- seq(0, 48, length.out = 100)
+
+amyloid_df <- data.frame(
+  x = rep(x_vals, 2),
+  y = c(
+    approx(x = c(0, 48), y = c(10, 10), xout = x_vals)$y,
+    approx(x = c(0, 48), y = c(7.5, 2.5), xout = x_vals)$y
+  ),
+  condition = rep(c("No Amyloid Presence", "Amyloid Presence"), each = length(x_vals))
+) %>% mutate(condition = factor(condition, levels = c("No Amyloid Presence", "Amyloid Presence")))
+
+learn_df <- data.frame(
+  x = rep(x_vals, 2),
+  y = c(
+    0.6 * sqrt(x_vals) + 10,
+    0.4 * sqrt(x_vals) + 7.5
+  ),
+  condition = rep(c("No Amyloid Presence", "Amyloid Presence"), each = length(x_vals))
+) %>% mutate(condition = factor(condition, levels = c("No Amyloid Presence", "Amyloid Presence")))
+
+amyloid_plot <- ggplot(amyloid_df, aes(x = x, y = y, color = condition)) +
+  geom_hline(yintercept = 7.5, linetype = "dashed", color = "#D55E00", linewidth = 1) +
+  geom_line(linewidth = 1.2) +
+  scale_color_manual(
+    name = NULL,
+    values = c("No Amyloid Presence" = "#0072B2", "Amyloid Presence" = "#D55E00")
+  ) +
+  labs(title = 'Expected Change In Score', x = "Time (weeks)", y = "Test Score") +
+  scale_x_continuous(breaks = c(0, 48), limits = c(0, 50)) +
+  scale_y_continuous(limits = c(0, 15), expand = c(0, 0)) +
+  theme_classic() +
+  theme(legend.position = "top",
+        plot.title = element_text(face = "bold", size = 18, hjust = 0.5),
+        axis.title.x = element_text(face = "bold", size = 16),
+        axis.title.y = element_text(face = "bold", size = 16),
+        axis.text = element_text(size = 16))
+amyloid_plot
+# ggsave("7a_amyloid_plot.png", plot = amyloid_plot, width = 8, height = 5, dpi = 300)
+
+learn_plot <- ggplot(learn_df, aes(x = x, y = y, color = condition)) +
+  geom_line(linewidth = 1.2) +
+  scale_color_manual(
+    name = NULL,
+    values = c("No Amyloid Presence" = "#0072B2", "Amyloid Presence" = "#D55E00")
+  ) +
+  labs(title = 'Illustration of the Learned Effect', x = "Time (weeks)", y = "Test Score") +
+  scale_x_continuous(breaks = c(0, 48), limits = c(0, 50)) +
+  scale_y_continuous(limits = c(0, 15), expand = c(0, 0)) +
+  theme_classic() +
+  theme(legend.position = "top",
+        plot.title = element_text(face = "bold", size = 18, hjust = 0.5),
+        axis.title.x = element_text(face = "bold", size = 16),
+        axis.title.y = element_text(face = "bold", size = 16),
+        axis.text = element_text(size = 16))
+learn_plot
+# ggsave("7b_learn_plot.png", plot = learn_plot, width = 8, height = 5, dpi = 300)
+```
+
+```{r}
+# Learn effect
+blue_df <- bind_rows(
+  data.frame(
+    x = x_vals,
+    y = 10,
+    model = "Expected"
+  ),
+  data.frame(
+    x = x_vals,
+    y = 0.6 * sqrt(x_vals) + 10,
+    model = "Learned"
+  )
+)
+
+blue_plot <- ggplot(blue_df, aes(x = x, y = y, linetype = model)) +
+  geom_line(color = "#0072B2", linewidth = 1.2) +
+  scale_linetype_manual(
+    name = "Effect Model", # Legend Title
+    values = c("Expected" = "dashed", "Learned" = "solid")
+  ) +
+  labs(
+    title = "Learn Effect in Amyloid-free Individuals",
+    x = "Time (weeks)",
+    y = "Test Score"
+  ) +
+  scale_x_continuous(breaks = c(0, 48), limits = c(0, 50)) +
+  scale_y_continuous(limits = c(0, 15), expand = c(0, 0)) +
+  theme_classic() +
+  theme(
+    legend.position = "top",
+    plot.title = element_text(face = "bold", size = 18, hjust = 0.5),
+    axis.title.x = element_text(face = "bold", size = 16),
+    axis.title.y = element_text(face = "bold", size = 16),
+    axis.text = element_text(size = 16)
+  )
+blue_plot
+# ggsave("7c_blue_plot.png", plot = blue_plot, width = 8, height = 5, dpi = 300)
+```
+
+```{r}
+# Amyloid group, but with grey lines indicating learn effect
+orange_df <- bind_rows(
+  # data for the upward curving line (grey)
+  data.frame(
+    x = x_vals,
+    y = 0.4 * sqrt(x_vals) + 7.5,
+    model = "Upward Curve"
+  ),
+  # data for the horizontal dashed line (grey)
+  data.frame(
+    x = x_vals,
+    y = 7.5,
+    model = "Horizontal Dashed"
+  ),
+  # data for the downward line (orange)
+  data.frame(
+    x = x_vals,
+    y = -0.0022 * (x_vals^2) + 7.5,
+    model = "Downward Curve"
+  )
+) %>%
+  mutate(model = factor(model, levels = c("Upward Curve", "Horizontal Dashed", "Downward Curve")))
+
+orange_plot <- ggplot(orange_df, aes(x = x, y = y, linetype = model, color = model)) +
+  geom_line(linewidth = 1.2) +
+  scale_color_manual(
+    name = NULL,
+    values = c("Upward Curve" = "grey", "Horizontal Dashed" = "grey", "Downward Curve" = "#D55E00")
+  ) +
+  scale_linetype_manual(
+    name = NULL,
+    values = c("Upward Curve" = "solid", "Horizontal Dashed" = "dashed", "Downward Curve" = "solid")
+  ) +
+  labs(
+    title = "Expected Cognitive Decline vs Learn Effect in A4 Study Cohort",
+    x = "Time (weeks)",
+    y = "Test Score"
+  ) +
+  scale_x_continuous(breaks = c(0, 48), limits = c(0, 50)) +
+  scale_y_continuous(limits = c(0, 15), expand = c(0, 0)) +
+  theme_classic() +
+  theme(
+    legend.position = "none", 
+    plot.title = element_text(face = "bold", size = 18, hjust = 0.5),
+    axis.title.x = element_text(face = "bold", size = 16),
+    axis.title.y = element_text(face = "bold", size = 16),
+    axis.text = element_text(size = 16)
+  )
+orange_plot
+ggsave("7d_orange_plot.png", plot = orange_plot, width = 8, height = 5, dpi = 300)
+```
+
+# 8) Sample Size vs AUC Scatter Plot
+
+```{r}
+auc_sample_size <- ggplot(summary_df_48, aes(x = n, y = auc)) +
+  geom_point(color = "#005f73", size = 4, alpha = 0.6) +
+  geom_text_repel(
+    aes(label = test_name),
+    box.padding = 0.5,
+    max.overlaps = Inf, 
+    fontface = "bold",
+    size = 4
+  ) +
+  scale_x_log10(
+    name = "Required Sample Size (n) - Log Scale",
+    labels = label_number(accuracy = 1, scale_cut = cut_short_scale())
+  ) +
+
+  scale_y_continuous(
+    name = "Area Under Curve (AUC)",
+    limits = c(0.5, 0.8), 
+    breaks = seq(0.6, 0.8, by = 0.05)
+  ) +
+  annotate(
+    "rect", xmin = 1, xmax = 500, ymin = 0.7, ymax = 0.8,
+    fill = "lightgreen", alpha = 0.2
+  ) +
+  annotate(
+    "text", x = 5, y = 0.78, label = "Ideal Tests",
+    fontface = "bold.italic", color = "darkgreen", size = 5
+  ) +
+  labs(
+    title = "Balancing Predictive Power and Study Cost",
+    subtitle = "Sample size required to achieve 80% power at α = 0.05"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5, color = "gray30"),
+    axis.title = element_text(face = "bold")
+  )
+auc_sample_size
+# ggsave("8_auc_sample_size.png", auc_sample_size, height = 5, width = 7, dpi = 300, units = "in")
+```
+
+# 9) Spline Plot for LMIIA (Illustrate Learn Effect)
+
+```{r}
+# define Spline Functions adapted from Intro-to-A4-data.pdf
+ns21_comb <- function(t){
+  as.numeric(predict(splines::ns(COMBINED_LMIIa$ADURW, df = 2,
+                                 Boundary.knots = c(0, max(COMBINED_LMIIa$ADURW))), t)[,1])
+}
+ns22_comb <- function(t){
+  as.numeric(predict(splines::ns(COMBINED_LMIIa$ADURW, df = 2,
+                                 Boundary.knots = c(0, max(COMBINED_LMIIa$ADURW))), t)[,2])
+}
+
+# NOTE: This will take a while to run...
+combined_fit <- gls(
+  LMIIa ~ (I(ns21_comb(ADURW)) + I(ns22_comb(ADURW))) * STUDY_GROUP,
+  data = COMBINED_LMIIa,
+  weights = varIdent(form = ~ 1 | ASEQNCS),
+  correlation = corAR1(form = ~ ASEQNCS | BID),
+  na.action = na.omit
+)
+```
+
+```{r}
+combined_emmeans <- ref_grid(
+  combined_fit,
+  at = list(ADURW = seq(0, 240, by = 12),
+            STUDY_GROUP = c("A4 Placebo", "LEARN")),
+  vcov. = clubSandwich::vcovCR(combined_fit, type = "CR2")
+)|>
+  emmeans(specs = "STUDY_GROUP", by = "ADURW")|>
+  as_tibble()
+
+learn_curve_lmiia <- ggplot(combined_emmeans, aes(x = ADURW, y = emmean, color = STUDY_GROUP, fill = STUDY_GROUP)) +
+  geom_line(linewidth = 1) +
+  geom_ribbon(aes(ymin = lower.CL, ymax = upper.CL), alpha = 0.2, linetype = 0) +
+  scale_x_continuous(breaks = c(0, 48, 108, 168, 204, 240)) +
+  scale_color_manual(values = c("A4 Placebo" = "#D81B60", "LEARN" = "#1E88E5")) +
+  scale_fill_manual(values = c("A4 Placebo" = "#D81B60", "LEARN" = "#1E88E5")) +
+  labs(
+    title = "Comparison of Mean LMIIa between A4 (Placebo) and LEARN Study Participants",
+    subtitle = "Estimated from a GLS spline model",
+    y = "Mean LMIIa with 95% confidence intervals",
+    x = "Weeks since Randomization",
+    color = "Cohort", 
+    fill = "Cohort"
+  ) +
+  coord_cartesian(xlim = c(0, 240)) +
+  theme_light() +
+  theme(legend.position = "bottom")
+learn_curve_lmiia
+# ggsave(learn_curve_lmiia, filename = "9_learn_curve_lmiia.png", height = 6, width = 8, dpi = 300, units = "in")
+```
+
