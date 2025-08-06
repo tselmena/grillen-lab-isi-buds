@@ -46,7 +46,7 @@ The repository is organized into the following folders:
     * `plots.qmd`: Generates all figures used in the presentation.
     * `tables.qmd`: Generates all publication-style tables and contains LaTeX appendix equations.
 
-* **/data**: Contains the raw and unmodified data from the A4 study.
+* **/data**: Data Not Included. Due to its size, the A4 study data is not stored in this repository. The analysis scripts expect a `data` folder that contains the three original subfolders of `A4_ClinicalData` named `External Data`, `Derived Data`, and `Raw Data`. The path should look like `data/External Data/`, `data/Derived Data/`, and `data/Raw Data/`.
 
 * **/documentation**: Contains original A4 study documentation, including data dictionaries and references.
 
@@ -59,7 +59,7 @@ The repository is organized into the following folders:
 ## How to Run the Analysis (Workflow)
 To reproduce the analysis and generate all figures and tables:
 
-1.  **Open the project** in R or RStudio. Ensure all required libraries listed in `helpers/01-load-libraries.R` are installed.
+1.  **Set up the data folder**. Place the contents into the `/data` directory at the root of this project. Also, ensure all required libraries listed in `helpers/01-load-libraries.R` are installed.
 2.  **Run the main processing script first.** Open and run all chunks in `analysis/data-processing-and-calculations.qmd`. This will create the necessary data objects and save them to the environment.
 3.  **Generate figures and tables.** Once the main script is complete, you can run the files in any order:
     * Run `analysis/plots.qmd` to generate the plots.
