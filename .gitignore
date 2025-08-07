@@ -4,3 +4,5 @@
 .Ruserdata
 # Ignore all data files
 data/
+# Ignore macOS system files
+.DS_Store
