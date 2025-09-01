@@ -1,0 +1,1161 @@
+---
+title: "Multivariate Power Analysis with AIC-Optimized Model - Week 48"
+author: "Ian Sequeira"
+format: html
+editor: visual
+---
+
+# Load Libraries and Helper Functions
+
+```{r setup}
+#| message: false
+#| warning: false
+
+library(here)
+source(here("helpers", "01-load-libraries.R"))
+source(here("helpers", "02-functions.R"))
+
+# Additional libraries specific to this analysis
+library(purrr)
+library(ggplot2)
+library(scales)
+library(ggrepel)
+library(broom)
+library(kableExtra)
+library(MASS)  
+library(boot)
+library(pROC)
+```
+
+# Custom Functions
+
+```{r custom_functions}
+#| message: false
+#| warning: false
+
+# Function to format p-values
+formatp <- function(x) case_when(
+  x < 0.001 ~ "p<0.001",
+  x > 0.01 ~ Hmisc::format.pval(x, digits=2, eps=0.01, nsmall=2),
+  TRUE ~ Hmisc::format.pval(x, digits=3, eps=0.001, nsmall=3))
+
+# ROC calculation function for AUC
+calculate_roc_auc <- function(y_true, risk_scores) {
+  complete_cases <- !is.na(y_true) & !is.na(risk_scores)
+  y_true <- y_true[complete_cases]
+  risk_scores <- risk_scores[complete_cases]
+  
+  if(length(unique(y_true)) < 2) return(NA)
+  
+  cutpt <- seq(min(risk_scores), max(risk_scores), length = 100)
+  sensitivity <- specificity <- rep(NA, length(cutpt))
+  
+  for(i in 1:length(cutpt)) {
+    prog <- risk_scores[y_true == 1]
+    noprog <- risk_scores[y_true == 0]
+    
+    sensitivity[i] <- sum(prog >= cutpt[i]) / length(prog)
+    specificity[i] <- sum(noprog < cutpt[i]) / length(noprog)
+  }
+  
+  auc <- sum(diff(1 - specificity) * (sensitivity[-1] + sensitivity[-length(sensitivity)]) / 2)
+  return(abs(auc))
+}
+
+# Power analysis function
+calculate_sample_size <- function(variance, delta, alpha = 0.05, beta = 0.20) {
+  if(is.na(variance) || is.na(delta) || variance <= 0 || delta == 0) {
+    return(NA)
+  }
+  
+  z_alpha <- qnorm(1 - alpha / 2)
+  z_beta <- qnorm(1 - beta)
+  n <- (2 * variance * (z_alpha + z_beta)^2) / delta^2
+  
+  return(ceiling(n))
+}
+
+# Function to calculate test-specific risk scores
+calculate_test_risk_scores <- function(data, test_name, model) {
+  test_data <- data
+  
+  # Identify variables for this test
+  if(test_name == "C3") {
+    test_vars <- "z_delta_C3_W48"
+  } else {
+    test_vars <- c(paste0("adjusted_delta_", test_name, "_W48"),
+                   paste0("baseline_", test_name))
+  }
+  
+  # Get predictors that are actually in the optimal model
+  model_terms <- names(coef(model))[-1]
+  all_predictors <- unique(unlist(strsplit(model_terms, ":")))
+  
+  # Set other predictors to their means
+  other_predictors <- setdiff(all_predictors, test_vars)
+  
+  for(pred in other_predictors) {
+    if(pred %in% names(test_data)) {
+      test_data[[pred]] <- mean(data[[pred]], na.rm = TRUE)
+    }
+  }
+  
+  # Calculate risk scores (log odds)
+  risk_scores <- predict(model, newdata = test_data, type = "link")
+  return(risk_scores)
+}
+```
+
+# Data Preparation and Quality Checks
+
+```{r load_data}
+#| message: false
+#| warning: false
+
+# Load the starting data files
+data_wk48 <- read_csv("data/data_wk48.csv")
+learn_data <- read_csv("data/data_learn&base_wk48.csv")
+
+# Check data structure
+cat("A4 data dimensions:", nrow(data_wk48), "x", ncol(data_wk48), "\n")
+cat("LEARN data dimensions:", nrow(learn_data), "x", ncol(learn_data), "\n")
+cat("Number of positive outcomes in A4:", sum(data_wk48$CDPOS_W240), "\n")
+cat("Outcome rate in A4:", round(mean(data_wk48$CDPOS_W240), 3), "\n\n")
+
+# Define test codes
+test_codes <- c("ADLPQPT", "ADLPQSP", "CFIPT", "CFISP", 
+                "DIGIT", "FCSRT96", "LMIIA", "MMSE")
+```
+
+# LEARN Effect Calculation and Adjustment
+
+```{r learn_effects}
+# Calculate LEARN effects (population-level practice effects)
+learn_effects <- learn_data %>%
+  summarise(
+    across(starts_with("z_delta_") & ends_with("_W48"), 
+           ~mean(.x, na.rm = TRUE), 
+           .names = "learn_effect_{.col}")
+  ) %>%
+  rename_all(~str_replace(., "z_delta_", ""))
+
+cat("LEARN effects calculated for adjustment:\n")
+print(learn_effects)
+```
+
+```{r create_adjusted_variables}
+# Create adjusted delta scores by subtracting LEARN effects
+data_wk48_adjusted <- data_wk48
+
+# For each test, create adjusted delta
+for(test in test_codes) {
+  z_delta_col <- paste0("z_delta_", test, "_W48")
+  learn_effect_col <- paste0("learn_effect_", test, "_W48")
+  adjusted_col <- paste0("adjusted_delta_", test, "_W48")
+  
+  if(z_delta_col %in% names(data_wk48) && learn_effect_col %in% names(learn_effects)) {
+    data_wk48_adjusted[[adjusted_col]] <- 
+      data_wk48[[z_delta_col]] - learn_effects[[learn_effect_col]]
+    cat("Created", adjusted_col, "\n")
+  }
+}
+
+# Create baseline scores (Week 48 raw scores)
+for(test in test_codes) {
+  raw_col <- paste0(test, "_W48")
+  baseline_col <- paste0("baseline_", test)
+  
+  if(raw_col %in% names(data_wk48)) {
+    data_wk48_adjusted[[baseline_col]] <- data_wk48[[raw_col]]
+    cat("Created", baseline_col, "\n")
+  }
+}
+
+# C3 doesn't need adjustment (not in LEARN)
+if("z_delta_C3_W48" %in% names(data_wk48_adjusted)) {
+  cat("\nC3 delta score included (no LEARN adjustment needed)\n")
+}
+
+# Remove rows with missing outcomes
+data_complete <- data_wk48_adjusted %>% 
+  filter(!is.na(CDPOS_W240))
+
+cat("\nFinal data dimensions:", nrow(data_complete), "x", ncol(data_complete), "\n")
+```
+
+# Individual Test Risk Score Analysis
+
+```{r individual_test_analysis}
+#| message: false
+#| warning: false
+
+# Calculate results for each test using BIC-optimal model
+test_codes_all <- c(test_codes, "C3")
+auc_results <- data.frame()
+
+cat("\nCalculating test-specific AUCs using BIC-optimal model...\n")
+cat("Model has", length(coef(glm_optimal)), "parameters (including intercept)\n\n")
+
+for(test in test_codes_all) {
+  # Check if this test's variables are in the optimal model
+  if(test == "C3") {
+    test_var <- "z_delta_C3_W48"
+  } else {
+    test_var <- paste0("adjusted_delta_", test, "_W48")
+  }
+  
+  # Check if test variable is in the model (main effect or interaction)
+  model_vars <- names(coef(glm_optimal))
+  if(!any(grepl(test_var, model_vars))) {
+    cat("\n", test, "not included in BIC-optimal model - skipping\n")
+    next
+  }
+  
+  cat("\nProcessing", test, "...\n")
+  
+  # Get variable names
+  if(test == "C3") {
+    delta_var <- "z_delta_C3_W48"
+    adj_delta_var <- delta_var
+  } else {
+    delta_var <- paste0("z_delta_", test, "_W48")
+    adj_delta_var <- paste0("adjusted_delta_", test, "_W48")
+  }
+  
+  # Skip if variables don't exist in data
+  var_col <- ifelse(test == "C3", delta_var, adj_delta_var)
+  if(!var_col %in% names(data_complete)) {
+    cat("  Variable not found in data - skipping\n")
+    next
+  }
+  
+  # Calculate risk scores
+  risk_scores <- calculate_test_risk_scores(data_complete, test, glm_optimal)
+  
+  # Calculate AUC
+  auc <- calculate_roc_auc(data_complete$CDPOS_W240, risk_scores)
+  
+  # Calculate variance of the LINEAR PREDICTOR
+  risk_score_variance <- var(risk_scores, na.rm = TRUE)
+  
+  # Calculate mean change in risk score between positive and negative outcomes
+  mean_risk_pos <- mean(risk_scores[data_complete$CDPOS_W240 == 1], na.rm = TRUE)
+  mean_risk_neg <- mean(risk_scores[data_complete$CDPOS_W240 == 0], na.rm = TRUE)
+  mean_risk_delta <- mean_risk_pos - mean_risk_neg
+  
+  # Get sample size for reporting
+  n_complete <- sum(!is.na(data_complete[[var_col]]))
+  
+  cat("  AUC:", round(auc, 3), "\n")
+  cat("  Risk score variance:", round(risk_score_variance, 4), "\n")
+  cat("  Mean risk score difference:", round(mean_risk_delta, 4), "\n")
+  cat("  (Original data variance:", round(var(data_complete[[var_col]], na.rm = TRUE), 4), ")\n")
+  
+  # Add to results - using risk score statistics
+  auc_results <- rbind(auc_results, 
+                       data.frame(
+                         test_name = test,
+                         auc = auc,
+                         variance = risk_score_variance,
+                         mean_delta = mean_risk_delta,
+                         n_complete = n_complete,
+                         stringsAsFactors = FALSE
+                       ))
+}
+
+# Sort by AUC
+auc_results <- auc_results %>% 
+  filter(!is.na(auc) & !is.na(variance) & variance > 0) %>%
+  arrange(desc(auc))
+
+cat("\n=== AUC RESULTS SUMMARY ===\n")
+print(auc_results)
+```
+
+# Power Analysis: Original Effect Sizes
+
+```{r power_analysis_original}
+# Calculate sample sizes using original observed effect sizes
+power_results <- auc_results %>%
+  mutate(
+    abs_mean_delta = abs(mean_delta),
+    sample_size = map2_dbl(variance, abs_mean_delta, 
+                           ~calculate_sample_size(.x, .y, alpha = 0.05, beta = 0.20)),
+    test_label = paste0(test_name, "\n(AUC: ", sprintf("%.2f", auc), ")")
+  ) %>%
+  filter(!is.na(sample_size) & sample_size > 0 & sample_size < 1e6) %>%
+  arrange(sample_size)
+
+cat("\nPower Analysis Results (BIC-Optimized Model):\n")
+cat("================================================\n")
+print(power_results %>% 
+      dplyr::select(test_name, auc, sample_size, variance, abs_mean_delta) %>%
+      mutate(across(where(is.numeric), ~round(., 3))))
+
+# Check if we have reasonable sample sizes
+if(any(power_results$sample_size > 10000)) {
+  cat("\nWARNING: Some sample sizes are very large (>10,000).\n")
+  cat("This may indicate the BIC model removed too many predictors.\n")
+  cat("Consider using AIC or a less aggressive penalty.\n")
+}
+```
+
+# Visualization: Original Effect Power Analysis
+
+```{r power_vis_original}
+#| fig-width: 12
+#| fig-height: 8
+
+# Order by AUC for visualization
+plot_data <- power_results %>%
+  arrange(desc(auc)) %>%
+  mutate(test_label = factor(test_label, levels = test_label))
+
+# Create the power analysis plot
+p <- ggplot(plot_data, aes(x = test_label, y = sample_size, fill = auc)) +
+  geom_col(color = "black", width = 0.7) +
+  
+  # Add sample size labels
+  geom_text(
+    aes(label = scales::comma(sample_size)), 
+    vjust = 1.5, 
+    color = "white",
+    size = 5,
+    fontface = "bold"
+  ) +
+  
+  # Log scale for y-axis
+  scale_y_log10(
+    name = "n (sample size)",
+    labels = scales::comma,
+    breaks = c(10, 25, 50, 100, 250, 500, 1000, 2500, 5000, 10000, 25000, 50000)
+  ) +
+  
+  # Color gradient
+  scale_fill_gradientn(
+    colors = c("#FFEBE5", "#FFBEB2", "#FA8D76", "#F46C58", "#E44144", "#C73635", "#9F3632"),
+    name = "AUC",
+    limits = c(0, 1),
+    breaks = seq(0, 1, 0.2),
+    guide = guide_colorbar(
+      barwidth = 1,
+      barheight = 15,
+      title.position = "top",
+      title.hjust = 0.5
+    )
+  ) +
+  
+  # Expand y-axis for labels
+  coord_cartesian(clip = "off", 
+                  ylim = c(min(plot_data$sample_size) * 0.7, 
+                          max(plot_data$sample_size) * 2)) +
+  
+  # Labels and theme
+  labs(
+    title = "Test w/ 80% Power",
+    subtitle = "Sample size needed (α = 0.05, power = 80%, two-tailed = TRUE) - BIC-Optimized Model",
+    x = "",
+    y = "n (sample size)"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(size = 12, face = "bold", vjust = 0.5),
+    axis.text.y = element_text(size = 12),
+    axis.title.y = element_text(size = 14, face = "bold"),
+    plot.title = element_text(size = 20, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 14, hjust = 0.5),
+    legend.title = element_text(size = 14, face = "bold"),
+    legend.text = element_text(size = 12),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_line(color = "gray90"),
+    plot.background = element_rect(fill = "white", color = NA)
+  )
+
+print(p)
+
+# Save plot
+ggsave("multivariate_power_analysis_bic_optimized.png", p, width = 12, height = 8, dpi = 300)
+
+# Print summary comparison
+cat("\n=== POWER ANALYSIS SUMMARY ===\n")
+cat("Tests included in BIC-optimal model:", nrow(power_results), "out of", length(test_codes_all), "\n")
+cat("Median sample size required:", median(power_results$sample_size), "\n")
+cat("Range of sample sizes:", min(power_results$sample_size), "-", max(power_results$sample_size), "\n")
+cat("Tests with best power (smallest n):\n")
+print(head(power_results %>% dplyr::select(test_name, sample_size, auc), 3))
+```
+
+# Full Model Power Analysis
+
+```{r full_model_power}
+# Get linear predictors from the BIC-optimized model (already calculated)
+linear_predictors <- predict(glm_optimal, type = "link")
+
+# Calculate variance of linear predictors
+lp_variance <- var(linear_predictors, na.rm = TRUE)
+
+# Calculate mean linear predictors for positive and negative outcomes
+mean_lp_positive <- mean(linear_predictors[data_complete$CDPOS_W240 == 1], na.rm = TRUE)
+mean_lp_negative <- mean(linear_predictors[data_complete$CDPOS_W240 == 0], na.rm = TRUE)
+
+# Effect size: difference in mean linear predictors
+effect_size <- mean_lp_positive - mean_lp_negative
+
+# Calculate AUC
+auc_obj <- roc(data_complete$CDPOS_W240, linear_predictors)
+auc_value <- auc(auc_obj)
+
+# Display the values
+cat("Linear Predictor Statistics:\n")
+cat("- Variance of linear predictor:", round(lp_variance, 4), "\n")
+cat("- Mean LP (positive outcomes):", round(mean_lp_positive, 4), "\n")
+cat("- Mean LP (negative outcomes):", round(mean_lp_negative, 4), "\n")
+cat("- Effect size (difference):", round(effect_size, 4), "\n")
+cat("- Model AUC:", round(auc_value, 3), "\n\n")
+
+# Power calculation
+z_alpha <- qnorm(1 - 0.05/2)  # Two-tailed test, alpha = 0.05
+z_beta <- qnorm(0.80)          # 80% power
+
+# Calculate sample size
+sample_size <- ceiling(2 * lp_variance * (z_alpha + z_beta)^2 / effect_size^2)
+
+cat("Power Calculation Components:\n")
+cat("- Z-alpha (two-tailed):", round(z_alpha, 3), "\n")
+cat("- Z-beta (80% power):", round(z_beta, 3), "\n")
+cat("- (Z-alpha + Z-beta)^2:", round((z_alpha + z_beta)^2, 3), "\n\n")
+
+cat("SAMPLE SIZE REQUIRED:", sample_size, "\n\n")
+
+# Additional statistics
+outcome_rate <- mean(data_complete$CDPOS_W240)
+expected_events <- round(sample_size * outcome_rate)
+events_per_param <- round(expected_events / 10, 1)  # 9 predictors + intercept = 10
+
+cat("Expected outcomes with this sample size:\n")
+cat("- Total participants:", sample_size, "\n")
+cat("- Expected positive outcomes:", expected_events, "\n")
+cat("- Events per parameter:", events_per_param, "\n\n")
+```
+
+# Visualization: Full Model Power
+
+```{r full_model_power_vis}
+# Create visualization
+viz_data <- data.frame(
+  Model = "BIC-Optimized Model\n(9 terms)",
+  Sample_Size = sample_size,
+  AUC = round(auc_value, 3),
+  Effect_Size = round(effect_size, 3),
+  Variance = round(lp_variance, 4)
+)
+
+# Simple bar plot
+p_power <- ggplot(viz_data, aes(x = Model, y = Sample_Size)) +
+  geom_col(fill = "#2E86AB", color = "black", width = 0.5) +
+  
+  # Sample size label on top
+  geom_text(aes(label = Sample_Size), 
+            vjust = -0.5, 
+            size = 10, 
+            fontface = "bold") +
+  
+  # Model statistics below
+  annotate("text", x = 1, y = 5, 
+           label = paste0("AUC = ", viz_data$AUC, 
+                         "\nEffect Size = ", viz_data$Effect_Size,
+                         "\nVariance = ", viz_data$Variance),
+           size = 6, fontface = "bold") +
+  
+  # Y-axis scale
+  scale_y_continuous(
+    name = "Sample Size Required",
+    limits = c(0, sample_size * 1.3),
+    expand = c(0, 0)
+  ) +
+  
+  # Labels and theme
+  labs(
+    title = "Power Analysis: BIC-Optimized Model",
+    subtitle = "Sample size for 80% power (α = 0.05, two-tailed test)",
+    x = ""
+  ) +
+  
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(size = 22, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 16, hjust = 0.5),
+    axis.title.y = element_text(size = 16, face = "bold"),
+    axis.text.x = element_text(size = 14, face = "bold"),
+    axis.text.y = element_text(size = 14),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.border = element_rect(color = "black", fill = NA, size = 1),
+    plot.margin = margin(20, 20, 20, 20)
+  )
+
+print(p_power)
+
+# Save the plot
+ggsave("bic_model_power_analysis_final.png", p_power, width = 8, height = 8, dpi = 300)
+
+# Verification
+cat("\nVERIFICATION:\n")
+cat("Sample size = 2 × variance × (z_alpha + z_beta)² / effect_size²\n")
+cat("Sample size = 2 ×", round(lp_variance, 4), "×", round((z_alpha + z_beta)^2, 3), "/", round(effect_size^2, 4), "\n")
+cat("Sample size =", sample_size, "\n")
+```
+
+# Model Comparison Summary
+
+```{r model_comparison}
+# Create comparison between full and optimal models
+model_comparison <- data.frame(
+  Model = c("Full Model (All Interactions)", "AIC-Optimized Model"),
+  Parameters = c(length(coef(glm_full)), length(coef(glm_optimal))),
+  AIC = c(AIC(glm_full), AIC(glm_optimal)),
+  BIC = c(BIC(glm_full), BIC(glm_optimal)),
+  Deviance = c(deviance(glm_full), deviance(glm_optimal))
+) %>%
+  mutate(across(where(is.numeric), ~round(., 2)))
+
+cat("\n\nModel Comparison:\n")
+print(model_comparison)
+
+# Summary table for power analysis
+summary_table <- power_results %>%
+  dplyr::select(test_name, auc, sample_size, variance, mean_delta) %>%
+  mutate(
+    auc = round(auc, 3),
+    variance = round(variance, 4),
+    mean_delta = round(mean_delta, 4)
+  ) %>%
+  arrange(sample_size)
+
+kable(summary_table, 
+      caption = "Power Analysis Summary - AIC-Optimized Model",
+      col.names = c("Test", "AUC", "Sample Size", "Variance", "Mean Delta"),
+      align = "lcccc") %>%
+  kable_styling(full_width = FALSE, position = "center")
+```
+
+# Model Diagnostics and Retained Predictors
+
+```{r model_diagnostics}
+cat("\n\nOptimal Model Diagnostics:\n")
+cat("==========================\n")
+cat("Total observations:", nrow(data_complete), "\n")
+cat("Positive outcomes:", sum(data_complete$CDPOS_W240), "\n")
+cat("Outcome rate:", round(mean(data_complete$CDPOS_W240), 3), "\n")
+cat("Optimal model parameters:", length(coef(glm_optimal)), "\n")
+cat("AIC:", round(AIC(glm_optimal), 2), "\n")
+cat("BIC:", round(BIC(glm_optimal), 2), "\n")
+
+# Show which predictors were retained
+cat("\n\nPredictors retained in optimal model:\n")
+optimal_predictors <- names(coef(glm_optimal))[-1]
+main_effects <- optimal_predictors[!grepl(":", optimal_predictors)]
+interactions <- optimal_predictors[grepl(":", optimal_predictors)]
+
+cat("\nMain Effects (", length(main_effects), "):\n", sep = "")
+for(effect in main_effects) {
+  cat("  -", effect, "\n")
+}
+
+if(length(interactions) > 0) {
+  cat("\nInteractions (", length(interactions), "):\n", sep = "")
+  for(int in head(interactions, 10)) {  # Show first 10
+    cat("  -", int, "\n")
+  }
+  if(length(interactions) > 10) {
+    cat("  ... and", length(interactions) - 10, "more interactions\n")
+  }
+}
+```
+
+# Power Analysis: 20% Effect Size Reduction
+
+```{r power_analysis_20pct}
+# Store original results for comparison
+power_results_original <- power_results %>%
+  mutate(
+    abs_mean_delta = abs(mean_delta),
+    sample_size_original = map2_dbl(variance, abs_mean_delta, 
+                           ~calculate_sample_size(.x, .y, alpha = 0.05, beta = 0.20))
+  )
+
+# Calculate sample sizes for 20% REDUCTION (effect size × 1/5)
+power_results <- power_results_original %>%
+  mutate(
+    # Reduce effect size to 1/5 of original
+    abs_mean_delta_20pct = abs_mean_delta * (1/5),
+    # Calculate new sample size with reduced effect
+    sample_size = map2_dbl(variance, abs_mean_delta_20pct, 
+                           ~calculate_sample_size(.x, .y, alpha = 0.05, beta = 0.20)),
+    # Create label
+    test_label = paste0(test_name, "\n(AUC: ", sprintf("%.2f", auc), ")")
+  ) %>%
+  filter(!is.na(sample_size) & sample_size > 0 & sample_size < 1e6) %>%
+  arrange(sample_size)
+
+cat("\nPower Analysis Results - 20% CDR Progression Reduction (BIC-Optimized Model):\n")
+cat("================================================================================\n")
+cat("Effect sizes reduced to 1/5 of observed to represent 20% treatment effect\n\n")
+
+# Create comparison table
+comparison_table <- power_results %>% 
+  dplyr::select(test_name, auc, variance, abs_mean_delta, abs_mean_delta_20pct, 
+                sample_size_original, sample_size) %>%
+  mutate(
+    across(c(auc, variance, abs_mean_delta, abs_mean_delta_20pct), ~round(., 3)),
+    fold_increase = round(sample_size / sample_size_original, 1)
+  ) %>%
+  rename(
+    "Test" = test_name,
+    "AUC" = auc,
+    "Variance" = variance,
+    "Original Δ" = abs_mean_delta,
+    "20% Δ" = abs_mean_delta_20pct,
+    "n (Original)" = sample_size_original,
+    "n (20% Effect)" = sample_size,
+    "Fold Increase" = fold_increase
+  )
+
+print(comparison_table)
+
+# Check if we have reasonable sample sizes
+if(any(power_results$sample_size > 50000)) {
+  cat("\nNOTE: Sample sizes >50,000 indicate very small effect sizes after 20% reduction.\n")
+  cat("These tests may not be practical for detecting small treatment effects.\n")
+}
+```
+
+# Visualization: 20% Effect Size Power Analysis
+
+```{r power_vis_20pct}
+#| fig-width: 12
+#| fig-height: 8
+
+# Order by AUC for visualization
+plot_data <- power_results %>%
+  arrange(desc(auc)) %>%
+  mutate(test_label = factor(test_label, levels = test_label))
+
+# Create the power analysis plot
+p <- ggplot(plot_data, aes(x = test_label, y = sample_size, fill = auc)) +
+  geom_col(color = "black", width = 0.7) +
+  
+  # Add sample size labels
+  geom_text(
+    aes(label = scales::comma(sample_size)), 
+    vjust = 1.5, 
+    color = "white",
+    size = 5,
+    fontface = "bold"
+  ) +
+  
+  # Log scale for y-axis
+  scale_y_log10(
+    name = "n (sample size)",
+    labels = scales::comma,
+    breaks = c(100, 250, 500, 1000, 2500, 5000, 10000, 25000, 50000, 100000)
+  ) +
+  
+  # Color gradient
+  scale_fill_gradientn(
+    colors = c("#FFEBE5", "#FFBEB2", "#FA8D76", "#F46C58", "#E44144", "#C73635", "#9F3632"),
+    name = "AUC",
+    limits = c(0, 1),
+    breaks = seq(0, 1, 0.2),
+    guide = guide_colorbar(
+      barwidth = 1,
+      barheight = 15,
+      title.position = "top",
+      title.hjust = 0.5
+    )
+  ) +
+  
+  # Expand y-axis for labels
+  coord_cartesian(clip = "off", 
+                  ylim = c(min(plot_data$sample_size) * 0.7, 
+                          max(plot_data$sample_size) * 2)) +
+  
+  # Labels and theme
+  labs(
+    title = "Sample Size for 80% Power to Detect 20% CDR Progression Reduction",
+    subtitle = "Effect sizes = 1/5 of observed (α = 0.05, power = 80%, two-tailed) - BIC-Optimized Model",
+    x = "",
+    y = "n (sample size)"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(size = 12, face = "bold", vjust = 0.5),
+    axis.text.y = element_text(size = 12),
+    axis.title.y = element_text(size = 14, face = "bold"),
+    plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 13, hjust = 0.5),
+    legend.title = element_text(size = 14, face = "bold"),
+    legend.text = element_text(size = 12),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_line(color = "gray90"),
+    plot.background = element_rect(fill = "white", color = NA)
+  )
+
+print(p)
+
+# Save plot
+ggsave("power_analysis_20pct_reduction_bic_optimized.png", p, width = 12, height = 8, dpi = 300)
+
+# Print summary
+cat("\n=== POWER ANALYSIS SUMMARY - 20% EFFECT ===\n")
+cat("Tests included in BIC-optimal model:", nrow(power_results), "out of", length(test_codes_all), "\n")
+cat("Median sample size required:", median(power_results$sample_size), "\n")
+cat("Range of sample sizes:", min(power_results$sample_size), "-", max(power_results$sample_size), "\n")
+cat("\nTests with best power for 20% effect (smallest n):\n")
+print(head(power_results %>% dplyr::select(test_name, sample_size, auc, abs_mean_delta_20pct), 3))
+```
+
+# CFISP Effect Size Calibration Analysis
+
+```{r cfisp_calibration_setup}
+# Function to find the multiplier that gives a target sample size
+find_effect_multiplier <- function(variance, original_delta, target_n, alpha = 0.05, beta = 0.20) {
+  z_alpha <- qnorm(1 - alpha / 2)
+  z_beta <- qnorm(1 - beta)
+  
+  # From n = (2 * variance * (z_alpha + z_beta)^2) / delta^2
+  # Solving for delta: delta = sqrt((2 * variance * (z_alpha + z_beta)^2) / n)
+  required_delta <- sqrt((2 * variance * (z_alpha + z_beta)^2) / target_n)
+  
+  # The multiplier is: required_delta / original_delta
+  multiplier <- required_delta / abs(original_delta)
+  
+  return(multiplier)
+}
+
+# Find CFISP in your original results
+cfisp_data <- power_results_original %>%
+  filter(test_name == "CFISP")
+
+if(nrow(cfisp_data) > 0) {
+  # Extract CFISP parameters
+  cfisp_variance <- cfisp_data$variance[1]
+  cfisp_original_delta <- cfisp_data$abs_mean_delta[1]
+  
+  cat("CFISP Original Values:\n")
+  cat("=====================\n")
+  cat("Original delta:", round(cfisp_original_delta, 4), "\n")
+  cat("Variance:", round(cfisp_variance, 4), "\n")
+  cat("Current n (with 1/5 multiplier):", 635, "\n")
+  cat("Target n:", 396, "\n\n")
+  
+  # Find the multiplier for n = 396
+  target_n <- 396
+  custom_multiplier <- find_effect_multiplier(cfisp_variance, cfisp_original_delta, target_n)
+  
+  cat("SOLUTION:\n")
+  cat("=========\n")
+  cat("Required multiplier:", round(custom_multiplier, 4), "\n")
+  cat("This represents a", round((1 - custom_multiplier) * 100, 1), "% reduction in effect size\n\n")
+  
+  # Verify the calculation
+  new_delta <- cfisp_original_delta * custom_multiplier
+  verify_n <- calculate_sample_size(cfisp_variance, new_delta)
+  cat("Verification - CFISP n with new multiplier:", verify_n, "\n\n")
+} else {
+  stop("CFISP not found in results!")
+}
+```
+
+```{r apply_custom_multiplier}
+# Now apply this custom multiplier to ALL tests
+cat("Applying multiplier", round(custom_multiplier, 4), "to all tests:\n")
+cat("==================================================\n\n")
+
+# Recalculate sample sizes with the custom multiplier
+power_results <- power_results_original %>%
+  mutate(
+    # Apply the CFISP-calibrated multiplier to all tests
+    abs_mean_delta_custom = abs_mean_delta * custom_multiplier,
+    # Calculate new sample size
+    sample_size = map2_dbl(variance, abs_mean_delta_custom, 
+                           ~calculate_sample_size(.x, .y, alpha = 0.05, beta = 0.20)),
+    # Create label
+    test_label = paste0(test_name, "\n(AUC: ", sprintf("%.2f", auc), ")")
+  ) %>%
+  filter(!is.na(sample_size) & sample_size > 0 & sample_size < 1e6) %>%
+  arrange(sample_size)
+
+# Create comparison table
+comparison_table <- power_results %>% 
+  dplyr::select(test_name, auc, variance, abs_mean_delta, abs_mean_delta_custom, sample_size) %>%
+  mutate(
+    across(c(auc, variance, abs_mean_delta, abs_mean_delta_custom), ~round(., 4)),
+    effect_reduction = paste0(round((1 - custom_multiplier) * 100, 1), "%")
+  ) %>%
+  rename(
+    "Test" = test_name,
+    "AUC" = auc,
+    "Variance" = variance,
+    "Original Δ" = abs_mean_delta,
+    "New Δ" = abs_mean_delta_custom,
+    "n" = sample_size,
+    "Effect Reduction" = effect_reduction
+  )
+
+print(comparison_table)
+
+# Specifically highlight CFISP to confirm
+cat("\n\nConfirming CFISP sample size:\n")
+cfisp_final <- comparison_table %>% filter(Test == "CFISP")
+print(cfisp_final)
+```
+
+# Visualization: CFISP-Calibrated Power Analysis
+
+```{r cfisp_calibrated_vis}
+#| fig-width: 12
+#| fig-height: 8
+
+# Order by AUC for visualization
+plot_data <- power_results %>%
+  arrange(desc(auc)) %>%
+  mutate(test_label = factor(test_label, levels = test_label))
+
+# Create the power analysis plot with custom multiplier
+p <- ggplot(plot_data, aes(x = test_label, y = sample_size, fill = auc)) +
+  geom_col(color = "black", width = 0.7) +
+  
+  # Add sample size labels
+  geom_text(
+    aes(label = scales::comma(sample_size)), 
+    vjust = 1.5, 
+    color = "white",
+    size = 5,
+    fontface = "bold"
+  ) +
+  
+  # Log scale for y-axis
+  scale_y_log10(
+    name = "n (sample size)",
+    labels = scales::comma,
+    breaks = c(100, 250, 500, 1000, 2500, 5000, 10000, 25000, 50000, 100000, 250000)
+  ) +
+  
+  # Color gradient
+  scale_fill_gradientn(
+    colors = c("#FFEBE5", "#FFBEB2", "#FA8D76", "#F46C58", "#E44144", "#C73635", "#9F3632"),
+    name = "AUC",
+    limits = c(0, 1),
+    breaks = seq(0, 1, 0.2),
+    guide = guide_colorbar(
+      barwidth = 1,
+      barheight = 15,
+      title.position = "top",
+      title.hjust = 0.5
+    )
+  ) +
+  
+  # Expand y-axis for labels
+  coord_cartesian(clip = "off", 
+                  ylim = c(min(plot_data$sample_size) * 0.7, 
+                          max(plot_data$sample_size) * 2)) +
+  
+  # Labels and theme
+  labs(
+    title = paste0("Sample Size for 80% Power"),
+    subtitle = paste0("To Detect ", round((custom_multiplier) * 100, 1), 
+                     "% CDR Progression Reduction"),
+    x = "",
+    y = "n (sample size)"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(size = 12, face = "bold", vjust = 0.5),
+    axis.text.y = element_text(size = 12),
+    axis.title.y = element_text(size = 14, face = "bold"),
+    plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 13, hjust = 0.5),
+    legend.title = element_text(size = 14, face = "bold"),
+    legend.text = element_text(size = 12),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_line(color = "gray90"),
+    plot.background = element_rect(fill = "white", color = NA)
+  )
+
+print(p)
+
+# Save plot
+ggsave("power_analysis_cfisp_calibrated.png", p, width = 12, height = 8, dpi = 300)
+
+# Print summary
+cat("\n=== POWER ANALYSIS SUMMARY - CFISP CALIBRATED ===\n")
+cat("Multiplier used:", round(custom_multiplier, 4), "\n")
+cat("Effect reduction:", round((1 - custom_multiplier) * 100, 1), "%\n")
+cat("CFISP sample size:", power_results %>% filter(test_name == "CFISP") %>% pull(sample_size), "\n")
+cat("Median sample size across all tests:", median(power_results$sample_size), "\n")
+cat("Range of sample sizes:", min(power_results$sample_size), "-", max(power_results$sample_size), "\n")
+```
+
+# Full Model Custom Effect Size Analysis
+
+```{r full_model_custom}
+# Get linear predictors from the BIC-optimized model
+linear_predictors <- predict(glm_optimal, type = "link")
+
+# Calculate variance of linear predictors
+lp_variance <- var(linear_predictors, na.rm = TRUE)
+
+# Calculate mean linear predictors for positive and negative outcomes
+mean_lp_positive <- mean(linear_predictors[data_complete$CDPOS_W240 == 1], na.rm = TRUE)
+mean_lp_negative <- mean(linear_predictors[data_complete$CDPOS_W240 == 0], na.rm = TRUE)
+
+# Original effect size
+effect_size_original <- mean_lp_positive - mean_lp_negative
+
+# CUSTOM effect size (using the multiplier that makes CFISP n=396)
+effect_size_custom <- effect_size_original * custom_multiplier
+
+# Calculate AUC
+auc_obj <- roc(data_complete$CDPOS_W240, linear_predictors)
+auc_value <- auc(auc_obj)
+
+# Power calculation with custom effect size
+z_alpha <- qnorm(1 - 0.05/2)  # Two-tailed test, alpha = 0.05
+z_beta <- qnorm(0.80)          # 80% power
+
+# Calculate sample size with custom multiplier
+sample_size_custom <- ceiling(2 * lp_variance * (z_alpha + z_beta)^2 / effect_size_custom^2)
+
+# Create single bar visualization
+viz_data <- data.frame(
+  Model = paste0(round((custom_multiplier) * 100, 1), "% Effect"),
+  Sample_Size = sample_size_custom,
+  Effect_Size = round(effect_size_custom, 3),
+  Variance = round(lp_variance, 4),
+  AUC = round(auc_value, 3)
+)
+
+# Single bar plot
+p_power_single <- ggplot(viz_data, aes(x = Model, y = Sample_Size)) +
+  geom_col(fill = "#E74C3C", color = "black", width = 0.5) +
+  
+  # Sample size label on top
+  geom_text(aes(label = scales::comma(Sample_Size)), 
+            vjust = -0.5, 
+            size = 10, 
+            fontface = "bold") +
+  
+  # Statistics in the middle of the bar
+  annotate("text", x = 1, y = sample_size_custom/2, 
+           label = paste0("AUC = ", viz_data$AUC, "\n",
+                         "Effect = ", viz_data$Effect_Size, "\n",
+                         "Variance = ", viz_data$Variance),
+           size = 6, 
+           fontface = "bold",
+           color = "white") +
+  
+  # Y-axis scale
+  scale_y_continuous(
+    name = "Sample Size Required",
+    labels = scales::comma,
+    limits = c(0, sample_size_custom * 1.3),
+    expand = c(0, 0)
+  ) +
+  
+  # Labels and theme
+  labs(
+    title = "Power Analysis: Full BIC-Optimized Model",
+    subtitle = "Sample size for 80% power (α = 0.05, two-tailed test)",
+    x = ""
+  ) +
+  
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(size = 22, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 16, hjust = 0.5),
+    axis.title.y = element_text(size = 16, face = "bold"),
+    axis.text.x = element_text(size = 14, face = "bold"),
+    axis.text.y = element_text(size = 14),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.border = element_rect(color = "black", fill = NA, size = 1),
+    plot.margin = margin(20, 20, 20, 20)
+  )
+
+print(p_power_single)
+
+# Save the plot
+ggsave("bic_model_power_analysis_custom_single.png", p_power_single, width = 9, height = 5, dpi = 300)
+
+# Print summary
+cat("\nPower Analysis Summary:\n")
+cat("======================\n")
+cat("Sample size required:", sample_size_custom, "\n")
+cat("Model AUC:", round(auc_value, 3), "\n")
+cat("Effect size:", round(effect_size_custom, 3), "\n")
+cat("Variance:", round(lp_variance, 4), "\n")
+```
+
+# Model Coefficients and Odds Ratios
+
+```{r model_coefficients}
+# Calculate odds ratios and confidence intervals
+# Extract coefficients and confidence intervals
+coef_summary <- summary(glm_optimal)$coefficients
+
+# Calculate odds ratios
+odds_ratios <- exp(coef(glm_optimal))
+
+# Calculate 95% confidence intervals for odds ratios
+conf_int <- exp(confint(glm_optimal))
+
+# Create a clean summary table
+or_table <- data.frame(
+  Variable = names(coef(glm_optimal)),
+  Coefficient = coef(glm_optimal),
+  OR = odds_ratios,
+  CI_Lower = conf_int[,1],
+  CI_Upper = conf_int[,2],
+  P_Value = coef_summary[,4]
+) %>%
+  mutate(
+    # Format the output
+    OR_formatted = round(OR, 3),
+    CI_formatted = paste0("(", round(CI_Lower, 3), ", ", round(CI_Upper, 3), ")"),
+    P_formatted = formatp(P_Value),
+    # Add significance stars
+    Significance = case_when(
+      P_Value < 0.001 ~ "***",
+      P_Value < 0.01 ~ "**",
+      P_Value < 0.05 ~ "*",
+      P_Value < 0.1 ~ ".",
+      TRUE ~ ""
+    )
+  )
+
+# Display the results
+cat("\n=== ODDS RATIOS FOR BIC-OPTIMIZED MODEL ===\n")
+print(or_table %>% 
+      dplyr::select(Variable, OR_formatted, CI_formatted, P_formatted, Significance) %>%
+      rename("Odds Ratio" = OR_formatted,
+             "95% CI" = CI_formatted,
+             "p-value" = P_formatted,
+             "Sig." = Significance))
+
+# For a cleaner display of just the key information
+cat("\n\n=== SIMPLIFIED OUTPUT ===\n")
+or_table %>%
+  filter(Variable != "(Intercept)") %>%
+  mutate(
+    Effect = paste0(round(OR, 3), " ", CI_formatted, " ", Significance)
+  ) %>%
+  dplyr::select(Variable, Effect) %>%
+  print()
+```
+
+# Overall Model Performance Metrics
+
+```{r model_performance}
+# Calculate overall model odds ratio (Nagelkerke R²) and performance metrics
+# Get model predictions
+predictions <- predict(glm_optimal, type = "response")
+
+# Calculate AUC with confidence interval
+roc_obj <- roc(data_complete$CDPOS_W240, predictions)
+auc_ci <- ci.auc(roc_obj, conf.level = 0.95)
+
+# Calculate Nagelkerke R²
+null_model <- glm(CDPOS_W240 ~ 1, data = data_complete, family = binomial)
+n <- nrow(data_complete)
+R2_nagelkerke <- (1 - exp((logLik(glm_optimal) - logLik(null_model)) * (-2/n))) / 
+                 (1 - exp(logLik(null_model) * (-2/n)))
+
+# Calculate overall discrimination slope (mean predicted probability difference)
+mean_pred_pos <- mean(predictions[data_complete$CDPOS_W240 == 1])
+mean_pred_neg <- mean(predictions[data_complete$CDPOS_W240 == 0])
+discrimination_slope <- mean_pred_pos - mean_pred_neg
+
+# Display results
+cat("\n=== OVERALL MODEL PERFORMANCE ===\n")
+cat("AUC: ", round(auc_ci[2], 3), " (95% CI: ", round(auc_ci[1], 3), "-", round(auc_ci[3], 3), ")\n", sep = "")
+cat("Nagelkerke R²: ", round(R2_nagelkerke, 3), "\n", sep = "")
+cat("Discrimination slope: ", round(discrimination_slope, 3), "\n", sep = "")
+cat("Number of observations: ", n, "\n", sep = "")
+cat("Number of events: ", sum(data_complete$CDPOS_W240), "\n", sep = "")
+```
+
+# Final Model Comparison Visualization
+
+```{r final_comparison}
+# Create data frame with model information
+models_data <- data.frame(
+  Model = factor(c("Uni-test:\nCFITOTAL", 
+                   "Multi-test:\nCFISP", 
+                   "Multi-test Full Model:\nCFISP, ADLPQPT, LMIIA,\nBaselines, C3"),
+                 levels = c("Uni-test:\nCFITOTAL", 
+                           "Multi-test:\nCFISP", 
+                           "Multi-test Full Model:\nCFISP, ADLPQPT, LMIIA,\nBaselines, C3")),
+  Sample_Size = c(85, 635, 302),
+  AUC = c(0.74, 0.74, 0.835),
+  OR_Lower = c(1.44, 0.687, 0.778),
+  OR_Upper = c(3.14, 1.3, 0.892)
+)
+
+# Create the bar plot
+p <- ggplot(models_data, aes(x = Model, y = Sample_Size)) +
+  geom_bar(stat = "identity", fill = c("#3498db", "#e74c3c", "#e74c3c"), width = 0.7) +
+  
+  # Add sample size labels on top of bars
+  geom_text(aes(label = Sample_Size), 
+            vjust = -0.5, 
+            size = 6, 
+            fontface = "bold") +
+  
+  # Add AUC and OR information inside bars
+  geom_text(aes(y = Sample_Size/2, 
+                label = paste0("AUC = ", AUC, "\n",
+                              "OR = [", OR_Lower, ", ", OR_Upper, "]")),
+            color = "white", 
+            size = 4, 
+            fontface = "bold") +
+  
+  # Customize the plot
+  labs(title = "Power Analysis: Model Comparison",
+       subtitle = "Sample size for 80% power (α = 0.05, two-tailed test)",
+       x = "",
+       y = "Sample Size Required") +
+  
+  # Set y-axis limits
+  scale_y_continuous(limits = c(0, 700), 
+                     breaks = seq(0, 700, 100)) +
+  
+  # Apply theme
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 14, hjust = 0.5, color = "gray40"),
+    axis.text.x = element_text(size = 11, face = "bold"),
+    axis.text.y = element_text(size = 11),
+    axis.title.y = element_text(size = 12, face = "bold"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.background = element_rect(fill = "white", color = NA),
+    panel.background = element_rect(fill = "white", color = NA)
+  )
+
+# Display the plot
+print(p)
+
+# Save the plot (optional)
+ggsave("power_analysis_comparison.png", 
+       plot = p, 
+       width = 7, 
+       height = 7, 
+       dpi = 300, 
+       bg = "white")
+
+# Print summary table
+cat("\n=== Model Comparison Summary ===\n")
+print(models_data, row.names = FALSE)
+```

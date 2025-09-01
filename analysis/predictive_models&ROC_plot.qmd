@@ -1,0 +1,420 @@
+---
+title: "5 Predictive Models & Full ROC Curve"
+author: "Ian Sequeira"
+format: html
+---
+
+# Load Libraries and Helper Functions
+
+```{r setup}
+#| message: false
+#| warning: false
+
+library(here)
+source(here("helpers", "01-load-libraries.R"))
+source(here("helpers", "02-functions.R"))
+```
+
+# Custom Functions
+
+```{r ROC functions + AUC Calc}
+#| message: false
+#| warning: false
+
+# Function to calculate ROC
+calculate_roc <- function(y_true, y_pred_prob) {
+  # Remove any NA values
+  complete_idx <- complete.cases(y_true, y_pred_prob)
+  y_true <- y_true[complete_idx]
+  y_pred_prob <- y_pred_prob[complete_idx]
+  
+  # Check if we have valid data
+  if(length(y_true) == 0 || length(unique(y_true)) < 2) {
+    warning("Insufficient data for ROC calculation")
+    return(list(
+      sensitivity = c(0, 1),
+      specificity = c(1, 0),
+      fpr = c(0, 1),
+      auc = 0.5
+    ))
+  }
+  
+  cutpoints <- seq(0, 1, length.out = 1000)
+  sensitivity <- specificity <- rep(NA, length(cutpoints))
+  
+  for(i in 1:length(cutpoints)) {
+    pred_class <- ifelse(y_pred_prob >= cutpoints[i], 1, 0)
+    
+    TP <- sum(y_true == 1 & pred_class == 1, na.rm = TRUE)
+    TN <- sum(y_true == 0 & pred_class == 0, na.rm = TRUE)
+    FP <- sum(y_true == 0 & pred_class == 1, na.rm = TRUE)
+    FN <- sum(y_true == 1 & pred_class == 0, na.rm = TRUE)
+    
+    sensitivity[i] <- if((TP + FN) > 0) TP / (TP + FN) else 0
+    specificity[i] <- if((TN + FP) > 0) TN / (TN + FP) else 0
+  }
+  
+  # Calculate AUC using trapezoidal rule
+  auc <- sum(diff(1 - specificity) * (sensitivity[-1] + sensitivity[-length(sensitivity)]) / 2)
+  
+  return(list(
+    sensitivity = sensitivity,
+    specificity = specificity,
+    fpr = 1 - specificity, 
+    auc = abs(auc)
+  ))
+}
+```
+
+# Data Preparation & LEARN Effect Adjustment
+
+```{r data_prep}
+#| message: false
+#| warning: false
+
+# Load data files
+data_wk48 <- read_csv("data/data_wk48.csv")
+learn_data <- read_csv("data/data_learn&base_wk48.csv")
+
+# Calculate LEARN effects
+learn_effects <- learn_data %>%
+  summarise(
+    across(starts_with("z_delta_") & ends_with("_W48"), 
+           ~mean(.x, na.rm = TRUE), 
+           .names = "learn_effect_{.col}")
+  ) %>%
+  rename_all(~str_replace(., "z_delta_", ""))
+
+# Create adjusted deltas and baselines
+data_wk48_adjusted <- data_wk48 %>%
+  mutate(
+    # Baselines
+    baseline_ADLPQPT = ADLPQPT_W48,
+    baseline_ADLPQSP = ADLPQSP_W48,
+    baseline_CFIPT = CFIPT_W48,
+    baseline_CFISP = CFISP_W48,
+    baseline_DIGIT = DIGIT_W48,
+    baseline_FCSRT96 = FCSRT96_W48,
+    baseline_LMIIA = LMIIA_W48,
+    baseline_MMSE = MMSE_W48,
+    # Adjusted deltas
+    adjusted_delta_ADLPQPT_W48 = z_delta_ADLPQPT_W48 - learn_effects$learn_effect_ADLPQPT_W48,
+    adjusted_delta_ADLPQSP_W48 = z_delta_ADLPQSP_W48 - learn_effects$learn_effect_ADLPQSP_W48,
+    adjusted_delta_CFIPT_W48 = z_delta_CFIPT_W48 - learn_effects$learn_effect_CFIPT_W48,
+    adjusted_delta_CFISP_W48 = z_delta_CFISP_W48 - learn_effects$learn_effect_CFISP_W48,
+    adjusted_delta_DIGIT_W48 = z_delta_DIGIT_W48 - learn_effects$learn_effect_DIGIT_W48,
+    adjusted_delta_FCSRT96_W48 = z_delta_FCSRT96_W48 - learn_effects$learn_effect_FCSRT96_W48,
+    adjusted_delta_LMIIA_W48 = z_delta_LMIIA_W48 - learn_effects$learn_effect_LMIIA_W48,
+    adjusted_delta_MMSE_W48 = z_delta_MMSE_W48 - learn_effects$learn_effect_MMSE_W48
+  )
+
+# Remove rows with missing outcomes
+data_complete <- data_wk48_adjusted %>% 
+  filter(!is.na(CDPOS_W240))
+
+cat("Data dimensions after processing:", nrow(data_complete), "x", ncol(data_complete), "\n")
+```
+
+```{r variable_setup}
+#| message: false
+#| warning: false
+
+# Get variable lists
+adjusted_vars <- grep("^adjusted_delta_.*_W48$", names(data_complete), value = TRUE)
+if("z_delta_C3_W48" %in% names(data_complete)) {
+  adjusted_vars <- c(adjusted_vars, "z_delta_C3_W48")
+}
+baseline_vars <- grep("^baseline_", names(data_complete), value = TRUE)
+
+cat("Predictors available:\n")
+cat("Adjusted deltas:", length(adjusted_vars), "\n")
+cat("Baseline covariates:", length(baseline_vars), "\n\n")
+```
+
+# Model 1: GLM Main Effects Only
+
+```{r model_glm_main}
+#| message: false
+#| warning: false
+
+cat("Fitting Model 1: GLM with main effects only...\n")
+formula_main <- as.formula(paste("CDPOS_W240 ~", 
+                                paste(c(adjusted_vars, baseline_vars), 
+                                      collapse = " + ")))
+glm_main <- glm(formula_main, data = data_complete, family = binomial(link = "logit"))
+```
+
+# Model 2: Best Subsets Selection
+
+```{r model_best_subsets}
+#| message: false
+#| warning: false
+
+cat("Fitting Model 2: Best Subsets...\n")
+all_vars <- c(adjusted_vars, baseline_vars)
+model_data_bs <- na.omit(data_complete[, c("CDPOS_W240", all_vars)])
+X_bs <- model_data_bs[, -1]
+y_bs <- model_data_bs$CDPOS_W240
+
+regfit <- regsubsets(X_bs, y_bs, nvmax = min(ncol(X_bs), 20), method = "exhaustive")
+best_bic <- which.min(summary(regfit)$bic)
+selected_vars <- names(coef(regfit, best_bic))[-1]
+
+if(length(selected_vars) > 0) {
+  formula_bs <- as.formula(paste("CDPOS_W240 ~", paste(selected_vars, collapse = " + ")))
+  glm_bs <- glm(formula_bs, data = model_data_bs, family = binomial)
+} else {
+  glm_bs <- glm(CDPOS_W240 ~ 1, data = model_data_bs, family = binomial)
+}
+```
+
+# Model 3: Ridge Regression
+
+```{r model_ridge}
+#| message: false
+#| warning: false
+
+cat("Fitting Model 3: Ridge Regression...\n")
+X_ridge <- as.matrix(data_complete[, all_vars])
+y_ridge <- data_complete$CDPOS_W240
+set.seed(123)
+cv_ridge <- cv.glmnet(X_ridge, y_ridge, alpha = 0, family = "binomial", nfolds = 5)
+```
+
+# Model 4: CART (Decision Tree)
+
+```{r model_cart}
+#| message: false
+#| warning: false
+
+cat("Fitting Model 4: CART...\n")
+set.seed(123)
+cart_full <- rpart(CDPOS_W240 ~ ., 
+                   data = data_complete[, c("CDPOS_W240", all_vars)], 
+                   method = "class", cp = 0, minsplit = 5)
+cp_table <- cart_full$cptable
+best_row <- which.min(cp_table[, "xerror"])
+cp_1se <- cp_table[cp_table[, "xerror"] <= cp_table[best_row, "xerror"] + 
+                   cp_table[best_row, "xstd"], "CP"][1]
+cart_pruned <- prune(cart_full, cp = cp_1se)
+```
+
+# Model 5: GLM Full Interactions
+
+```{r model_glm_full}
+#| message: false
+#| warning: false
+
+cat("Fitting Model 5: GLM with all 2-way interactions...\n")
+formula_full <- as.formula(paste("CDPOS_W240 ~ (", 
+                                paste(adjusted_vars, collapse = " + "),
+                                ")^2 + ",
+                                paste(baseline_vars, collapse = " + ")))
+glm_full <- glm(formula_full, data = data_complete, family = binomial(link = "logit"))
+cat("Full model parameters:", length(coef(glm_full)), "\n")
+```
+
+# Model 6: GLM Optimal (BIC-Selected)
+
+```{r model_glm_optimal}
+#| message: false
+#| warning: false
+
+cat("Fitting Model 6: GLM Optimal (BIC-selected)...\n")
+cat("Running stepwise selection...\n")
+glm_optimal <- stepAIC(glm_full, 
+                      direction = "both",
+                      k = log(nrow(data_complete)),  # BIC penalty
+                      trace = FALSE)
+cat("Optimal model parameters:", length(coef(glm_optimal)), "\n")
+cat("Parameters removed:", length(coef(glm_full)) - length(coef(glm_optimal)), "\n\n")
+```
+
+# Model Predictions & ROC Calculations
+
+```{r roc_calculations}
+# Calculate predictions and ROCs for all models
+cat("Calculating ROC curves...\n")
+
+# 1. GLM Main Effects
+pred_glm_main <- predict(glm_main, type = "response")
+roc_glm_main <- calculate_roc(data_complete$CDPOS_W240, pred_glm_main)
+
+# 2. Best Subsets
+pred_bs <- predict(glm_bs, newdata = model_data_bs, type = "response")
+roc_bs <- calculate_roc(model_data_bs$CDPOS_W240, pred_bs)
+
+# 3. Ridge
+pred_ridge <- predict(cv_ridge, newx = X_ridge, s = "lambda.min", type = "response")[,1]
+roc_ridge <- calculate_roc(y_ridge, pred_ridge)
+
+# 4. CART
+pred_cart <- predict(cart_pruned, type = "prob")[, 2]
+roc_cart <- calculate_roc(data_complete$CDPOS_W240, pred_cart)
+
+# 5. GLM Full
+pred_glm_full <- predict(glm_full, type = "response")
+roc_glm_full <- calculate_roc(data_complete$CDPOS_W240, pred_glm_full)
+
+# 6. GLM Optimal
+pred_glm_optimal <- predict(glm_optimal, type = "response")
+roc_glm_optimal <- calculate_roc(data_complete$CDPOS_W240, pred_glm_optimal)
+```
+
+# ROC Curve Visualization
+
+```{r roc_plot}
+#| fig-cap: "ROC Curves for Six Models - Week 48"
+
+# Create the ROC plot
+plot(roc_glm_main$fpr, roc_glm_main$sensitivity, type = "l", lwd = 2.5, col = "black",
+     main = "ROC Curves - Week 48\n(All models include baseline + LEARN-adjusted deltas)",
+     xlab = "False Positive Rate (1 - Specificity)",
+     ylab = "True Positive Rate (Sensitivity)",
+     xlim = c(0, 1), ylim = c(0, 1),
+     cex.main = 1.4, cex.lab = 1.2, cex.axis = 1.1)
+
+# Add other curves
+lines(roc_bs$fpr, roc_bs$sensitivity, lwd = 2, col = "purple", lty = 2)
+lines(roc_ridge$fpr, roc_ridge$sensitivity, lwd = 2, col = "blue", lty = 3)
+lines(roc_cart$fpr, roc_cart$sensitivity, lwd = 2, col = "darkgreen", lty = 4)
+lines(roc_glm_full$fpr, roc_glm_full$sensitivity, lwd = 2, col = "red", lty = 5)
+lines(roc_glm_optimal$fpr, roc_glm_optimal$sensitivity, lwd = 3, col = "red")
+
+# Add diagonal reference line
+abline(a = 0, b = 1, lty = 2, col = "gray")
+
+# Add legend with sections
+legend("bottomright", 
+       legend = c("Non-Cross-Validated:",
+                  paste0("  GLM Main Effects (AUC = ", round(roc_glm_main$auc, 3), ")"),
+                  paste0("  Best Subsets (AUC = ", round(roc_bs$auc, 3), ")"),
+                  paste0("  GLM Full 2-way (AUC = ", round(roc_glm_full$auc, 3), ")"),
+                  paste0("  GLM Optimal (AUC = ", round(roc_glm_optimal$auc, 3), ")"),
+                  "",  # Spacer
+                  "Cross-Validated:",
+                  paste0("  Ridge (AUC = ", round(roc_ridge$auc, 3), ")"),
+                  paste0("  CART (AUC = ", round(roc_cart$auc, 3), ")")),
+       col = c("black",
+               "black", "purple", "red", "red",
+               "white",
+               "black",
+               "blue", "darkgreen"),
+       lty = c(NA,
+               1, 2, 5, 1,
+               NA,
+               NA,
+               3, 4),
+       lwd = c(NA,
+               2.5, 2, 2, 3,
+               NA,
+               NA,
+               2, 2),
+       cex = 0.5,         # Smaller font
+       bg = "white",      # Background
+       bty = "o",         # Box around legend
+       text.font = c(2,   # Bold header
+                     1, 1, 1, 1,
+                     1,
+                     2,
+                     1, 1))
+```
+
+# Model Performance Summary
+
+```{r performance_summary}
+# Create AUC summary table
+auc_summary <- data.frame(
+  Model = c("GLM Main Effects", "Best Subsets", "Ridge Regression", 
+            "CART", "GLM Full 2-way", "GLM Optimal"),
+  Parameters = c(length(coef(glm_main)), 
+                 length(selected_vars) + 1,
+                 sum(coef(cv_ridge, s = "lambda.min") != 0),
+                 sum(cart_pruned$frame$var != "<leaf>"),
+                 length(coef(glm_full)),
+                 length(coef(glm_optimal))),
+  AUC = c(roc_glm_main$auc, roc_bs$auc, roc_ridge$auc, 
+          roc_cart$auc, roc_glm_full$auc, roc_glm_optimal$auc)
+) %>%
+  mutate(AUC = round(AUC, 3)) %>%
+  arrange(desc(AUC))
+
+cat("\n=== MODEL PERFORMANCE SUMMARY ===\n")
+print(auc_summary)
+
+# Highlight best performing model
+best_model <- auc_summary$Model[1]
+cat("\nBest performing model:", best_model, "with AUC =", auc_summary$AUC[1], "\n")
+
+# Show parameter reduction for GLM models
+cat("\n=== GLM MODEL COMPARISON ===\n")
+cat("GLM Main Effects:", length(coef(glm_main)), "parameters\n")
+cat("GLM Full 2-way:", length(coef(glm_full)), "parameters\n")
+cat("GLM Optimal:", length(coef(glm_optimal)), "parameters\n")
+cat("Parameter reduction:", 
+    round((1 - length(coef(glm_optimal))/length(coef(glm_full))) * 100, 1), "%\n")
+```
+
+# Export High-Quality Plot
+
+```{r export_plot}
+# Save the plot as PNG
+png("roc_curves_six_models_week48.png", width = 10, height = 8, units = "in", res = 300)
+
+# Create the ROC plot
+plot(roc_glm_main$fpr, roc_glm_main$sensitivity, type = "l", lwd = 2.5, col = "black",
+     main = "ROC Curves - Week 48",
+     xlab = "False Positive Rate (1 - Specificity)",
+     ylab = "True Positive Rate (Sensitivity)",
+     xlim = c(0, 1), ylim = c(0, 1),
+     cex.main = 1.4, cex.lab = 1.2, cex.axis = 1.1)
+
+# Add other curves
+lines(roc_bs$fpr, roc_bs$sensitivity, lwd = 2, col = "brown", lty = 2)
+lines(roc_ridge$fpr, roc_ridge$sensitivity, lwd = 2, col = "blue", lty = 3)
+lines(roc_cart$fpr, roc_cart$sensitivity, lwd = 2, col = "darkgreen", lty = 4)
+lines(roc_glm_full$fpr, roc_glm_full$sensitivity, lwd = 2, col = "orange", lty = 5)
+lines(roc_glm_optimal$fpr, roc_glm_optimal$sensitivity, lwd = 5, col = "red")
+
+# Add diagonal reference line
+abline(a = 0, b = 1, lty = 2, col = "gray")
+
+# Add legend with sections
+legend("bottomright", 
+       legend = c("Non-Cross-Validated:",
+                  paste0("  GLM Main Effects (AUC = ", round(roc_glm_main$auc, 3), ")"),
+                  paste0("  Best Subsets (AUC = ", round(roc_bs$auc, 3), ")"),
+                  paste0("  GLM Full 2-way (AUC = ", round(roc_glm_full$auc, 3), ")"),
+                  paste0("  GLM Optimal (AUC = ", round(roc_glm_optimal$auc, 3), ")"),
+                  "",  # Spacer
+                  "Cross-Validated:",
+                  paste0("  Ridge (AUC = ", round(roc_ridge$auc, 3), ")"),
+                  paste0("  CART (AUC = ", round(roc_cart$auc, 3), ")")),
+       col = c("black",
+               "black", "brown", "orange", "red",
+               "white",
+               "black",
+               "blue", "darkgreen"),
+       lty = c(NA,
+               1, 2, 5, 1,
+               NA,
+               NA,
+               3, 4),
+       lwd = c(NA,
+               2.5, 2, 2, 5,
+               NA,
+               NA,
+               2, 2),
+       cex = 0.9,         # Smaller font
+       bg = "white",      # Background
+       bty = "o",         # Box around legend
+       text.font = c(2,   # Bold header
+                     1, 1, 1, 1,
+                     1,
+                     2,
+                     1, 1))
+# Close the PNG device
+dev.off()
+
+cat("Plot saved as: roc_curves_six_models_week48.png\n")
+```
