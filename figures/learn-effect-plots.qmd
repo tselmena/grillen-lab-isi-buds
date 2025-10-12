@@ -1,0 +1,208 @@
+---
+title: "spline-plots"
+format: html
+---
+
+```{r}
+names <- test_codes
+names[9] <- "LMIIa"
+names <- names[-7]
+```
+
+
+```{r}
+plot_list <- list()
+
+for (i in seq_along(names)) {
+  current_test <- names[i]
+  
+  # Subset and preprocess for A4 Placebo
+  A4_PLACEBO <- ADQS_raw |>
+    filter(TX == "Placebo", QSTESTCD == current_test) |>
+    rename(!!current_test := QSSTRESN) |>
+    select(BID, ADURW, all_of(current_test), ASEQNCS) |>
+    mutate(STUDY_GROUP = "A4 Placebo") |>
+    na.omit()
+  
+  # Subset/preprocess for LEARN
+  LEARN <- ADQS_raw |>
+    filter(SUBSTUDY == "LEARN", QSTESTCD == current_test) |>
+    rename(!!current_test := QSSTRESN) |>
+    select(BID, ADURW, all_of(current_test), ASEQNCS) |>
+    mutate(STUDY_GROUP = "LEARN") |>
+    na.omit()
+  
+  # Combine
+  COMBINED <- bind_rows(A4_PLACEBO, LEARN) |>
+    mutate(STUDY_GROUP = factor(STUDY_GROUP))
+  
+  # Spline basis functions
+  ns21_comb <- function(t) {
+    as.numeric(predict(splines::ns(COMBINED$ADURW, df = 2,
+             Boundary.knots = c(0, max(COMBINED$ADURW))), t)[,1])
+  }
+  ns22_comb <- function(t) {
+    as.numeric(predict(splines::ns(COMBINED$ADURW, df = 2,
+             Boundary.knots = c(0, max(COMBINED$ADURW))), t)[,2])
+  }
+  
+  # GLS
+  fit <- try(gls(
+    as.formula(paste(current_test, "~ (I(ns21_comb(ADURW)) + I(ns22_comb(ADURW))) * STUDY_GROUP")),
+    data = COMBINED,
+    weights = varIdent(form = ~ 1 | ASEQNCS),
+    correlation = corAR1(form = ~ ASEQNCS | BID),
+    na.action = na.omit
+  ))
+  
+  if (inherits(fit, "try-error")) {
+    cat("Model failed to converge for", current_test, "\n")
+    next  # skip to the next variable
+  }
+  
+  # Estimated marginal means
+  emmeans_grid <- ref_grid(
+    fit,
+    at = list(ADURW = seq(0, 240, by = 12),
+              STUDY_GROUP = c("A4 Placebo", "LEARN")),
+    vcov. = clubSandwich::vcovCR(fit, type = "CR2")
+  ) |>
+    emmeans(specs = "STUDY_GROUP", by = "ADURW") |>
+    as_tibble()
+  
+  # Plot
+  p <- ggplot(emmeans_grid, aes(x = ADURW, y = emmean, color = STUDY_GROUP, fill = STUDY_GROUP)) +
+    geom_line(linewidth = 1) +
+    geom_ribbon(aes(ymin = lower.CL, ymax = upper.CL), alpha = 0.2, linetype = 0) +
+    scale_x_continuous(breaks = c(0, 48, 108, 168, 204, 240)) +
+    scale_color_manual(values = c("A4 Placebo" = "#D81B60", "LEARN" = "#1E88E5")) +
+    scale_fill_manual(values = c("A4 Placebo" = "#D81B60", "LEARN" = "#1E88E5")) +
+    labs(
+      title = paste("Comparison of Mean", current_test, "between A4 (Placebo) and LEARN Study Participants"),
+      subtitle = "Estimated from a GLS spline model",
+      y = paste("Mean", current_test, "with 95% confidence intervals"),
+      x = "Weeks since Randomization",
+      color = "Cohort",
+      fill = "Cohort"
+    ) +
+    coord_cartesian(xlim = c(0, 240)) +
+    theme_light() +
+    theme(legend.position = "bottom")
+  
+  plot_list[[current_test]] <- p
+}
+```
+
+```{r}
+for (current_test in names) {
+  ggsave(plot_list[[current_test]], filename = paste0("learn_curve_", tolower(current_test), ".png"), height = 6, width = 8, dpi = 300, units = "in")
+}
+
+```
+
+```{r}
+emmeans_list <- list()
+
+for (i in seq_along(names)) {
+  current_test <- names[i]
+  
+  # Subset/preprocess data for this test code
+  A4_PLACEBO <- ADQS_raw |>
+    filter(TX == "Placebo", QSTESTCD == current_test) |>
+    rename(!!current_test := QSSTRESN) |>
+    select(BID, ADURW, all_of(current_test), ASEQNCS) |>
+    mutate(STUDY_GROUP = "A4 Placebo") |>
+    na.omit()
+  
+  LEARN <- ADQS_raw |>
+    filter(SUBSTUDY == "LEARN", QSTESTCD == current_test) |>
+    rename(!!current_test := QSSTRESN) |>
+    select(BID, ADURW, all_of(current_test), ASEQNCS) |>
+    mutate(STUDY_GROUP = "LEARN") |>
+    na.omit()
+  
+  COMBINED <- bind_rows(A4_PLACEBO, LEARN) |>
+    mutate(STUDY_GROUP = factor(STUDY_GROUP))
+  
+  # Spline basis functions
+  ns21_comb <- function(t) {
+    as.numeric(predict(splines::ns(COMBINED$ADURW, df = 2,
+             Boundary.knots = c(0, max(COMBINED$ADURW))), t)[,1])
+  }
+  ns22_comb <- function(t) {
+    as.numeric(predict(splines::ns(COMBINED$ADURW, df = 2,
+             Boundary.knots = c(0, max(COMBINED$ADURW))), t)[,2])
+  }
+  
+  # Robust model fitting
+  fit <- try(
+    gls(
+      as.formula(paste(current_test, "~ (I(ns21_comb(ADURW)) + I(ns22_comb(ADURW))) * STUDY_GROUP")),
+      data = COMBINED,
+      weights = varIdent(form = ~ 1 | ASEQNCS),
+      correlation = corAR1(form = ~ ASEQNCS | BID),
+      na.action = na.omit
+    ),
+    silent = TRUE
+  )
+  if (inherits(fit, "try-error")) {
+    cat("Model failed to converge for", current_test, "\n")
+    next
+  }
+  
+  # Estimated marginal means for combined cohorts
+  em_grid <- ref_grid(
+    fit,
+    at = list(ADURW = seq(0, 240, by = 12),
+              STUDY_GROUP = c("A4 Placebo", "LEARN")),
+    vcov. = clubSandwich::vcovCR(fit, type = "CR2")
+  ) |>
+    emmeans(specs = "STUDY_GROUP", by = "ADURW") |>
+    as_tibble()
+  
+  # Add test code as a grouping column for faceting
+  em_grid$test_code <- current_test
+  emmeans_list[[current_test]] <- em_grid
+}
+
+plot_data_scores <- bind_rows(emmeans_list)
+```
+
+
+```{r}
+learn_effect_grid_plot <- ggplot(
+  plot_data_scores,
+  aes(x = ADURW, y = emmean, color = STUDY_GROUP, fill = STUDY_GROUP)
+) +
+  geom_line(linewidth = 1) +
+  geom_ribbon(aes(ymin = lower.CL, ymax = upper.CL), alpha = 0.2, linetype = 0) +
+  facet_wrap(~ test_code, ncol = 3, scales = "free_y") +
+  scale_color_manual(
+    name = "Cohort",
+    values = c("A4 Placebo" = "#D81B60", "LEARN" = "#1E88E5")
+  ) +
+  scale_fill_manual(
+    name = "Cohort",
+    values = c("A4 Placebo" = "#D81B60", "LEARN" = "#1E88E5")
+  ) +
+  labs(
+    x = "Weeks since Randomization",
+    y = "Mean Test Score (95% CI)",
+    title = "Comparison of Mean Test Scores between A4 (Placebo) and LEARN Study Participants"
+  ) +
+  theme_bw() +
+  theme(
+    legend.position = "top",
+    strip.background = element_blank(),
+    strip.text = element_text(face = "bold", size = 14),
+    axis.title.y = element_text(face = "bold", size = 14),
+    axis.title.x = element_text(face = "bold", size = 14),
+    axis.text = element_text(size = 12),
+    plot.title = element_text(size = 18, face = "bold", hjust = 0)
+  )
+
+learn_effect_grid_plot
+ggsave("learn_effect_grid_plot.png", learn_effect_grid_plot, height = 8, width = 11, dpi = 300, units = "in")
+```
+
+
